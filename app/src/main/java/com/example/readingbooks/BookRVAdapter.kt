@@ -1,4 +1,4 @@
 package com.example.readingbooks
 
-class BookRVAdapter {
+class BookRVAdapter(booksList: ArrayList<BookRVModal>, mainActivity: MainActivity) {
 }
