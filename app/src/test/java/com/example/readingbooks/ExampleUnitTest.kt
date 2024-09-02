@@ -1,4 +1,4 @@
-package com.example.readinglist
+package com.example.readingbooks
 
 import org.junit.Test
 

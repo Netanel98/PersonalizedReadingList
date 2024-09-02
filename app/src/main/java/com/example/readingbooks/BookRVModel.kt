@@ -1,4 +1,4 @@
-package com.example.readinglist
+package com.example.readingbooks
 
 data class BookRVModal(
     // creating string, int and array list
