@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.readinglist.R
 import com.squareup.picasso.Picasso
 
 class BookDetailsActivity : AppCompatActivity() {
