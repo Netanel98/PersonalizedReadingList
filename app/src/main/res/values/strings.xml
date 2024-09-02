@@ -2,6 +2,7 @@
     <string name="app_name">ReadingList</string>
     <string name="title_activity_book_details">BookDetailsActivity</string>
     <string name="search_button_description">Search</string>
+    <string name="search_label">Search Books</string>
     <string name="search_hint">Enter your search query</string>
     <string name="search">search</string>
 </resources>
