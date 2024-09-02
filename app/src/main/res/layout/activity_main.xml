@@ -23,7 +23,7 @@
             android:id="@+id/label_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@strings/search_label"
+            android:text="@string/search_label"
             android:labelFor="@id/idEdtSearchBooks" />
 
         <EditText
