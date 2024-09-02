@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         // below is the url for getting data from API in json format.
         val url = "https://www.googleapis.com/books/v1/volumes?q=$searchQuery"
 
-        // below line we are  creating a new request queue.
+        // below line we are creating a new request queue.
         val queue = Volley.newRequestQueue(this@MainActivity)
 
         // on below line we are creating a variable for request
