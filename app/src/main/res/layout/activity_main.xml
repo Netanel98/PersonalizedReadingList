@@ -19,6 +19,13 @@
 
         <!--edit text for getting the search
             query for book from user-->
+        <TextView
+            android:id="@+id/label_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@strings/search_label"
+            android:labelFor="@id/idEdtSearchBooks" />
+
         <EditText
             android:id="@+id/idEdtSearchBooks"
             android:autofillHints="@string/search_hint"
