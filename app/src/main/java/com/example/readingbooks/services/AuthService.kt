@@ -1,10 +1,15 @@
 package com.example.readingbooks.services
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 
 class AuthService {
     private val auth = FirebaseAuth.getInstance()
+
+    fun getCurrentUser(): FirebaseUser? {
+        return auth.currentUser
+    }
 
     fun signUp(email: String, password: String, onComplete: (Boolean, String) -> Unit) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->

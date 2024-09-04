@@ -4,32 +4,37 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.readingbooks.services.AuthService
 import com.example.readinglist.R
-import kotlinx.android.synthetic.main.activity_profile.*
+import com.example.readingbooks.databinding.ActivityProfileBinding
+import com.example.readingbooks.viewModels.ProfileViewModel
 
-class ProfileFragment : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityProfileBinding
+    private lateinit var viewModel: ProfileViewModel
 
-        private lateinit var authService: AuthService
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_profile)
-            authService = AuthService()
+        // Assuming ViewModel setup is done here
+        // ViewModel observers
+        viewModel.userName.observe(this) { name ->
+            binding.etName.setText(name)
+        }
 
-            btnSave.setOnClickListener {
-                val name = etName.text.toString()
-                val photoUrl = etPhotoUrl.text.toString()  // Assume input is a valid URL or handle conversion
-                authService.updateUserProfile(name, photoUrl) { success, message ->
-                    if (success) {
-                        // Update UI or notify user
-                    } else {
-                        // Handle error, show message
-                    }
-                }
-            }
+        viewModel.photoUrl.observe(this) { url ->
+            binding.etPhotoUrl.setText(url)
+        }
 
-            btnLogout.setOnClickListener {
-                authService.logOut()
-                // Handle UI change or navigate to login screen
-            }
+        binding.btnSave.setOnClickListener {
+            val name = binding.etName.text.toString()
+            val photoUrl = binding.etPhotoUrl.text.toString()
+            viewModel.updateUserProfile(name, photoUrl)
+        }
+
+        binding.btnLogout.setOnClickListener {
+            viewModel.logOut()
+            // Navigate back to login screen or adjust UI accordingly
         }
     }
+}

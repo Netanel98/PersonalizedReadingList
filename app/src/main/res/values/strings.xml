@@ -5,4 +5,9 @@
     <string name="search_label">Search Books</string>
     <string name="search_hint">Enter your search query</string>
     <string name="search">search</string>
+    <string name="full_name">User Name</string>
+    <string name="photo_url" >Picture</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="logout">Logout</string>
+    <string name="uploaded_image">Uploaded Image</string>
 </resources>
