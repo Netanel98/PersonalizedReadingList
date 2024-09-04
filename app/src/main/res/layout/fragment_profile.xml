@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ProfileActivity">
+    tools:context="com.example.readingbooks.ProfileFragment">
 
     <data>
         <!-- Binding ViewModel -->
@@ -14,57 +14,63 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/image_view"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:contentDescription="@string/uploaded_image"
-            app:srcCompat="@drawable/ic_profile"
-            android:scaleType="centerCrop" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400sp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:hint="@string/full_name"
-            android:text="@={viewModel.userName}"
-            android:inputType="textPersonName" />
+            <com.example.myapplication.ui.views.ImagePicker
+                android:id="@+id/image_view"
+                android:layout_width="200sp"
+                android:layout_height="200sp"
+                android:layout_weight="1"
+                android:contentDescription="@string/uploaded_image"
+                android:src="@mipmap/add_image_round" />
 
-        <EditText
-            android:id="@+id/etPhotoUrl"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:hint="@strings/photo_url"
-            android:text="@={viewModel.photoUrl}"
-            android:inputType="textUri" />
+            <com.example.myapplication.ui.views.CustomTextInput
+                android:id="@+id/first_name"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/firstName"
+                android:text="@={viewModel.firstName}"
+                app:helperTextEnabled="@={!viewModel.isFirstNameValid()}" />
 
+            <com.example.myapplication.ui.views.CustomTextInput
+                android:id="@+id/last_name"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/lastName"
+                android:text="@={viewModel.lastName}"
+                app:helperTextEnabled="@={viewModel.isLastNameValid()}" />
+        </LinearLayout>
         <Button
             android:id="@+id/btnSave"
             style="@style/Widget.Material3.Button.ElevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="?attr/colorPrimary"
-            android:text="@strings/save_changes"
+            android:text="@string/save_changes"
             android:textColor="?attr/colorOnPrimary" />
-
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_bar"
+            style="@style/Widget.MaterialComponents.CircularProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
         <Button
             android:id="@+id/btnLogout"
             style="@style/Widget.Material3.Button.ElevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="?attr/colorError"
-            android:text="@strings/logout"
+            android:backgroundTint="?attr/colorPrimary"
+            android:text="@string/logout"
             android:textColor="?attr/colorOnPrimary" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@style/Widget.MaterialComponents.CircularProgressIndicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
     </LinearLayout>
 </layout>
