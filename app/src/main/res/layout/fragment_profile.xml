@@ -23,7 +23,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.example.myapplication.ui.views.ImagePicker
+            <com.example.readingbooks.views.ImagePicker
                 android:id="@+id/image_view"
                 android:layout_width="200sp"
                 android:layout_height="200sp"
@@ -31,7 +31,7 @@
                 android:contentDescription="@string/uploaded_image"
                 android:src="@mipmap/add_image_round" />
 
-            <com.example.myapplication.ui.views.CustomTextInput
+            <com.example.readingbooks.views.CustomTextInput
                 android:id="@+id/first_name"
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                 android:text="@={viewModel.firstName}"
                 app:helperTextEnabled="@={!viewModel.isFirstNameValid()}" />
 
-            <com.example.myapplication.ui.views.CustomTextInput
+            <com.example.readingbooks.views.CustomTextInput
                 android:id="@+id/last_name"
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
