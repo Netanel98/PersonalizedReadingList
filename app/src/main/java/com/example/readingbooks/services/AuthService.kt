@@ -22,9 +22,9 @@ class AuthService {
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    callback(true, "Login successful")
+                    callback(true, "Logged in Successfully")
                 } else {
-                    callback(false, task.exception?.message ?: "Login failed")
+                    callback(false, task.exception?.message ?: "Login Failed")
                 }
             }
     }
@@ -36,4 +36,5 @@ class AuthService {
 
     // Get current user
     fun getCurrentUser() = firebaseAuth.currentUser
+
 }

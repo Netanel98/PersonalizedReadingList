@@ -2,6 +2,7 @@ package com.example.readingbooks.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.readingbooks.models.Book
 import com.example.readingbooks.repositories.BookRepository
@@ -13,10 +14,17 @@ class BookViewModel(private val repository: BookRepository) : ViewModel() {
     val allBooks: LiveData<List<Book>> = repository.allBooks
 
     fun insert(book: Book) = viewModelScope.launch(Dispatchers.IO) {
-        repository.insert(book)
+        repository.addBook(book)
     }
 
     fun delete(book: Book) = viewModelScope.launch(Dispatchers.IO) {
-        repository.delete(book)
+        repository.deleteBook(book)
+    }
+    val allBooks = liveData {
+        emit(repository.getAllBooks())
+    }
+
+    fun searchBooks(query: String) = liveData {
+        emit(repository.searchBooks(query))
     }
 }
