@@ -22,7 +22,7 @@ class FirestoreService {
 
     suspend fun updateBook(book: Book) {
         book.id?.let {
-            db.collection("books").document(it).set(book).await()
+            db.collection("books").document(it.toString()).set(book).await()
         }
     }
 
