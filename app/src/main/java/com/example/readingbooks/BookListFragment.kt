@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.readingbooks.viewModels.BookViewModel
 import com.example.readinglist.databinding.FragmentBookListBinding
+import com.example.readinglist.databinding.FragmentBookListBinding.inflate
 
 class BookListFragment : Fragment() {
 
@@ -21,7 +22,7 @@ class BookListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentBookListBinding.inflate(inflater, container, false)
+        _binding = inflate(inflater, container, false)
         return binding.root
     }
 

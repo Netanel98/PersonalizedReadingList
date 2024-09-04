@@ -1,53 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="5dp"
-    app:cardCornerRadius="5dp"
-    app:cardElevation="4dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="book"
+            type="com.example.readingbooks.models.Book" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/idIVBook"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:padding="5dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
-            android:id="@+id/idTVBookName"
-            android:layout_width="match_parent"
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:lines="2"
-            android:maxLines="2"
-            android:padding="4dp"
-            android:text="@string/app_name"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            tools:ignore="RtlCompat" />
+            android:text="@{book.title}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
-            android:id="@+id/idTVBookPages"
-            android:layout_width="match_parent"
+            android:id="@+id/tvAuthor"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:text="Book Pages"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:text="@{book.author}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</layout>

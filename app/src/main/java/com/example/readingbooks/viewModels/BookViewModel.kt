@@ -18,9 +18,7 @@ class BookViewModel(private val repository: BookRepository) : ViewModel() {
     fun delete(book: Book) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteBook(book)
     }
-    val allBooks = liveData {
-        emit(repository.getAllBooks())
-    }
+    val allBooks: LiveData<List<Book>> = repository.getAllBooks()
 
     fun searchBooks(query: String) = liveData {
         emit(repository.searchBooks(query))
