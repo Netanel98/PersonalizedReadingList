@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.readingbooks.databinding.FragmentLoginBinding
 import com.example.readingbooks.services.AuthService
 import com.example.readinglist.R
+import com.example.readinglist.databinding.FragmentLoginBinding
+import com.example.readinglist.databinding.FragmentLoginBinding.inflate
 
 class LoginFragment : Fragment() {
 
@@ -20,7 +21,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        _binding = inflate(inflater, container, false)
         authService = AuthService()
         return binding.root
     }
