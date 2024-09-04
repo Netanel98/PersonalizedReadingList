@@ -8,7 +8,7 @@
         <!-- Binding ViewModel -->
         <variable
             name="viewModel"
-            type="com.example.readingbooks.ui.profile.ProfileViewModel" />
+            type="com.example.readingbooks.viewModels.ProfileViewModel" />
     </data>
 
     <LinearLayout

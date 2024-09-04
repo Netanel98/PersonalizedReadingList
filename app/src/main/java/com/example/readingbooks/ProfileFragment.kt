@@ -1,40 +1,34 @@
 package com.example.readingbooks
 
-import android.os.Bundle 
+import android.os.Bundle
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.readingbooks.services.AuthService
 import com.example.readinglist.R
-import com.example.readingbooks.databinding.ActivityProfileBinding
 import com.example.readingbooks.viewModels.ProfileViewModel
 
 class ProfileActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityProfileBinding
     private lateinit var viewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityProfileBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.fragment_profile)
 
-        // Assuming ViewModel setup is done here
-        // ViewModel observers
+        // Assuming you have a ViewModelFactory or other dependency injection setup
+        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+
         viewModel.userName.observe(this) { name ->
-            binding.etName.setText(name)
+            findViewById<EditText>(R.id.etName).setText(name)
         }
 
         viewModel.photoUrl.observe(this) { url ->
-            binding.etPhotoUrl.setText(url)
+            findViewById<EditText>(R.id.etPhotoUrl).setText(url)
         }
 
-        binding.btnSave.setOnClickListener {
-            val name = binding.etName.text.toString()
-            val photoUrl = binding.etPhotoUrl.text.toString()
-            viewModel.updateUserProfile(name, photoUrl)
-        }
-
-        binding.btnLogout.setOnClickListener {
-            viewModel.logOut()
-            // Navigate back to login screen or adjust UI accordingly
+        viewModel.statusMessage.observe(this) { message ->
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
     }
 }
