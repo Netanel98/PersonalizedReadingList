@@ -9,6 +9,8 @@ import com.example.readingbooks.models.Book
 @Database(entities = [Book::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun bookDao(): BookDao
+    abstract fun UserDao(): UserDao
+    abstract fun ImageDao(): ImageDao
 
     companion object {
         @Volatile

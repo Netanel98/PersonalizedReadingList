@@ -20,6 +20,13 @@ roomKtx = "2.6.1"
 firebaseFirestoreKtx = "25.1.0"
 firebaseAuthKtx = "23.0.0"
 baselibrary = "3.2.0-alpha11"
+library = "8.6.0"
+ucrop = "2.2.6"
+glide = "4.16.0"
+cardview = "1.0.0"
+cameraCore = "1.3.4"
+firebaseStorageKtx = "21.0.0"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -49,6 +56,12 @@ firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-fires
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 kotlin-android-extensions = { module = "org.jetbrains.kotlin:kotlin-android-extensions", version.ref = "kotlin" }
 androidx-baselibrary = { group = "androidx.databinding", name = "baseLibrary", version.ref = "baselibrary" }
+library = { group = "com.android.databinding", name = "library", version.ref = "library" }
+ucrop = { module = "com.github.yalantis.ucrop:ucrop", version.ref = "ucrop" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
+androidx-camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "cameraCore" }
+firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebaseStorageKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
