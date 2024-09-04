@@ -8,7 +8,15 @@ import com.example.readingbooks.services.FirestoreService
 class BookRepository(private val bookDao: BookDao, private val firestoreService: FirestoreService) {
 
     // Get all books from the local database
-    val allBooks: LiveData<List<Book>> = bookDao.getAllBooks()
+    // Assuming BookDao has a method to fetch all books as LiveData
+    fun getAllBooks(): LiveData<List<Book>> {
+        return bookDao.getAllBooks()
+    }
+
+    fun searchBooks(query: String): LiveData<List<Book>> {
+        // Assuming you have a LIKE query in BookDao for searching
+        return bookDao.searchBooks("%$query%")
+    }
 
     // Add a new book to both local and remote databases
     suspend fun addBook(book: Book) {

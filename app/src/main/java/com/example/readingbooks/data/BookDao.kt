@@ -21,4 +21,7 @@ interface BookDao {
 
     @Update
     fun updateBook(book: Book)
+
+    @Query("SELECT * FROM books WHERE title LIKE :query OR author LIKE :query")
+    fun searchBooks(query: String): LiveData<List<Book>>
 }

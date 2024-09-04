@@ -11,8 +11,6 @@ import kotlinx.coroutines.launch
 
 class BookViewModel(private val repository: BookRepository) : ViewModel() {
 
-    val allBooks: LiveData<List<Book>> = repository.allBooks
-
     fun insert(book: Book) = viewModelScope.launch(Dispatchers.IO) {
         repository.addBook(book)
     }
