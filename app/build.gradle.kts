@@ -75,6 +75,7 @@ dependencies {
     implementation(libs.library)
     implementation(libs.androidx.camera.core)
     implementation(libs.firebase.storage.ktx)
+    implementation(libs.androidx.navigation.fragment)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
