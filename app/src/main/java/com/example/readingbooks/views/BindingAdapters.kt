@@ -7,6 +7,7 @@ import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.readinglist.R
 import com.google.android.material.textfield.TextInputEditText
 
 @BindingAdapter("android:text")
