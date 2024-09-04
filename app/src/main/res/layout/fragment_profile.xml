@@ -28,16 +28,16 @@
 
         <EditText
             android:id="@+id/etName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:hint="@string/full_name"
             android:text="@={viewModel.userName}"
             android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/etPhotoUrl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:hint="@strings/photo_url"
             android:text="@={viewModel.photoUrl}"
             android:inputType="textUri" />
