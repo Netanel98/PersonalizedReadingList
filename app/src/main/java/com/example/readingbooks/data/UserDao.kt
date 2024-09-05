@@ -18,4 +18,5 @@ interface UserDao {
 
     @Query("SELECT * FROM users WHERE id = :userId")
     fun getUserById(userId: String): User?
+
 }

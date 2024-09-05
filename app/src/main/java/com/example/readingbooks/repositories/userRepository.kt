@@ -4,16 +4,22 @@ package com.example.readingbooks.repositories
 import android.content.Context
 import android.net.Uri
 import androidx.core.net.toUri
+import androidx.lifecycle.LiveData
 import com.example.readingbooks.data.AppDatabase
+import com.example.readingbooks.data.UserDao
 import com.example.readingbooks.models.User
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.tasks.await
 
-class UserRepository(private val context: Context) {
+class UserRepository(private val UserDao: UserDao, private val context: Context) {
     companion object {
         const val USERS_COLLECTION = "users"
         const val IMAGES_REF = "images"
+
+        fun getUserData(): LiveData<User> {
+            return UserDao.getUserById()
+        }
     }
 
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()

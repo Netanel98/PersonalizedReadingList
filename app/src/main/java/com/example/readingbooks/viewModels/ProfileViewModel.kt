@@ -114,4 +114,30 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
             else imageUri.value!!
         return user
     }
+
+    // Private mutable LiveData for internal updates
+    private val _statusMessage = MutableLiveData<String>()
+
+    // Public immutable LiveData for external observers
+    val statusMessage: LiveData<String> = _statusMessage
+
+    // Function to update status message
+    fun updateStatusMessage(message: String) {
+        _statusMessage.value = message
+    }
+
+    // Example function that might trigger a status message update
+        fun loadUserData() {
+        viewModelScope.launch {
+            try {
+                val userData = UserRepository.getUserData()  // Assume this returns user data
+                userData.let {
+                    updateStatusMessage("Data loaded successfully")
+                    // Here you might also update LiveData that the UI observes to display this data
+                } ?: updateStatusMessage("No user data found")
+            } catch (e: Exception) {
+                updateStatusMessage("Error loading user data: ${e.message}")
+            }
+        }
+    }
 }

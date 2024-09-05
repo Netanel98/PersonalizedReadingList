@@ -19,16 +19,20 @@ class ProfileActivity : AppCompatActivity() {
         // Assuming you have a ViewModelFactory or other dependency injection setup
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
 
-        viewModel.userName.observe(this) { name ->
+        viewModel.firstName.observe(this) { name ->
             findViewById<EditText>(R.id.etName).setText(name)
         }
+        viewModel.lastName.observe(this) { name ->
+            findViewById<EditText>(R.id.last_name).setText(name)
+        }
 
-        viewModel.photoUrl.observe(this) { url ->
-            findViewById<EditText>(R.id.etPhotoUrl).setText(url)
+        viewModel.imageUri.observe(this) { url ->
+            findViewById<EditText>(R.id.image_view).setText(url)
         }
 
         viewModel.statusMessage.observe(this) { message ->
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
+        viewModel.loadUserData()
     }
 }
