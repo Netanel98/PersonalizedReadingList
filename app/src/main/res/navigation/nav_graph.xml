@@ -15,4 +15,11 @@
         android:label="Book List"
         tools:layout="@layout/fragment_book_list" />
     <!-- Add other fragments like registration if needed -->
+    <action
+        android:id="@+id/action_global_bookListFragment"
+        app:destination="@id/bookListFragment" />
+
+    <action
+        android:id="@+id/action_loginFragment_to_bookListFragment"
+        app:destination="@id/bookListFragment" />
 </navigation>
