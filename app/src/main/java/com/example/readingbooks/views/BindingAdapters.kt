@@ -81,4 +81,5 @@ fun setHelperTextWatcher(customTextInput: CustomTextInput, helperTextAttrChanged
                 .load(imageUrl)
                 .into(view)
         }
+    }
 }
