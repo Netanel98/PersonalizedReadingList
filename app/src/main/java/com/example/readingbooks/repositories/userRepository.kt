@@ -12,14 +12,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.tasks.await
 
-class UserRepository(private val UserDao: UserDao, private val context: Context) {
+class UserRepository(private val context: Context) {
     companion object {
         const val USERS_COLLECTION = "users"
         const val IMAGES_REF = "images"
-
-        fun getUserData(): LiveData<User> {
-            return UserDao.getUserById()
-        }
     }
 
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -42,7 +38,7 @@ class UserRepository(private val UserDao: UserDao, private val context: Context)
     suspend fun saveUserImage(imageUri: String, userId: String) =
         imageRepository.uploadImage(imageUri.toUri(), userId)
 
-    suspend fun getUserById(userId: String): User {
+    suspend fun getUserById(userId: String): User? {
         var user = localDb.UserDao().getUserById(userId)
 
         if (user != null) return user.apply { imageUri = imageRepository.getImagePathById(userId) };
@@ -53,7 +49,7 @@ class UserRepository(private val UserDao: UserDao, private val context: Context)
         return user.apply { imageUri = imageRepository.getImagePathById(userId) }
     }
 
-    private suspend fun getUserFromFireStore(userId: String): User{
+    private suspend fun getUserFromFireStore(userId: String): User {
         val user = db.collection(USERS_COLLECTION)
             .document(userId)
             .get()
