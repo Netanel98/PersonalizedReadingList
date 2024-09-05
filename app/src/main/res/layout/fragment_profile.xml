@@ -29,7 +29,7 @@
                 android:layout_height="200sp"
                 android:layout_weight="1"
                 android:contentDescription="@string/uploaded_image"
-                android:src="@mipmap/add_image_round" />
+                android:src="@drawable/ic_profile" />
 
             <EditText
                 android:id="@+id/etName"
