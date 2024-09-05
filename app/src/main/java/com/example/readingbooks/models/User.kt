@@ -18,6 +18,7 @@ data class User(
     val lastName: String? = ""
 ) {
 
+    val uid: String = id
     var remoteImageUri: String? = ""
     @ColumnInfo(name = "image_uri")
     var localImageUri: String? = ""

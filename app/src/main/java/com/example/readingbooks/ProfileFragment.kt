@@ -33,6 +33,7 @@ class ProfileActivity : AppCompatActivity() {
         viewModel.statusMessage.observe(this) { message ->
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
-        viewModel.loadUserData()
+        val userId = AuthService.getCurrentUser().uid ?: ""
+        viewModel.loadUserData(userId)
     }
 }

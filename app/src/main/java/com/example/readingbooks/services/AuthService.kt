@@ -1,5 +1,6 @@
 package com.example.readingbooks.services
 
+import com.example.readingbooks.models.User
 import com.google.firebase.auth.FirebaseAuth
 
 class AuthService {
@@ -37,4 +38,15 @@ class AuthService {
     // Get current user
     fun getCurrentUser() = firebaseAuth.currentUser
 
+    companion object {
+        fun getCurrentUser(): User {
+            val firebaseUser = FirebaseAuth.getInstance().currentUser
+            return User(
+                firebaseUser?.uid ?: "",
+                firebaseUser?.email ?: "",
+                firebaseUser?.displayName ?: "",
+                firebaseUser?.photoUrl.toString()
+            )
+        }
+    }
 }

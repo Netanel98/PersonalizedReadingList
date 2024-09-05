@@ -5,24 +5,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.readingbooks.databinding.ItemBookBinding
 import com.example.readingbooks.models.Book
+import com.example.readinglist.databinding.ItemBookBinding
 
 class BookRVAdapter : ListAdapter<Book, BookRVAdapter.BookViewHolder>(BookDiffCallback()) {
 
     class BookViewHolder(private val binding: ItemBookBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(book: Book) {
-            binding.apply {
-                // Assuming Book model has properties: title, author, etc.
-                tvTitle.text = book.title
-                tvAuthor.text = book.author
-                // Setup other views as needed
-            }
+            binding.tvTitle.text = book.title
+            binding.tvAuthor.text = book.author
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
-        val binding = ItemBookBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ItemBookBinding.inflate(layoutInflater, parent, false)
         return BookViewHolder(binding)
     }
 

@@ -28,7 +28,6 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
     val isImageUriValid = MutableLiveData(true)
     val isLoading = MutableLiveData(false)
 
-
     val isFormValid: Boolean
         get() = isFirstNameValid.value!! && isLastNameValid.value!! && isImageUriValid.value!!
 
@@ -43,7 +42,7 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
                 try {
                     val userId = auth.currentUser?.uid ?: throw Exception("User not logged in")
                     val user = userRepository.getUserById(userId)
-                    withContext(Dispatchers.Main) { setUserFields(user) }
+                    withContext(Dispatchers.Main) { setUserFields(user!!) }
                 } catch (e: Exception) {
                     Log.e("Profile", "Error fetching user details", e)
                 } finally {
@@ -117,7 +116,6 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
 
     // Private mutable LiveData for internal updates
     private val _statusMessage = MutableLiveData<String>()
-
     // Public immutable LiveData for external observers
     val statusMessage: LiveData<String> = _statusMessage
 
@@ -126,17 +124,22 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
         _statusMessage.value = message
     }
 
+    private val _userLiveData = MutableLiveData<User>()
+    val userLiveData: LiveData<User> = _userLiveData
     // Example function that might trigger a status message update
-        fun loadUserData() {
+    fun loadUserData(userId: String) {
+
         viewModelScope.launch {
             try {
-                val userData = UserRepository.getUserData()  // Assume this returns user data
-                userData.let {
-                    updateStatusMessage("Data loaded successfully")
-                    // Here you might also update LiveData that the UI observes to display this data
-                } ?: updateStatusMessage("No user data found")
+                val user = userRepository.getUserFromFireStore(userId)
+                if (user != null) {
+                    _userLiveData.postValue(user)
+                    _statusMessage.postValue("User data loaded successfully.")
+                } else {
+                    _statusMessage.postValue("Failed to load user data.")
+                }
             } catch (e: Exception) {
-                updateStatusMessage("Error loading user data: ${e.message}")
+                _statusMessage.postValue("Error fetching user: ${e.message}")
             }
         }
     }

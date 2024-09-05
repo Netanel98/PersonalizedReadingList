@@ -5,12 +5,18 @@ import android.content.Context
 import android.net.Uri
 import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.readingbooks.data.AppDatabase
 import com.example.readingbooks.data.UserDao
 import com.example.readingbooks.models.User
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.toObject
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+
 
 class UserRepository(private val context: Context) {
     companion object {
@@ -49,7 +55,7 @@ class UserRepository(private val context: Context) {
         return user.apply { imageUri = imageRepository.getImagePathById(userId) }
     }
 
-    private suspend fun getUserFromFireStore(userId: String): User {
+    suspend fun getUserFromFireStore(userId: String): User {
         val user = db.collection(USERS_COLLECTION)
             .document(userId)
             .get()
@@ -63,4 +69,26 @@ class UserRepository(private val context: Context) {
     }
 
     private suspend fun getUserImageUri(userId: String): Uri = imageRepository.getImageRemoteUri(userId)
+
+    fun userLiveData(userId: String): LiveData<User> {
+        val data = MutableLiveData<User>()
+        db.collection(USERS_COLLECTION).document(userId)
+            .addSnapshotListener { snapshot, e ->
+                if (e != null) {
+                    // Log or handle the error
+                    return@addSnapshotListener
+                }
+                if (snapshot != null && snapshot.exists()) {
+                    val user = snapshot.toObject<User>()
+                    user?.let {
+                        GlobalScope.launch(Dispatchers.Main) {
+                            data.value = it
+                        }
+                    }
+                } else {
+                    // Handle the case where user data is not available
+                }
+            }
+        return data
 }
+    }
