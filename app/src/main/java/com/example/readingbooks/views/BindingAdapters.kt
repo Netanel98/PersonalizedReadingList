@@ -9,6 +9,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.readinglist.R
 import com.google.android.material.textfield.TextInputEditText
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 
 @BindingAdapter("android:text")
 fun setText(customTextInput: CustomTextInput, text: String) {
@@ -71,5 +73,12 @@ fun setHelperTextWatcher(customTextInput: CustomTextInput, helperTextAttrChanged
     customTextInput.findViewById<TextInputEditText>(R.id.text_input_edit_text)
         .doOnTextChanged { _, _, _, _ ->
             helperTextAttrChanged.onChange()
+        }
+    @BindingAdapter("imageUrl")
+    fun loadImage(view: ImageView, imageUrl: String?) {
+        if (!imageUrl.isNullOrEmpty()) {
+            Glide.with(view.context)
+                .load(imageUrl)
+                .into(view)
         }
 }
