@@ -1,6 +1,5 @@
 package com.example.readingbooks.views
 
-
 import android.Manifest
 import android.app.Activity
 import android.content.Context
@@ -19,7 +18,7 @@ import com.yalantis.ucrop.UCrop
 import java.io.File
 
 class ImagePicker @JvmOverloads constructor(
-    context: Context, attrs: (Any) -> Unit = null, defStyleAttr: Int = 0
+    context: Context, attrs: ((Any) -> Unit)? = null, defStyleAttr: Int = 0
 ) : AppCompatImageView(context, attrs, defStyleAttr) {
 
     private val REQUEST_STORAGE_PERMISSION: Int = 1
