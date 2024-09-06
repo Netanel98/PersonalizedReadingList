@@ -1,6 +1,7 @@
 package com.example.readingbooks
 
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.readingbooks.services.AuthService
 import com.example.readinglist.R
 import com.example.readingbooks.viewModels.ProfileViewModel
+import com.example.readingbooks.views.ImagePicker
 
-class ProfileActivity : AppCompatActivity() {
+class ProfileFragment : AppCompatActivity() {
     private lateinit var viewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +35,20 @@ class ProfileActivity : AppCompatActivity() {
         viewModel.statusMessage.observe(this) { message ->
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
+
         val userId = AuthService.getCurrentUser().uid ?: ""
         viewModel.loadUserData(userId)
+    }
+    private lateinit var imagePicker: ImagePicker
+
+    fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        imagePicker = ImagePicker(this, { imagePath ->
+            viewModel.updateProfileImage(imagePath)
+        })
+
+        binding.changePictureButton.setOnClickListener {
+            imagePicker.pickImage()
+        }
     }
 }

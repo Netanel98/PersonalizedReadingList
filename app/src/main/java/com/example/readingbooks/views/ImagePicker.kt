@@ -7,10 +7,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.util.AttributeSet
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.camera.core.AspectRatio
 import androidx.core.app.ActivityCompat
@@ -21,7 +19,7 @@ import com.yalantis.ucrop.UCrop
 import java.io.File
 
 class ImagePicker @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context, attrs: (Any) -> Unit = null, defStyleAttr: Int = 0
 ) : AppCompatImageView(context, attrs, defStyleAttr) {
 
     private val REQUEST_STORAGE_PERMISSION: Int = 1
