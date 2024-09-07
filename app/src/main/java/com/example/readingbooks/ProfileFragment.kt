@@ -2,6 +2,7 @@ package com.example.readingbooks
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +11,9 @@ import com.example.readingbooks.services.AuthService
 import com.example.readinglist.R
 import com.example.readingbooks.viewModels.ProfileViewModel
 import com.example.readingbooks.views.ImagePicker
+import kotlin.coroutines.jvm.internal.CompletedContinuation.context
 
-class ProfileFragment : AppCompatActivity() {
+class ProfileFragment<Any : kotlin.Any> : AppCompatActivity() {
     private lateinit var viewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,16 +41,31 @@ class ProfileFragment : AppCompatActivity() {
         val userId = AuthService.getCurrentUser().uid ?: ""
         viewModel.loadUserData(userId)
     }
-    private lateinit var imagePicker: ImagePicker
 
+    private lateinit var imagePicker: ImagePicker
     fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imagePicker = ImagePicker(this, { imagePath ->
-            viewModel.updateProfileImage(imagePath)
-        })
+        imagePicker = ImagePicker(this) { Any ->
+            Any?.let {
+                // Handle the picked image URI, display it or upload it
+                displayImage(Any)
+            } ?: run {
+                // Handle error or cancellation
+                showToast("Image picking cancelled or failed.")
+            }
+        }
 
-        binding.changePictureButton.setOnClickListener {
+        val pickImageButton = view.findViewById<Button>(R.id.pickImageButton)
+        pickImageButton.setOnClickListener {
             imagePicker.pickImage()
         }
+    }
+
+    private fun displayImage(imageUri: kotlin.Any?) {
+        // Logic to display the image based on URI
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

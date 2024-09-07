@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
-    id("androidx.navigation.safeargs.kotlin")
 
 }
 
@@ -89,14 +88,10 @@ dependencies {
     implementation(libs.androidx.cardview)
     implementation(libs.glide)
     implementation(libs.ucrop)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
-    implementation("androidx.navigation:navigation-fragment-ktx:laster_version")
-    implementation("androidx.navigation:navigation-ui-ktx:laster_version")
 
 }
 

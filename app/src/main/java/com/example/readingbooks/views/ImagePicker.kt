@@ -1,77 +1,30 @@
 package com.example.readingbooks.views
 
-import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.camera.core.AspectRatio
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentActivity
-import com.bumptech.glide.Glide
-import com.yalantis.ucrop.UCrop
-import java.io.File
+import android.provider.MediaStore
+import androidx.activity.result.contract.ActivityResultContracts
+import com.example.readingbooks.ProfileFragment
 
-class ImagePicker @JvmOverloads constructor(
-    context: Context, attrs: ((Any) -> Unit)? = null, defStyleAttr: Int = 0
-) : AppCompatImageView(context, attrs, defStyleAttr) {
 
-    private val REQUEST_STORAGE_PERMISSION: Int = 1
+class ImagePicker(private val fragment: ProfileFragment<Any>, private val onImagePicked: (Any?) -> Unit) {
 
-    fun getImagePicker(uri: Uri?, uCropLauncher: ActivityResultLauncher<Intent>) {
-        uri?.let {
-            val destinationUri = Uri.fromFile(File(context.cacheDir, "cropped2"))
-            val options = UCrop.Options()
-            options.setCompressionQuality(80)
-            options.setAspectRatioOptions(0, AspectRatio("1:1", 1f, 1f))
-
-            val cropIntent = UCrop.of(uri, destinationUri)
-                .withOptions(options)
-                .getIntent(context)
-            uCropLauncher.launch(cropIntent)
-        }
-    }
-
-    fun handleUCropResult(result: ActivityResult) {
+    private val pickImageResultLauncher = fragment.registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            val uri = UCrop.getOutput(result.data!!)
-            setImageURI(uri)
-        }
-    }
-
-    override fun setImageURI(uri: Uri?) {
-        if (uri != null && (uri.scheme == "http" || uri.scheme == "https")) {
-            Glide.with(this)
-                .load(uri)
-                .into(this)
+            // Here we just handle the result and call onImagePicked with the URI of the selected image
+            val imageUri: Any? = result.data?.data
+            onImagePicked(imageUri)
         } else {
-            super.setImageURI(uri)
+            // Handle cancellation or failure
+            onImagePicked(null)
         }
     }
 
-    fun requestStoragePermission(context: Context, activity: FragmentActivity) {
-        if (ContextCompat.checkSelfPermission(
-                context,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) != PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(
-                context,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                activity,
-                arrayOf(
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-                ),
-                REQUEST_STORAGE_PERMISSION
-            )
-        }
+    fun pickImage() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "image/*"
+        pickImageResultLauncher.launch(intent)
     }
 }
