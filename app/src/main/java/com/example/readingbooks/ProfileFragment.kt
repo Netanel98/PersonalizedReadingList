@@ -6,14 +6,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
 import com.example.readingbooks.services.AuthService
 import com.example.readinglist.R
 import com.example.readingbooks.viewModels.ProfileViewModel
 import com.example.readingbooks.views.ImagePicker
-import kotlin.coroutines.jvm.internal.CompletedContinuation.context
 
-class ProfileFragment<Any : kotlin.Any> : AppCompatActivity() {
+class ProfileFragment<Any> : AppCompatActivity() {
     private lateinit var viewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,10 +45,10 @@ class ProfileFragment<Any : kotlin.Any> : AppCompatActivity() {
     private lateinit var imagePicker: ImagePicker
     fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imagePicker = ImagePicker(this) { Any ->
-            Any?.let {
+        imagePicker = ImagePicker(this) { uri ->
+            uri?.let {
                 // Handle the picked image URI, display it or upload it
-                displayImage(Any)
+                displayImage(uri)
             } ?: run {
                 // Handle error or cancellation
                 showToast("Image picking cancelled or failed.")
@@ -66,6 +66,6 @@ class ProfileFragment<Any : kotlin.Any> : AppCompatActivity() {
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }
