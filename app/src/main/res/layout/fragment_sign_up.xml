@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.readingbooks.SignUpFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.readingbooks.viewModels.SignUpViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <EditText
+            android:id="@+id/first_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/firstName"
+            android:text="@={viewModel.firstName}"
+            style="@style/EditTextStyle"/>
+
+        <EditText
+            android:id="@+id/last_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lastName"
+            android:text="@={viewModel.lastName}"
+            style="@style/EditTextStyle"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:text="@={viewModel.email}"
+            style="@style/EditTextStyle"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:text="@={viewModel.password}"
+            style="@style/EditTextStyle"/>
+
+        <Button
+            android:id="@+id/register_button"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/login_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_link"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:textColor="?attr/colorPrimary" />
+    </LinearLayout>
+</layout>
