@@ -51,8 +51,15 @@
             android:text="@={viewModel.password}"
             style="@style/EditTextStyle"/>
 
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:contentDescription="@string/uploaded_image"
+            android:src="@drawable/add-image" />
+
         <Button
-            android:id="@+id/register_button"
+            android:id="@+id/sign_up_button"
             style="@style/Widget.Material3.Button.ElevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
