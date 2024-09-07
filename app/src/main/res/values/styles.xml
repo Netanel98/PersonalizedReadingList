@@ -4,4 +4,6 @@
     <style name="Widget.Theme.Material3.Light.MyView" parent="">
         <item name="android:background">@color/gray_400</item>
     </style>
+
+    <style name="EditTextStyle"></style>
 </resources>
