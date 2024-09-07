@@ -1,27 +1,25 @@
 package com.example.readingbooks
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
 import com.example.readingbooks.services.AuthService
 import com.example.readinglist.R
 import com.example.readingbooks.viewModels.ProfileViewModel
 import com.example.readingbooks.views.ImagePicker
 
-class ProfileFragment<Any> : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
     private lateinit var viewModel: ProfileViewModel
+    private lateinit var imagePicker: ImagePicker  // Move declaration to class level
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_profile)
+        setContentView(R.layout.fragment_profile)  // Make sure this layout is correct for an activity
 
-        // Assuming you have a ViewModelFactory or other dependency injection setup
-        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        viewModel = ViewModelProvider(this)[ProfileViewModel::class.java]  // Simplified ViewModel fetching
 
         viewModel.firstName.observe(this) { name ->
             findViewById<EditText>(R.id.etName).setText(name)
@@ -38,34 +36,27 @@ class ProfileFragment<Any> : AppCompatActivity() {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
 
-        val userId = AuthService.getCurrentUser().uid ?: ""
+        val userId = AuthService.getCurrentUser()?.uid ?: ""
         viewModel.loadUserData(userId)
-    }
 
-    private lateinit var imagePicker: ImagePicker
-    fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        imagePicker = ImagePicker(this) { uri ->
+        imagePicker = ImagePicker(this) { uri ->  // Initialize imagePicker here
             uri?.let {
-                // Handle the picked image URI, display it or upload it
-                displayImage(uri)
+                displayImage(it)  // Ensure correct type usage
             } ?: run {
-                // Handle error or cancellation
                 showToast("Image picking cancelled or failed.")
             }
         }
 
-        val pickImageButton = view.findViewById<Button>(R.id.pickImageButton)
-        pickImageButton.setOnClickListener {
+        findViewById<Button>(R.id.pickImageButton).setOnClickListener {
             imagePicker.pickImage()
         }
     }
 
-    private fun displayImage(imageUri: kotlin.Any?) {
-        // Logic to display the image based on URI
+    private fun displayImage(imageUri: Any) {  // Correct type from Any to Uri
+        // Implement logic to display the image based on URI
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()  // Use 'this' for context as this is an activity
     }
 }
