@@ -17,6 +17,13 @@
         android:orientation="vertical"
         android:padding="32dp">
 
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:contentDescription="@string/uploaded_image"
+            android:src="@drawable/add_image" />
+
         <EditText
             android:id="@+id/first_name"
             android:layout_width="match_parent"
@@ -51,20 +58,21 @@
             android:text="@={viewModel.password}"
             style="@style/EditTextStyle"/>
 
-        <ImageView
-            android:id="@+id/image_view"
-            android:layout_width="150sp"
-            android:layout_height="150sp"
-            android:contentDescription="@string/uploaded_image"
-            android:src="@drawable/add-image" />
-
         <Button
             android:id="@+id/sign_up_button"
-            style="@style/Widget.Material3.Button.ElevatedButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_up"
-            android:layout_marginTop="16dp"/>
+            android:textSize="20sp" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_bar"
+            style="@style/Widget.MaterialComponents.CircularProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/login_link"
