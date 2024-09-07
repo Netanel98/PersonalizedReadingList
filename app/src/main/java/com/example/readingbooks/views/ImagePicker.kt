@@ -7,7 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.example.readingbooks.ProfileActivity
 
 
-class ImagePicker(private val fragment: ProfileActivity<Any>, private val onImagePicked: (Any?) -> Unit) {
+class ImagePicker(private val fragment: ProfileActivity, private val onImagePicked: (Any?) -> Unit) {
 
     private val pickImageResultLauncher = fragment.registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
