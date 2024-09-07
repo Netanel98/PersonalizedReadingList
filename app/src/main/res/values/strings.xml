@@ -13,4 +13,8 @@
     <string name="uploaded_image">Uploaded Image</string>
     <string name="book_cover_image">Book Cover Image</string>
     <string name="pick_image" />
+    <string name="email"> Email</string>
+    <string name="password"> Password</string>
+    <string name="login"> Login</string>
+    <string name="sign_up_link"> Don\'t have an account? come and sign up</string>
 </resources>
