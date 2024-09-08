@@ -88,10 +88,10 @@ dependencies {
     debugImplementation(libs.ui.tooling)
     implementation(libs.androidx.cardview)
     implementation(libs.glide)
-    kapt("androidx.room:room-compiler:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-    implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 }
 
 kapt {
