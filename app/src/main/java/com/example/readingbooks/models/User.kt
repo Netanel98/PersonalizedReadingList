@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull
 @Entity(tableName = "users")
 data class User(
     @PrimaryKey
-    var id: String = "",
+    var uid: String = "",
     @ColumnInfo(name = "email")
     val email: String? = "",
     @ColumnInfo(name = "first_name")
@@ -18,7 +18,7 @@ data class User(
     val lastName: String? = ""
 ) {
 
-    val uid: String = id
+    val id: String = uid
     var remoteImageUri: String? = ""
     @ColumnInfo(name = "image_uri")
     var localImageUri: String? = ""

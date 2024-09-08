@@ -10,11 +10,4 @@ buildscript {
         mavenCentral()
         maven("https://jitpack.io")
     }
-
-    allprojects {
-        repositories {
-            google()
-            mavenCentral()
-        }
-    }
 }
