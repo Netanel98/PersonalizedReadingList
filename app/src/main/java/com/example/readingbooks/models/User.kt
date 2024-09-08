@@ -8,52 +8,37 @@ import org.jetbrains.annotations.NotNull
 
 @Entity(tableName = "users")
 data class User(
-    @PrimaryKey
-    var uid: String = "",
-    @ColumnInfo(name = "email")
-    val email: String? = "",
-    @ColumnInfo(name = "first_name")
-    val firstName: String? = "",
-    @ColumnInfo(name = "last_name")
-    val lastName: String? = ""
+    @PrimaryKey @ColumnInfo(name = "uid") var uid: String = "",
+
+    @ColumnInfo(name = "email") val email: String = "",
+
+    @ColumnInfo(name = "first_name") val firstName: String = "",
+
+    @ColumnInfo(name = "last_name") val lastName: String = "",
+
+    @ColumnInfo(name = "image_uri") var imageUri: String? = null
 ) {
 
-    val id: String = uid
-    var remoteImageUri: String? = ""
-    @ColumnInfo(name = "image_uri")
-    var localImageUri: String? = ""
+    // Derived property to handle remote URL or local URI
+    val remoteImageUri: String?
+        get() = if (imageUri?.startsWith("http") == true) imageUri else null
 
-    var imageUri: String?
-        get() = localImageUri ?: remoteImageUri
-        set(value) {
-            val uri = value?.toUri()
-            if (uri != null && (uri.scheme == "http" || uri.scheme == "https")) remoteImageUri =
-                value
-            else localImageUri = value
-        }
+    val localImageUri: String?
+        get() = if (imageUri?.startsWith("http") == false) imageUri else null
 
     companion object {
         const val EMAIL_KEY = "email"
-        const val FIRST_NAME_KEY = "firstName"
-        const val LAST_NAME_KEY = "lastName"
-        const val IMAGE_URI_KEY = "imageUri"
+        const val FIRST_NAME_KEY = "first_name"
+        const val LAST_NAME_KEY = "last_name"
+        const val IMAGE_URI_KEY = "image_uri"
     }
 
-    fun fromJSON(json: Map<String, Any>): User {
-        val email = json[EMAIL_KEY] as? String ?: ""
-        val firstName = json[FIRST_NAME_KEY] as? String ?: ""
-        val lastName = json[LAST_NAME_KEY] as? String ?: ""
-        val imageUri = json[IMAGE_URI_KEY] as? String
-        return User(email, firstName, lastName, imageUri)
-    }
-
-    val json: HashMap<String, String?>
-        get() {
-            return hashMapOf(
-                EMAIL_KEY to email,
-                FIRST_NAME_KEY to firstName,
-                LAST_NAME_KEY to lastName,
-                IMAGE_URI_KEY to imageUri
-            )
-        }
+    // Function to convert User to a JSON-style map, useful for data transfers or inter-app communication
+    val json: Map<String, String?>
+        get() = hashMapOf(
+            EMAIL_KEY to email,
+            FIRST_NAME_KEY to firstName,
+            LAST_NAME_KEY to lastName,
+            IMAGE_URI_KEY to imageUri
+        )
 }
