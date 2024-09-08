@@ -92,6 +92,14 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.core.ktx)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.material)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.ui.tooling.preview)
+    androidTestImplementation(libs.compose.ui.test.junit)
+    debugImplementation(libs.compose.ui.tooling)
 }
 
 kapt {
