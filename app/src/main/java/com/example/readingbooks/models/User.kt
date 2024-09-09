@@ -1,44 +1,63 @@
 package com.example.readingbooks.models
 
-import androidx.core.net.toUri
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import org.jetbrains.annotations.NotNull
+
 
 @Entity(tableName = "users")
-data class User(
-    @PrimaryKey @ColumnInfo(name = "uid") var uid: String = "",
+class User(uid: String, email: String, firstName: String, lastName: String) {
+    @PrimaryKey
+    @ColumnInfo(name = "uid")
+    private var uid: String
 
-    @ColumnInfo(name = "email") val email: String = "",
+    @ColumnInfo(name = "email")
+    private var email: String
 
-    @ColumnInfo(name = "first_name") val firstName: String = "",
+    @ColumnInfo(name = "first_name")
+    private var firstName: String
 
-    @ColumnInfo(name = "last_name") val lastName: String = "",
+    @ColumnInfo(name = "last_name")
+    private var lastName: String
 
-    @ColumnInfo(name = "image_uri") var imageUri: String? = null
-) {
-
-    // Derived property to handle remote URL or local URI
-    val remoteImageUri: String?
-        get() = if (imageUri?.startsWith("http") == true) imageUri else null
-
-    val localImageUri: String?
-        get() = if (imageUri?.startsWith("http") == false) imageUri else null
-
-    companion object {
-        const val EMAIL_KEY = "email"
-        const val FIRST_NAME_KEY = "first_name"
-        const val LAST_NAME_KEY = "last_name"
-        const val IMAGE_URI_KEY = "image_uri"
+    // Make sure to provide a constructor that Room can use if not using setters
+    init {
+        this.uid = uid
+        this.email = email
+        this.firstName = firstName
+        this.lastName = lastName
     }
 
-    // Function to convert User to a JSON-style map, useful for data transfers or inter-app communication
-    val json: Map<String, String?>
-        get() = hashMapOf(
-            EMAIL_KEY to email,
-            FIRST_NAME_KEY to firstName,
-            LAST_NAME_KEY to lastName,
-            IMAGE_URI_KEY to imageUri
-        )
+    // Getters and setters
+    fun getUid(): String {
+        return uid
+    }
+
+    fun setUid(uid: String) {
+        this.uid = uid
+    }
+
+    fun getEmail(): String {
+        return email
+    }
+
+    fun setEmail(email: String) {
+        this.email = email
+    }
+
+    fun getFirstName(): String {
+        return firstName
+    }
+
+    fun setFirstName(firstName: String) {
+        this.firstName = firstName
+    }
+
+    fun getLastName(): String {
+        return lastName
+    }
+
+    fun setLastName(lastName: String) {
+        this.lastName = lastName
+    }
 }
