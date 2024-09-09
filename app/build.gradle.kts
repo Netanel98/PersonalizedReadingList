@@ -94,6 +94,7 @@ dependencies {
     debugImplementation(libs.ui.tooling)
     implementation(libs.androidx.cardview)
     implementation(libs.glide)
+    kapt(libs.glide.compiler)
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.retrofit)
@@ -109,6 +110,7 @@ dependencies {
     implementation(libs.room.runtime)
     kapt(libs.room.compiler)
     implementation(libs.room.ktx)
+
 }
 
 kapt {
