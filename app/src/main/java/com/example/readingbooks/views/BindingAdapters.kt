@@ -1,79 +1,85 @@
 package com.example.readingbooks.views
 
 
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.readinglist.R
-import com.google.android.material.textfield.TextInputEditText
-import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.example.readinglist.R
 
-@BindingAdapter("android:text")
-fun setText(customTextInput: CustomTextInput, text: String) {
-    if (customTextInput.text != text) {
-        customTextInput.text = text
+@BindingAdapter("app:text")
+fun setText(customTextInput: CustomTextInput, text: String?) {
+    // Ensure that the text is only updated if it's different to avoid infinite loops
+    if (customTextInput.getText() != text) {
+        customTextInput.setText(text ?: "")
     }
 }
 
-@BindingAdapter("android:text")
+@BindingAdapter("app:text")
 fun setText(customTextInput: CustomTextInput, text: LiveData<String>) {
-    if (customTextInput.text != text.value) {
-        customTextInput.text = text.value ?: ""
+    text.value?.let {
+        if (customTextInput.getText() != it) {
+            customTextInput.setText(it)
+        }
     }
 }
 
-@InverseBindingAdapter(attribute = "android:text")
+@InverseBindingAdapter(attribute = "app:text")
 fun getText(customTextInput: CustomTextInput): String {
-    return customTextInput.text
+    return customTextInput.getText() ?: ""
 }
 
-
-@BindingAdapter("android:textAttrChanged")
-fun setTextWatcher(customTextInput: CustomTextInput, textAttrChanged: InverseBindingListener) {
-    customTextInput.findViewById<TextInputEditText>(R.id.text_input_edit_text)
-        .doOnTextChanged { _, _, _, _ ->
-            textAttrChanged.onChange()
+@BindingAdapter("app:textAttrChanged")
+fun setTextWatcher(customTextInput: CustomTextInput, textAttrChanged: InverseBindingListener?) {
+    customTextInput.findViewById<EditText>(R.id.text_input_edit_text)
+        ?.doOnTextChanged { _, _, _, _ ->
+            textAttrChanged?.onChange()
         }
-}
 
-@BindingAdapter("helperTextEnabled")
-fun setHelperTextEnabled(customTextInput: CustomTextInput, enabled: Boolean) {
-    customTextInput.helperTextEnabled = enabled
-}
+    @BindingAdapter("helperTextEnabled")
+    fun setHelperTextEnabled(customTextInput: CustomTextInput, enabled: Boolean) {
+        customTextInput.helperTextEnabled = enabled
+    }
 
-@InverseBindingAdapter(attribute = "helperTextEnabled")
-fun getHelperTextEnabled(customTextInput: CustomTextInput): Boolean {
-    return customTextInput.helperTextEnabled
-}
+    @InverseBindingAdapter(attribute = "helperTextEnabled")
+    fun getHelperTextEnabled(customTextInput: CustomTextInput): Boolean {
+        return customTextInput.helperTextEnabled
+    }
 
-@BindingAdapter("helperTextEnabledAttrChanged")
-fun setHelperTextEnabledListener(customTextInput: CustomTextInput, attrChange: InverseBindingListener) {
-    customTextInput.findViewById<TextInputEditText>(R.id.text_input_edit_text)
-        .doOnTextChanged { _, _, _, _ ->
-            attrChange.onChange()
-        }
-}
+    @BindingAdapter("helperTextEnabledAttrChanged")
+    fun setHelperTextEnabledListener(
+        customTextInput: CustomTextInput,
+        attrChange: InverseBindingListener
+    ) {
+        customTextInput.findViewById<EditText>(R.id.text_input_edit_text)
+            .doOnTextChanged { _, _, _, _ ->
+                attrChange.onChange()
+            }
+    }
 
-@BindingAdapter("helperText")
-fun setHelperText(customTextInput: CustomTextInput, helperText: String?) {
-    customTextInput.helperText = helperText ?: ""
-}
+    @BindingAdapter("helperText")
+    fun setHelperText(customTextInput: CustomTextInput, helperText: String?) {
+        customTextInput.helperText = helperText ?: ""
+    }
 
-@InverseBindingAdapter(attribute = "helperText")
-fun getHelperText(customTextInput: CustomTextInput): String? {
-    return customTextInput.helperText
-}
+    @InverseBindingAdapter(attribute = "helperText")
+    fun getHelperText(customTextInput: CustomTextInput): String? {
+        return customTextInput.helperText
+    }
 
-@BindingAdapter("helperTextAttrChanged")
-fun setHelperTextWatcher(customTextInput: CustomTextInput, helperTextAttrChanged: InverseBindingListener) {
-    customTextInput.findViewById<TextInputEditText>(R.id.text_input_edit_text)
-        .doOnTextChanged { _, _, _, _ ->
-            helperTextAttrChanged.onChange()
-        }
+    @BindingAdapter("helperTextAttrChanged")
+    fun setHelperTextWatcher(
+        customTextInput: CustomTextInput,
+        helperTextAttrChanged: InverseBindingListener
+    ) {
+        customTextInput.findViewById<EditText>(R.id.text_input_edit_text)
+            .doOnTextChanged { _, _, _, _ ->
+                helperTextAttrChanged.onChange()
+            }
 
         @BindingAdapter("imageUrl")
         fun setImageUrl(imageView: ImageView, url: String?) {
@@ -85,5 +91,5 @@ fun setHelperTextWatcher(customTextInput: CustomTextInput, helperTextAttrChanged
                 imageView.setImageDrawable(null)  // Optionally set a default image or placeholder here
             }
         }
-
+    }
 }

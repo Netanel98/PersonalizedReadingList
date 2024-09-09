@@ -8,4 +8,11 @@
         <attr name="android:inputType" format="flags" />
         <attr name="android:lines" format="integer" />
     </declare-styleable>
+    <declare-styleable name="CustomTextInput"></declare-styleable>
+    <declare-styleable name="CustomTextInput_android_hint" format="integer"></declare-styleable>
+    <declare-styleable name="CustomTextInput_helperText"></declare-styleable>
+    <declare-styleable name="CustomTextInput_android_text"></declare-styleable>
+    <declare-styleable name="CustomTextInput_helperTextColor"></declare-styleable>
+    <declare-styleable name="CustomTextInput_android_inputType"></declare-styleable>
+    <declare-styleable name="CustomTextInput_android_lines"></declare-styleable>
 </resources>
