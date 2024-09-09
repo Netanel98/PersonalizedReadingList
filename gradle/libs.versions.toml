@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.2"
+appcompat = "2.8.0"
 kotlin = "1.9.22" # Always ensure this matches with the latest stable Kotlin version.
 androidx = "2.8.5" # Version for most AndroidX libraries.
 room = "2.6.1" # Specific version for all Room components.
@@ -12,6 +13,7 @@ materialVersion = "1.12.0"
 
 [libraries]
 # AndroidX libraries
+androidx-appcompat-v280 = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx" }

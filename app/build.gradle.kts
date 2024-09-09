@@ -83,6 +83,7 @@ dependencies {
     implementation(libs.compose.ui.tooling.preview)
     androidTestImplementation(libs.compose.ui.test.junit)
     debugImplementation(libs.compose.ui.tooling)
+    implementation(libs.androidx.appcompat.v280)
 }
 
 kapt {
