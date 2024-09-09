@@ -75,11 +75,13 @@ fun setHelperTextWatcher(customTextInput: CustomTextInput, helperTextAttrChanged
             helperTextAttrChanged.onChange()
         }
     @BindingAdapter("imageUrl")
-    fun loadImage(view: ImageView, imageUrl: String?) {
-        if (!imageUrl.isNullOrEmpty()) {
-            Glide.with(view.context)
-                .load(imageUrl)
-                .into(view)
+    fun setImageUrl(imageView: ImageView, url: String?) {
+        if (url != null && url.isNotEmpty()) {
+            Glide.with(imageView.context)
+                .load(url)
+                .into(imageView)
+        } else {
+            imageView.setImageDrawable(null)  // or set a default image
         }
     }
 }
