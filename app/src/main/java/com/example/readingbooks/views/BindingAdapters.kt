@@ -74,14 +74,16 @@ fun setHelperTextWatcher(customTextInput: CustomTextInput, helperTextAttrChanged
         .doOnTextChanged { _, _, _, _ ->
             helperTextAttrChanged.onChange()
         }
-    @BindingAdapter("imageUrl")
-    fun setImageUrl(imageView: ImageView, url: String?) {
-        if (url != null && url.isNotEmpty()) {
-            Glide.with(imageView.context)
-                .load(url)
-                .into(imageView)
-        } else {
-            imageView.setImageDrawable(null)  // or set a default image
+
+        @BindingAdapter("imageUrl")
+        fun setImageUrl(imageView: ImageView, url: String?) {
+            if (url != null && url.isNotEmpty()) {
+                Glide.with(imageView.context)
+                    .load(url)
+                    .into(imageView)
+            } else {
+                imageView.setImageDrawable(null)  // Optionally set a default image or placeholder here
+            }
         }
-    }
+
 }
