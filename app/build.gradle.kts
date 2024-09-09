@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.firebase.storage.ktx)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.glide)
+    implementation(libs.material)
     kapt(libs.glide.compiler)
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
