@@ -8,8 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.readinglist.R
-import com.squareup.picasso.Picasso
+import com.example.myapplication.R
+
 
 class BookDetailsActivity : AppCompatActivity() {
 
@@ -61,7 +61,6 @@ class BookDetailsActivity : AppCompatActivity() {
         publisherDateTV.setText("Published On : " + publishedDate)
         descTV.setText(description)
         pageTV.setText("No Of Pages : " + pageCount)
-        Picasso.get().load(thumbnail).into(bookIV)
 
         // adding on click listener for our preview button.
         previewBtn.setOnClickListener {

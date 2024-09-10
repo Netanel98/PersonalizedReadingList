@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.readingbooks.viewModels.BookViewModel
-import com.example.readinglist.databinding.FragmentBookListBinding
-import com.example.readinglist.databinding.FragmentBookListBinding.inflate
+import com.example.myapplication.databinding.FragmentBookListBinding
+import com.example.myapplication.databinding.FragmentBookListBinding.inflate
 
 class BookListFragment : Fragment() {
 
