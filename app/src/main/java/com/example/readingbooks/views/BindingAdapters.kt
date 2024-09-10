@@ -9,7 +9,7 @@ import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
-import com.example.readinglist.R
+import com.example.myapplication.R
 
 @BindingAdapter("app:text")
 fun setText(customTextInput: CustomTextInput, text: String?) {

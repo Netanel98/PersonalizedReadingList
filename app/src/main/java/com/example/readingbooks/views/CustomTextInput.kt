@@ -6,8 +6,8 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.content.withStyledAttributes
-import com.example.readinglist.R
-import com.example.readinglist.R.layout.custom_text_input
+import com.example.myapplication.R
+import com.example.myapplication.R.layout.custom_text_input
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
