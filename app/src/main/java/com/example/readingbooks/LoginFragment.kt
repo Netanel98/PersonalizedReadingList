@@ -11,10 +11,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.readingbooks.services.AuthService
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentLoginBinding
-import com.example.myapplication.databinding.FragmentLoginBinding.inflate
 import com.example.readingbooks.utils.BasicAlert
 import com.example.readingbooks.viewModels.LoginViewModel
 import com.google.firebase.auth.FirebaseAuth
