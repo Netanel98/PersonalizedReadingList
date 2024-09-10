@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.jetbrains.kotlin.android) apply false
+    id("com.google.gms.google-services") version "4.4.2"
 }
 
 buildscript {
@@ -11,6 +12,6 @@ buildscript {
         maven("https://jitpack.io")
     }
     dependencies {
-        classpath(libs.androidx.navigation.safe.args.gradle.plugin.v253) // Use the latest version
+        classpath(libs.androidx.navigation.safe.args.gradle.plugin.v253)
     }
 }

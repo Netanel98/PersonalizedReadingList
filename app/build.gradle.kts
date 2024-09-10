@@ -88,6 +88,9 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx.vlasterversion)
     implementation(libs.androidx.navigation.fragment.ktx.v253)
     implementation(libs.androidx.navigation.ui.ktx.v253)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.auth)
 }
 
 kapt {
