@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.databinding.ItemBookBinding
 import com.example.readingbooks.models.Book
-import com.example.readinglist.databinding.ItemBookBinding
 
 class BookRVAdapter : ListAdapter<Book, BookRVAdapter.BookViewHolder>(BookDiffCallback()) {
 

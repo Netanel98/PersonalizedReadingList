@@ -70,6 +70,8 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx.v261)
     implementation(libs.lifecycle.viewmodel.ktx.v261)
     implementation(libs.fragment.ktx.v156)
+    implementation(libs.androidx.ui.graphics.android)
+    implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

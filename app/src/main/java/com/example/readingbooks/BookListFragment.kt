@@ -29,7 +29,7 @@ class BookListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        bookViewModel.allBooks.observe(viewLifecycleOwner) { books ->
+        bookViewModel.allBooks?.observe(viewLifecycleOwner) { books ->
             bookAdapter.submitList(books)
         }
     }

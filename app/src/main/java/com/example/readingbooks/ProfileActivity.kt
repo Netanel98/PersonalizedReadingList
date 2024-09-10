@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.readingbooks.services.AuthService
-import com.example.readinglist.R
+import com.example.myapplication.R
 import com.example.readingbooks.viewModels.ProfileViewModel
 import com.example.readingbooks.views.ImagePicker
 
@@ -36,7 +36,7 @@ class ProfileActivity : AppCompatActivity() {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
 
-        val userId = AuthService.getCurrentUser()?.uid ?: ""
+        val userId = AuthService.getCurrentUser().uid ?: ""
         viewModel.loadUserData(userId)
 
         imagePicker = ImagePicker(this) { uri ->  // Initialize imagePicker here

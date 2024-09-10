@@ -9,11 +9,11 @@ class BookRepository(private val bookDao: BookDao, private val firestoreService:
 
     // Get all books from the local database
     // Assuming BookDao has a method to fetch all books as LiveData
-    fun getAllBooks(): LiveData<List<Book>> {
+    fun getAllBooks(): LiveData<List<Book?>?>? {
         return bookDao.getAllBooks()
     }
 
-    fun searchBooks(query: String): LiveData<List<Book>> {
+    fun searchBooks(query: String): LiveData<List<Book?>?>? {
         // Assuming you have a LIKE query in BookDao for searching
         return bookDao.searchBooks("%$query%")
     }
@@ -21,7 +21,7 @@ class BookRepository(private val bookDao: BookDao, private val firestoreService:
     // Add a new book to both local and remote databases
     suspend fun addBook(book: Book) {
         val bookId = firestoreService.addBook(book)  // Assuming this returns the ID
-        book.id = bookId  // Set the book ID after remote insertion
+        book.id = bookId.toInt()  // Set the book ID after remote insertion
         bookDao.insertBook(book)
     }
 

@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 class User(uid: String, email: String, firstName: String, lastName: String) {
     @PrimaryKey
     @ColumnInfo(name = "uid")
-    private var uid: String
+    var uid: String
 
     @ColumnInfo(name = "email")
     private var email: String

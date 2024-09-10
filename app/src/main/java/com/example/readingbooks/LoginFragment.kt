@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.readingbooks.services.AuthService
-import com.example.readinglist.R
-import com.example.readinglist.databinding.FragmentLoginBinding
-import com.example.readinglist.databinding.FragmentLoginBinding.inflate
+import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentLoginBinding
+import com.example.myapplication.databinding.FragmentLoginBinding.inflate
 
 class LoginFragment : Fragment() {
 
