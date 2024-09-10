@@ -1,63 +1,58 @@
 package com.example.readingbooks.models
 
+import androidx.core.net.toUri
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "users")
-class User(uid: String, email: String, firstName: String, lastName: String) {
+data class User(
     @PrimaryKey
-    @ColumnInfo(name = "uid")
-    var uid: String
-
+    var id: String = "",
     @ColumnInfo(name = "email")
-    private var email: String
-
+    val email: String? = "",
     @ColumnInfo(name = "first_name")
-    private var firstName: String
-
+    val firstName: String? = "",
     @ColumnInfo(name = "last_name")
-    private var lastName: String
+    val lastName: String? = ""
+) {
 
-    // Make sure to provide a constructor that Room can use if not using setters
-    init {
-        this.uid = uid
-        this.email = email
-        this.firstName = firstName
-        this.lastName = lastName
+    var remoteImageUri: String? = ""
+    @ColumnInfo(name = "image_uri")
+    var localImageUri: String? = ""
+
+    var imageUri: String?
+        get() = localImageUri ?: remoteImageUri
+        set(value) {
+            val uri = value?.toUri()
+            if (uri != null && (uri.scheme == "http" || uri.scheme == "https")) remoteImageUri =
+                value
+            else localImageUri = value
+        }
+
+    companion object {
+        const val EMAIL_KEY = "email"
+        const val FIRST_NAME_KEY = "firstName"
+        const val LAST_NAME_KEY = "lastName"
+        const val IMAGE_URI_KEY = "imageUri"
     }
 
-    // Getters and setters
-    fun getUid(): String {
-        return uid
+    fun fromJSON(json: Map<String, Any>): User {
+        val email = json[EMAIL_KEY] as? String ?: ""
+        val firstName = json[FIRST_NAME_KEY] as? String ?: ""
+        val lastName = json[LAST_NAME_KEY] as? String ?: ""
+        val imageUri = json[IMAGE_URI_KEY] as? String
+        return User(email, firstName, lastName, imageUri)
     }
 
-    fun setUid(uid: String) {
-        this.uid = uid
-    }
-
-    fun getEmail(): String {
-        return email
-    }
-
-    fun setEmail(email: String) {
-        this.email = email
-    }
-
-    fun getFirstName(): String {
-        return firstName
-    }
-
-    fun setFirstName(firstName: String) {
-        this.firstName = firstName
-    }
-
-    fun getLastName(): String {
-        return lastName
-    }
-
-    fun setLastName(lastName: String) {
-        this.lastName = lastName
-    }
+    val json: HashMap<String, String?>
+        get() {
+            return hashMapOf(
+                EMAIL_KEY to email,
+                FIRST_NAME_KEY to firstName,
+                LAST_NAME_KEY to lastName,
+                IMAGE_URI_KEY to imageUri
+            )
+        }
 }
