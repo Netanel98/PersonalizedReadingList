@@ -10,7 +10,7 @@ import com.example.readingbooks.models.User
 
 @Database(entities = [User::class, Book::class, Image::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun bookDao(): BookDao
+    abstract fun BookDao(): BookDao
     abstract fun UserDao(): UserDao
     abstract fun ImageDao(): ImageDao
 

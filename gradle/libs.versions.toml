@@ -1,53 +1,99 @@
 [versions]
 agp = "8.5.2"
-appcompat = "2.8.0"
-kotlin = "1.9.22" # Always ensure this matches with the latest stable Kotlin version.
-androidx = "2.8.5" # Version for most AndroidX libraries.
-room = "2.6.1" # Specific version for all Room components.
-glide = "4.16.0" # Version for Glide image loading library.
-firebase = "25.1.0" # General version for Firebase components.
-compose = "1.0.1"
-material = "1.4.0"
-composeMaterial3 = "1.0.0-alpha01"
-materialVersion = "1.12.0"
+androidxFragmentKtx = "1.8.3"
+androidxLifecycleLivedataKtx = "2.8.5"
+androidxLifecycleViewmodelKtx = "2.8.5"
+androidxNavigationFragmentKtx = "2.5.3"
+cardview = "1.0.0"
+compiler = "3.5.1"
+converterGson = "2.11.0"
+cropify = "0.3.1"
+cropifyVersion = "1.0.2"
+fragmentKtxVersion = "1.8.3"
+githubCropify = "0.3.2"
+glide = "4.16.0"
+kotlin = "1.9.22"
+coreKtx = "1.13.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+lifecycleLivedataKtxVersion = "2.8.5"
+lifecycleViewmodelKtxVersion = "2.8.5"
+material = "1.12.0"
+activity = "1.9.2"
+constraintlayout = "2.1.4"
+googleGmsGoogleServices = "4.4.2"
+firebaseAuth = "23.0.0"
+legacySupportV4 = "1.0.0"
+lifecycleLivedataKtx = "2.8.5"
+lifecycleViewmodelKtx = "2.8.5"
+fragmentKtx = "1.8.3"
+databindingRuntime = "8.6.0"
+firebaseFirestoreKtx = "25.1.0"
+firebaseFirestore = "25.1.0"
+firebaseStorage = "21.0.0"
+navigationFragmentKtx = "2.8.0"
+navigationFragmentKtxVersion = "laster_version"
+navigationSafeArgsGradlePlugin = "2.8.0"
+navigationUiKtx = "laster_version"
+navigationUiKtxVersion = "2.8.0"
+retrofit = "2.11.0"
+roomKtx = "2.6.1"
+roomRuntime = "2.6.1"
+runtimeAndroid = "1.7.0"
+navigation = "2.4.2"
 
 [libraries]
-# AndroidX libraries
-androidx-appcompat-v280 = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
-androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx" }
-androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx" }
-androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx" }
-androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidx" }
-androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx" }
-androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx" }
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx" }
-
-# Room components
-androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
-androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-
-# Glide for image loading
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-livedata-ktx-v261 = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtxVersion" }
+androidx-lifecycle-viewmodel-ktx-v261 = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtxVersion" }
+androidx-fragment-ktx-v156 = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtxVersion" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-fragment-ktx-v253 = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidxNavigationFragmentKtx" }
+androidx-navigation-fragment-ktx-vlasterversion = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtxVersion" }
+androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationFragmentKtx" }
+androidx-navigation-safe-args-gradle-plugin-v253 = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx-v253 = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtxVersion" }
+androidx-navigation-ui-ktx-vlasterversion = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
+androidx-room-compiler = { module = "androidx.room:room-compiler" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+armcha-cropify = { module = "com.github.armcha:Cropify", version.ref = "cropifyVersion" }
+compiler = { module = "com.android.databinding:compiler", version.ref = "compiler" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+cropify = { module = "com.github.moyuruaizawa:cropify", version.ref = "cropify" }
+cropify-v032 = { module = "com.github.moyuruaizawa:cropify", version.ref = "githubCropify" }
+fragment-ktx-v156 = { module = "androidx.fragment:fragment-ktx", version.ref = "androidxFragmentKtx" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
-glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
-
-# Firebase components
-firebase-firestore-ktx = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "firebase" }
-firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx", version.ref = "firebase" }
-firebase-storage-ktx = { module = "com.google.firebase:firebase-storage-ktx", version.ref = "firebase" }
-
-#
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
-core-ktx = "androidx.core:core-ktx:1.6.0"
-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3" }
-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
-compose-ui-test-junit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
-material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+lifecycle-livedata-ktx-v261 = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidxLifecycleLivedataKtx" }
+lifecycle-viewmodel-ktx-v261 = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidxLifecycleViewmodelKtx" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
+androidx-databinding-runtime = { group = "androidx.databinding", name = "databinding-runtime", version.ref = "databindingRuntime" }
+firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
+androidx-runtime-android = { group = "androidx.compose.runtime", name = "runtime-android", version.ref = "runtimeAndroid" }
+retrofit = { module = "com.squareup.retrofit2:retrofit" }
+retrofit2-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+room-runtime = { module = "androidx.room:room-runtime" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
+androidx-navigation-safe-args = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 

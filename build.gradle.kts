@@ -10,4 +10,7 @@ buildscript {
         mavenCentral()
         maven("https://jitpack.io")
     }
+    dependencies {
+        classpath(libs.androidx.navigation.safe.args.gradle.plugin.v253) // Use the latest version
+    }
 }
