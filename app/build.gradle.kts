@@ -1,20 +1,20 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.google.gms.google.services)
-    id("kotlin-kapt")
+    id("kotlin-android")
+    id("com.google.gms.google-services")
+    id("com.google.devtools.ksp") version "1.9.0-1.0.13"
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.example.myapplication"
+    namespace = "com.example.newsflow"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.myapplication"
-        minSdk = 34
+        applicationId = "com.example.newsflow"
+        minSdk = 25
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -31,17 +31,16 @@ android {
             )
         }
     }
-    buildFeatures {
-        viewBinding = true
-        dataBinding = true
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -52,53 +51,48 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.firebase.auth)
     implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
-    implementation(libs.androidx.databinding.runtime)
-    implementation(libs.firebase.firestore.ktx)
-    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.storage.ktx)
     implementation(libs.firebase.storage)
-    implementation(libs.androidx.runtime.android)
-    implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.lifecycle.livedata.ktx.v261)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx.v261)
-    implementation(libs.androidx.fragment.ktx.v156)
-    implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.lifecycle.livedata.ktx.v261)
-    implementation(libs.lifecycle.viewmodel.ktx.v261)
-    implementation(libs.fragment.ktx.v156)
-    implementation(libs.androidx.ui.graphics.android)
-    implementation(libs.androidx.material3.android)
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.androidx.cardview)
-    implementation(libs.glide)
-    implementation(libs.room.runtime)
-    kapt("androidx.room:room-compiler:2.6.1")
-    implementation(libs.androidx.room.ktx)
-    implementation(libs.retrofit2.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.androidx.navigation.fragment.ktx.vlasterversion)
-    implementation(libs.androidx.navigation.ui.ktx.vlasterversion)
-    implementation(libs.androidx.navigation.fragment.ktx.v253)
-    implementation(libs.androidx.navigation.ui.ktx.v253)
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.analytics)
-    implementation(libs.firebase.auth)
+
+    // Architectural Components
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
+    // Room
+    implementation ("androidx.room:room-runtime:2.6.1")
+    kapt ("androidx.room:room-compiler:2.6.1")
+    // Kotlin Extensions and Coroutines support for Room
+    implementation ("androidx.room:room-ktx:2.6.1")
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
+    implementation("com.google.firebase:firebase-firestore")
+    // Coroutines
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.5.0")
+    // Navigation Components
+    implementation ("androidx.navigation:navigation-fragment:2.5.3")
+    implementation ("androidx.navigation:navigation-ui:2.5.3")
+    // Glide
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    kapt ("com.github.bumptech.glide:compiler:4.12.0")
+
+    implementation ("com.google.android.material:material:1.12.0")
+    implementation ("com.github.androdocs:Simple-HTTP-Request:v1.0")
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
+    implementation ("com.squareup.picasso:picasso:2.71828")
+    implementation ("androidx.navigation:navigation-dynamic-features-fragment:2.5.3")
 }
 
 kapt {
     correctErrorTypes = true
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
