@@ -6,6 +6,7 @@ plugins {
     id("com.google.devtools.ksp") version "1.9.0-1.0.13"
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
+
 }
 
 android {
@@ -14,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.readingbooks"
-        minSdk = 25
+        minSdk = 23
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -70,8 +71,9 @@ dependencies {
     // Kotlin Extensions and Coroutines support for Room
     implementation ("androidx.room:room-ktx:2.6.1")
     // Firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
+    implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
     implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-analytics")
     // Coroutines
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
