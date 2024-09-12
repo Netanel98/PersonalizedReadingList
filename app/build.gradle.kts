@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.newsflow"
+    namespace = "com.example.readingbooks"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.newsflow"
+        applicationId = "com.example.readingbooks"
         minSdk = 25
         targetSdk = 34
         versionCode = 1
