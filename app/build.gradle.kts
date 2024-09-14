@@ -6,7 +6,6 @@ plugins {
     id("com.google.devtools.ksp") version "1.9.0-1.0.13"
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
-
 }
 
 android {
@@ -15,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.readingbooks"
-        minSdk = 23
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -58,6 +57,7 @@ dependencies {
     implementation(libs.firebase.storage.ktx)
     implementation(libs.firebase.storage)
     implementation(libs.firebase.auth)
+    implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
