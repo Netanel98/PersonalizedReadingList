@@ -9,7 +9,7 @@ import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
-import com.example.myapplication.R
+import com.example.readingbooks.R
 import com.google.android.material.textfield.TextInputEditText
 
 @BindingAdapter("android:text")
@@ -29,6 +29,17 @@ fun setText(customTextInput: CustomTextInput, text: LiveData<String>) {
 @InverseBindingAdapter(attribute = "android:text")
 fun getText(customTextInput: CustomTextInput): String {
     return customTextInput.text
+}
+
+@BindingAdapter("imageUrl")
+fun loadImage(view: ImageView, imageUrl: String?) {
+    if (imageUrl != null) {
+        Glide.with(view.context)
+            .load(imageUrl)
+            .into(view)
+    } else {
+        view.setImageDrawable(null) // or set a default placeholder
+    }
 }
 
 
