@@ -63,36 +63,35 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // Architectural Components
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx.v282)
     // Room
-    implementation ("androidx.room:room-runtime:2.6.1")
-    kapt ("androidx.room:room-compiler:2.6.1")
+    implementation (libs.androidx.room.runtime)
+    ksp (libs.room.compiler)
     // Kotlin Extensions and Coroutines support for Room
-    implementation ("androidx.room:room-ktx:2.6.1")
+    implementation (libs.androidx.room.ktx)
     // Firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
-    implementation("com.google.firebase:firebase-firestore")
-    implementation("com.google.firebase:firebase-analytics")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.analytics)
     // Coroutines
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation (libs.kotlinx.coroutines.core)
+    implementation (libs.kotlinx.coroutines.android)
     // Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.5.0")
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.logging.interceptor)
     // Navigation Components
-    implementation ("androidx.navigation:navigation-fragment:2.5.3")
-    implementation ("androidx.navigation:navigation-ui:2.5.3")
+    implementation (libs.androidx.navigation.fragment)
+    implementation (libs.androidx.navigation.ui)
     // Glide
-    implementation ("com.github.bumptech.glide:glide:4.12.0")
-    kapt ("com.github.bumptech.glide:compiler:4.12.0")
+    implementation (libs.glide)
+    ksp (libs.ksp)
 
-    implementation ("com.google.android.material:material:1.12.0")
-    implementation ("com.github.androdocs:Simple-HTTP-Request:v1.0")
-    implementation ("com.google.android.gms:play-services-location:21.0.1")
-    implementation ("com.squareup.picasso:picasso:2.71828")
-    implementation ("androidx.navigation:navigation-dynamic-features-fragment:2.5.3")
+    implementation (libs.material)
+    implementation (libs.simple.http.request)
+    implementation (libs.play.services.location)
+    implementation (libs.androidx.navigation.dynamic.features.fragment)
 }
 
 kapt {
