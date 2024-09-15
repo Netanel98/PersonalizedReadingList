@@ -7,9 +7,6 @@
         <variable
             name="book"
             type="com.example.readingbooks.models.Book" />
-        <variable
-            name="viewModel"
-            type="com.example.readingbooks.views.BindingAdaptersKt" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -30,7 +27,7 @@
                 android:layout_width="100dp"
                 android:layout_height="150dp"
                 android:layout_marginRight="16dp"
-                app:imageUrl="@{viewModel.imageUrl}"
+                app:imageUrl="@{book.imageUrl}"
                 tools:src="@drawable/ic_book_cover_placeholder"
                 android:contentDescription="@string/book_cover_image" />
 

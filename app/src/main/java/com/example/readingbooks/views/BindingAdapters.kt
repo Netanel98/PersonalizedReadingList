@@ -38,10 +38,9 @@ fun loadImage(view: ImageView, imageUrl: String?) {
             .load(imageUrl)
             .into(view)
     } else {
-        view.setImageDrawable(null) // or set a default placeholder
+        view.setImageDrawable(null)
     }
 }
-
 
 @BindingAdapter("android:textAttrChanged")
 fun setTextWatcher(customTextInput: CustomTextInput, textAttrChanged: InverseBindingListener) {
