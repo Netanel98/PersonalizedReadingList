@@ -3,7 +3,7 @@ package com.example.readingbooks
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import com.example.myapplication.R
+import com.example.readingbooks.R
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {

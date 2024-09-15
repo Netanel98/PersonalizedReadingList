@@ -34,7 +34,7 @@ class UserRepository(private val context: Context) {
         newUser.imageUri = null
 
         db.collection(USERS_COLLECTION)
-            .document(newUser.id)
+            .document(newUser.uid)
             .set(newUser.json)
             .await()
 
@@ -62,7 +62,7 @@ class UserRepository(private val context: Context) {
             .await()
             .toObject(User::class.java)
 
-        user?.id = userId
+        user?.uid = userId
         user?.imageUri = imageRepository.downloadAndCacheImage(imageRepository.getImageRemoteUri(userId), userId)
 
         return user!!

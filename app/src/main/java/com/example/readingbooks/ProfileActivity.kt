@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.readingbooks.services.AuthService
-import com.example.myapplication.R
+import com.example.readingbooks.R
 import com.example.readingbooks.viewModels.ProfileViewModel
 import com.example.readingbooks.views.ImagePicker
 

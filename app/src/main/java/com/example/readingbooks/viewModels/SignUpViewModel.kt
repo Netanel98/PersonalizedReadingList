@@ -86,7 +86,7 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
             firstName = firstName.value!!,
             lastName = lastName.value!!,
             email = email.value!!,
-            id = auth.currentUser!!.uid
+            uid = auth.currentUser!!.uid
         )
         user.imageUri = imageUri.value!!
         return user
@@ -100,7 +100,7 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
     private suspend fun saveUser(user: User) {
         try {
             userRepository.saveUserInDB(user)
-            userRepository.saveUserImage(user.imageUri!!, user.id)
+            userRepository.saveUserImage(user.imageUri!!, user.uid)
         } catch (e: Exception) {
             Log.e("Register", "Error saving user", e)
             throw e

@@ -84,7 +84,7 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
             try {
                 val user = constructUserFromFields()
                 userRepository.saveUserInDB(user)
-                userRepository.saveUserImage(user.imageUri!!, user.id)
+                userRepository.saveUserImage(user.imageUri!!, user.uid)
                 withContext(Dispatchers.Main) { onSuccess() }
             } catch (e: Exception) {
                 Log.e("Profile", "Error updating user", e)
@@ -106,7 +106,7 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
             firstName = firstName.value!!,
             lastName = lastName.value!!,
             email = auth.currentUser?.email!!,
-            id = auth.currentUser!!.uid
+            uid = auth.currentUser!!.uid
         )
         user.imageUri =
             if (!imageUri.value!!.startsWith("file:///")) "file://${imageUri.value!!}"
