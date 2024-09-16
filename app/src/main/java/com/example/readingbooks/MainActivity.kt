@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         val navController = findNavController(R.id.nav_host_fragment)
         if (currentUser != null) {
-            // Navigate to the book list if already logged in
-            navController.navigate(R.id.action_global_bookListFragment)
+            // Navigate to the profile if already logged in
+            navController.navigate(R.id.action_global_ProfileFragment)
         }
     }
 }
