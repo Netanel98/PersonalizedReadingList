@@ -9,11 +9,11 @@ import com.example.readingbooks.models.User
 @Dao
 interface UserDao {
     @Query("SELECT * FROM users")
-    open fun getAll(): List<User?>?
+    fun getAll(): List<User?>?
 
     @Query("SELECT * FROM users WHERE uid = :userId")
-    open fun getUserById(userId: String?): User?
+    fun getUserById(userId: String?): User?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg users: User)
+    fun insertAll(users: User)
     }
