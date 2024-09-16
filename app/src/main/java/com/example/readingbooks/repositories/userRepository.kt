@@ -7,7 +7,6 @@ import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.readingbooks.data.AppDatabase
-import com.example.readingbooks.data.UserDao
 import com.example.readingbooks.models.User
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.toObject
@@ -38,7 +37,7 @@ class UserRepository(private val context: Context) {
             .set(newUser.json)
             .await()
 
-        localDb.UserDao().insertAll(newUser)
+        localDb.UserDao().insertUser(newUser)
     }
 
     suspend fun saveUserImage(imageUri: String, userId: String) =
@@ -50,7 +49,7 @@ class UserRepository(private val context: Context) {
         if (user != null) return user.apply { imageUri = imageRepository.getImagePathById(userId) };
 
         user = getUserFromFireStore(userId)
-        localDb.UserDao().insertAll(user)
+        localDb.UserDao().insertUser(user)
 
         return user.apply { imageUri = imageRepository.getImagePathById(userId) }
     }
