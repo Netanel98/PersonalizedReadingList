@@ -12,7 +12,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.readingbooks.R
 import com.example.readingbooks.databinding.FragmentLoginBinding
 import com.example.readingbooks.utils.BasicAlert
 import com.example.readingbooks.viewModels.LoginViewModel
@@ -27,7 +26,7 @@ class LoginFragment : Fragment() {
     }
 
     private val viewModel: LoginViewModel by viewModels()
-    private lateinit var registerLink: View
+    private lateinit var signUpLink: View
     private lateinit var loginButton: Button
     private lateinit var progressBar: ProgressBar
 
@@ -54,8 +53,8 @@ class LoginFragment : Fragment() {
     }
 
     private fun setupRegisterLink(binding: FragmentLoginBinding) {
-        registerLink = binding.root.findViewById(R.id.sign_up_link)
-        registerLink.setOnClickListener {
+        signUpLink = binding.root.findViewById(R.id.sign_up_link)
+        signUpLink.setOnClickListener {
             findNavController().navigate(R.id.login_to_signUp)
         }
     }
