@@ -8,7 +8,16 @@
         android:id="@+id/loginFragment"
         android:name="com.example.readingbooks.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.readingbooks.SignUpFragment"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up" />
     <fragment
         android:id="@+id/bookListFragment"
         android:name="com.example.readingbooks.BookListFragment"
@@ -22,4 +31,7 @@
     <action
         android:id="@+id/action_loginFragment_to_bookListFragment"
         app:destination="@id/bookListFragment" />
+    <action
+        android:id="@+id/sign_up_link"
+        app:destination="@id/signUpFragment" />
 </navigation>

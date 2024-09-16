@@ -91,6 +91,8 @@ dependencies {
     implementation (libs.glide)
     ksp (libs.ksp)
 
+    implementation (libs.ucrop)
+
     implementation (libs.material)
     implementation (libs.simple.http.request)
     implementation (libs.play.services.location)

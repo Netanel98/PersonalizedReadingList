@@ -2,4 +2,5 @@
 <resources>
     <item name="pickImageButton" type="id" />
     <item name="login_to_signUp" type="id" />
+    <item name="signUp_to_login" type="id" />
 </resources>

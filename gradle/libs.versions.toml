@@ -44,6 +44,7 @@ playServicesLocation = "21.3.0"
 roomCompilerVersion = "2.6.1"
 material3Android = "1.3.0"
 simpleHttpRequest = "v1.0"
+ucrop = "2.2.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -90,6 +91,7 @@ room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "navigationCompose" }
+ucrop = { module = "com.github.yalantis:ucrop", version.ref = "ucrop" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
