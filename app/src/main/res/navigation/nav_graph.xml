@@ -7,31 +7,42 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.readingbooks.LoginFragment"
-        android:label="Login"
-        tools:layout="@layout/fragment_login" >
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            android:id="@+id/login_to_signUp"
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_loginFragment_to_bookListFragment"
+            app:destination="@id/bookListFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="false"/>
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.readingbooks.SignUpFragment"
-        android:label="Sign Up"
-        tools:layout="@layout/fragment_sign_up" />
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/register_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_signUpFragment_to_bookListFragment"
+            app:destination="@id/bookListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.readingbooks.ProfileFragment"
+        android:label="profileFragment"
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/bookListFragment"
         android:name="com.example.readingbooks.BookListFragment"
-        android:label="Book List"
+        android:label="BookList"
         tools:layout="@layout/fragment_book_list" />
     <!-- Add other fragments like registration if needed -->
-    <action
-        android:id="@+id/action_global_bookListFragment"
-        app:destination="@id/bookListFragment" />
-
-    <action
-        android:id="@+id/action_loginFragment_to_bookListFragment"
-        app:destination="@id/bookListFragment" />
-    <action
-        android:id="@+id/sign_up_link"
-        app:destination="@id/signUpFragment" />
 </navigation>

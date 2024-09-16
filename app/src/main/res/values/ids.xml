@@ -3,4 +3,6 @@
     <item name="pickImageButton" type="id" />
     <item name="login_to_signUp" type="id" />
     <item name="signUp_to_login" type="id" />
+    <item name="save_changes_button" type="id" />
+    <item name="logout_button" type="id" />
 </resources>
