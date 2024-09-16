@@ -1,9 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.devtools.ksp)
+    alias(libs.plugins.hilt.android)
+
     id("kotlin-android")
     id("com.google.gms.google-services")
-    id("com.google.devtools.ksp") version "1.9.0-1.0.13"
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
 }
@@ -32,11 +35,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     buildFeatures {
         viewBinding = true
@@ -92,6 +95,19 @@ dependencies {
     implementation (libs.simple.http.request)
     implementation (libs.play.services.location)
     implementation (libs.androidx.navigation.dynamic.features.fragment)
+
+    //Compose
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.material)
+    //Room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
+    //Hilt
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
+    //Hilt Navigation Compose
+    implementation(libs.hilt.navigation.compose)
 }
 
 kapt {
