@@ -1,5 +1,6 @@
 package com.example.readingbooks
 
+
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,6 +21,10 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 
 class LoginFragment : Fragment() {
+
+    companion object {
+        fun newInstance() = LoginFragment()
+    }
 
     private val viewModel: LoginViewModel by viewModels()
     private lateinit var registerLink: View
