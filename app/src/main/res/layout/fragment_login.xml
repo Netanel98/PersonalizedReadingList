@@ -12,6 +12,7 @@
     </data>
 
     <LinearLayout
+        android:id="@+id/ema"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -30,9 +31,8 @@
 
         <com.example.readingbooks.views.CustomTextInput
             android:id="@+id/password"
-            endiconMode="password_toggle"
             android:layout_width="370dp"
-            android:layout_height="81dp"
+            android:layout_height="wrap_content"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:text="@={viewModel.password}"
