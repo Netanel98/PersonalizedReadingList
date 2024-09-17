@@ -30,7 +30,7 @@
         android:label="RegisterFragment"
         tools:layout="@layout/fragment_sign_up">
         <action
-            android:id="@+id/register_to_login"
+            android:id="@+id/signUp_to_login"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/signUpFragment"
             app:popUpToInclusive="false" />
