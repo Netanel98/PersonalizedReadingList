@@ -1,4 +1,5 @@
 package com.example.readingbooks.views
+
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -54,11 +55,10 @@ class CustomTextInput @JvmOverloads constructor(
         set(value) {
             textInputEditText.inputType = value
         }
-
     var lines: Int
-        get() = textInputEditText.minLines  // Use minLines instead of lines
+        get() = textInputEditText.minLines
         set(value) {
-            textInputEditText.minLines = value  // Use setMinLines
+            textInputEditText.minLines = value
         }
 
     init {
