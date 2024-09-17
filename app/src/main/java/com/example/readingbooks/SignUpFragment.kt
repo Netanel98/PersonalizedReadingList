@@ -60,6 +60,7 @@ class SignUpFragment : Fragment() {
 
         setupUploadButton(binding)
         setupLoginLink(binding)
+        setupSignUpButton(binding)
         imageView.requestStoragePermission(requireContext(), requireActivity())
 
         return binding.root
@@ -93,32 +94,32 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun setupRegisterButton(binding: FragmentSignUpBinding) {
+    private fun setupSignUpButton(binding: FragmentSignUpBinding) {
         signUpButton = binding.root.findViewById(R.id.signUp_button)
         progressBar = binding.root.findViewById(R.id.progress_bar)
         signUpButton.setOnClickListener {
             showProgressBar()
-            viewModel.register({ onRegisterSuccess() }, { error -> onRegisterFailure(error) })
+            viewModel.signingUp({ onSignUpSuccess() }, { error -> onSignUpFailure(error) })
         }
     }
 
-    private fun onRegisterSuccess() {
-        BasicAlert("Success", "You have successfully registered.", requireContext()).show()
+    private fun onSignUpSuccess() {
+        BasicAlert("Success", "You have successfully Signed Up.", requireContext()).show()
     }
 
-    private fun onRegisterFailure(error: Exception?) {
+    private fun onSignUpFailure(error: Exception?) {
         if (error == null) {
             signUpButton.visibility = View.VISIBLE
             progressBar.visibility = View.GONE
             return
         }
 
-        Log.e("Register", "Error Registering", error)
-        handleRegisterError(error)
-        showRegisterButton()
+        Log.e("Sign Up", "Error Signing Up", error)
+        handleSignUpError(error)
+        showSignUpButton()
     }
 
-    private fun handleRegisterError(error: Exception) {
+    private fun handleSignUpError(error: Exception) {
         when (error) {
             is FirebaseAuthUserCollisionException -> {
                 BasicAlert(
@@ -134,7 +135,7 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun showRegisterButton() {
+    private fun showSignUpButton() {
         signUpButton.visibility = View.VISIBLE
         progressBar.visibility = View.GONE
     }
