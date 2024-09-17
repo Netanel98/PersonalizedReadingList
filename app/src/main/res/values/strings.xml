@@ -1,10 +1,6 @@
 <resources>
     <string name="app_name">ReadingList</string>
     <string name="title_activity_book_details">BookDetailsActivity</string>
-    <string name="search_button_description">Search</string>
-    <string name="search_label">Search Books</string>
-    <string name="search_hint">Enter your search query</string>
-    <string name="search">search</string>
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
     <string name="photo_url" >Picture</string>
@@ -22,6 +18,7 @@
     <string name="input_edit_text" />
     <string name="email_error">Email is invalid</string>
     <string name="name_error">Name is invalid</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="confirm_password_error">Passwords don\'t match</string>
     <string name="password_error">Password must be 6 characters long, contain numbers,an upper case letter and a lower case letter</string>
 </resources>

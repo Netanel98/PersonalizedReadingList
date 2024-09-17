@@ -43,7 +43,7 @@ class SignUpFragment : Fragment() {
     private val userRepository: UserRepository by lazy { UserRepository(requireContext()) }
     private val viewModel: SignUpViewModel by viewModels { SignUpViewModelFactory(userRepository) }
     lateinit var loginLink: View
-    lateinit var registerButton: Button
+    lateinit var signUpButton: Button
     lateinit var imageView: ImagePicker
     lateinit var progressBar: ProgressBar
     private val imagePicker: ActivityResultLauncher<String> = getImagePicker()
@@ -94,9 +94,9 @@ class SignUpFragment : Fragment() {
     }
 
     private fun setupRegisterButton(binding: FragmentSignUpBinding) {
-        registerButton = binding.root.findViewById(R.id.sign_up_button)
+        signUpButton = binding.root.findViewById(R.id.signUp_button)
         progressBar = binding.root.findViewById(R.id.progress_bar)
-        registerButton.setOnClickListener {
+        signUpButton.setOnClickListener {
             showProgressBar()
             viewModel.register({ onRegisterSuccess() }, { error -> onRegisterFailure(error) })
         }
@@ -108,7 +108,7 @@ class SignUpFragment : Fragment() {
 
     private fun onRegisterFailure(error: Exception?) {
         if (error == null) {
-            registerButton.visibility = View.VISIBLE
+            signUpButton.visibility = View.VISIBLE
             progressBar.visibility = View.GONE
             return
         }
@@ -135,12 +135,12 @@ class SignUpFragment : Fragment() {
     }
 
     private fun showRegisterButton() {
-        registerButton.visibility = View.VISIBLE
+        signUpButton.visibility = View.VISIBLE
         progressBar.visibility = View.GONE
     }
 
     private fun showProgressBar() {
-        registerButton.visibility = View.GONE
+        signUpButton.visibility = View.GONE
         progressBar.visibility = View.VISIBLE
     }
 

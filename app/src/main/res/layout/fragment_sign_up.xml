@@ -14,52 +14,70 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-        android:padding="32dp">
+        android:orientation="vertical">
 
-        <ImageView
+        <com.example.readingbooks.views.ImagePicker
             android:id="@+id/image_view"
             android:layout_width="150sp"
             android:layout_height="150sp"
             android:contentDescription="@string/uploaded_image"
             android:src="@drawable/add_image" />
 
-        <EditText
+        <com.example.readingbooks.views.CustomTextInput
             android:id="@+id/first_name"
-            android:layout_width="match_parent"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:hint="@string/firstName"
             android:text="@={viewModel.firstName}"
-            style="@style/EditTextStyle"/>
+            app:helperText="@{viewModel.isFirstNameValid ? null : @string/name_error}"
+            app:helperTextEnabled="@{!viewModel.isFirstNameValid}"
+            app:helperTextTextColor="@color/design_default_color_error" />
 
-        <EditText
+        <com.example.readingbooks.views.CustomTextInput
             android:id="@+id/last_name"
-            android:layout_width="match_parent"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:hint="@string/lastName"
             android:text="@={viewModel.lastName}"
-            style="@style/EditTextStyle"/>
+            app:helperText="@{viewModel.isLastNameValid() ? null : @string/name_error}"
+            app:helperTextEnabled="@{!viewModel.isLastNameValid()}"
+            app:helperTextTextColor="@color/design_default_color_error" />
 
-        <EditText
+        <com.example.readingbooks.views.CustomTextInput
             android:id="@+id/email"
-            android:layout_width="match_parent"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:text="@={viewModel.email}"
-            style="@style/EditTextStyle"/>
+            app:helperText="@{ viewModel.isEmailValid() ? null : @string/email_error}"
+            app:helperTextEnabled="@{!viewModel.isEmailValid()}"
+            app:helperTextTextColor="@color/design_default_color_error" />
 
-        <EditText
+        <com.example.readingbooks.views.CustomTextInput
             android:id="@+id/password"
-            android:layout_width="match_parent"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:text="@={viewModel.password}"
-            style="@style/EditTextStyle"/>
+            app:helperText="@{viewModel.isPasswordValid() ? null :@string/password_error}"
+            app:helperTextEnabled="@{!viewModel.isPasswordValid()}"
+            app:helperTextTextColor="@color/design_default_color_error" />
+
+        <com.example.readingbooks.views.CustomTextInput
+            android:id="@+id/confirm_password"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
+            android:text="@={viewModel.confirmPassword}"
+            app:helperText="@{ viewModel.isConfirmPasswordValid() ? null : @string/confirm_password_error}"
+            app:helperTextEnabled="@{!viewModel.isConfirmPasswordValid()}"
+            app:helperTextTextColor="@color/design_default_color_error" />
 
         <Button
-            android:id="@+id/sign_up_button"
+            android:id="@+id/signUp_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_up"
@@ -76,11 +94,9 @@
 
         <TextView
             android:id="@+id/login_link"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_link"
-            android:gravity="center"
-            android:layout_marginTop="16dp"
             android:textColor="?attr/colorPrimary" />
     </LinearLayout>
 </layout>
