@@ -2,6 +2,7 @@ package com.example.readingbooks.repositories
 
 import android.content.Context
 import android.net.Uri
+import androidx.core.net.toUri
 import com.bumptech.glide.Glide
 import com.example.readingbooks.data.AppDatabase
 import com.example.readingbooks.models.Image
@@ -20,7 +21,7 @@ class ImageRepository(private val context: Context) {
         val imageRef = storage.reference.child("$IMAGES_REF/$imageId")
         imageRef.putFile(imageUri).await()
 
-        localDb.ImageDao().insertImage(Image(imageId, imageUri.toString()))
+        localDb.ImageDao().insertAll(Image(imageId, imageUri.toString()))
     }
 
     suspend fun getImageRemoteUri(imageId: String): Uri {
@@ -36,24 +37,24 @@ class ImageRepository(private val context: Context) {
             .submit()
             .get()
 
-        localDb.ImageDao().insertImage(Image(imageId, file.absolutePath))
+        localDb.ImageDao().insertAll(Image(imageId, file.absolutePath))
 
         return file.absolutePath
     }
 
     fun getImageLocalUri(imageId: String): String {
-        return localDb.ImageDao().getImageById(imageId)?.value?.uri ?: ""
+        return localDb.ImageDao().getImageById(imageId).value?.uri ?: ""
     }
 
     suspend fun getImagePathById(imageId: String): String {
-        val image = localDb.ImageDao().getImageById(imageId)?.value
+        val image = localDb.ImageDao().getImageById(imageId).value
 
         if (image != null) return image.uri
 
         val remoteUri = getImageRemoteUri(imageId)
         val localPath = downloadAndCacheImage(remoteUri, imageId)
 
-        localDb.ImageDao().insertImage(Image(imageId, localPath))
+        localDb.ImageDao().insertAll(Image(imageId, localPath))
 
         return localPath
     }
@@ -66,7 +67,7 @@ class ImageRepository(private val context: Context) {
     }
 
     private fun deleteLocalImage(imageId: String) {
-        val image = localDb.ImageDao().getImageById(imageId)?.value
+        val image = localDb.ImageDao().getImageById(imageId).value
         image?.let {
             val file = Glide.with(context)
                 .asFile()
