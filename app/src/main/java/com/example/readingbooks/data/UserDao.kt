@@ -16,4 +16,5 @@ interface UserDao {
 
     @Query("SELECT * FROM users WHERE uid = :userId")
     fun getUserById(userId: String): User?
+    fun insertAll(users: User)
 }
