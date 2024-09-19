@@ -25,5 +25,4 @@ interface BookDao {
 
     @Update
     fun updateBook(book: Book)
-    fun insertBook(book: Book)
 }
