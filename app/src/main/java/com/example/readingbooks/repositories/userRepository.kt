@@ -43,7 +43,7 @@ class UserRepository(private val context: Context) {
     suspend fun saveUserImage(imageUri: String, userId: String) =
         imageRepository.uploadImage(imageUri.toUri(), userId)
 
-    suspend fun getUserById(userId: String): User? {
+    suspend fun getUserById(userId: String): User {
         var user = localDb.UserDao().getUserById(userId)
 
         if (user != null) return user.apply { imageUri = imageRepository.getImagePathById(userId) };

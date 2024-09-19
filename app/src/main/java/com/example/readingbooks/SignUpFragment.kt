@@ -40,6 +40,10 @@ import java.io.File
 
 class SignUpFragment : Fragment() {
 
+    companion object {
+        fun newInstance() = SignUpFragment()
+    }
+
     private val userRepository: UserRepository by lazy { UserRepository(requireContext()) }
     private val viewModel: SignUpViewModel by viewModels { SignUpViewModelFactory(userRepository) }
     lateinit var loginLink: View
