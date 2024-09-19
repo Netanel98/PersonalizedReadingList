@@ -30,7 +30,7 @@ class UserRepository(private val context: Context) {
             .set(newUser.json)
             .await()
 
-        localDb.UserDao().insertAll(newUser)
+        localDb.UserDao().insertAllUsers(newUser)
     }
 
     suspend fun saveUserImage(imageUri: String, userId: String) =
@@ -42,7 +42,7 @@ class UserRepository(private val context: Context) {
         if (user != null) return user.apply { imageUri = imageRepository.getImagePathById(userId) };
 
         user = getUserFromFireStore(userId)
-        localDb.UserDao().insertAll(user)
+        localDb.UserDao().insertAllUsers(user)
 
         return user.apply { imageUri = imageRepository.getImagePathById(userId) }
     }

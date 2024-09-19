@@ -2,7 +2,6 @@ package com.example.readingbooks.repositories
 
 import android.content.Context
 import android.net.Uri
-import androidx.core.net.toUri
 import com.bumptech.glide.Glide
 import com.example.readingbooks.data.AppDatabase
 import com.example.readingbooks.models.Image
@@ -21,7 +20,7 @@ class ImageRepository(private val context: Context) {
         val imageRef = storage.reference.child("$IMAGES_REF/$imageId")
         imageRef.putFile(imageUri).await()
 
-        localDb.ImageDao().insertAll(Image(imageId, imageUri.toString()))
+        localDb.ImageDao().insertAllImages(Image(imageId, imageUri.toString()))
     }
 
     suspend fun getImageRemoteUri(imageId: String): Uri {
@@ -37,7 +36,7 @@ class ImageRepository(private val context: Context) {
             .submit()
             .get()
 
-        localDb.ImageDao().insertAll(Image(imageId, file.absolutePath))
+        localDb.ImageDao().insertAllImages(Image(imageId, file.absolutePath))
 
         return file.absolutePath
     }
@@ -54,7 +53,7 @@ class ImageRepository(private val context: Context) {
         val remoteUri = getImageRemoteUri(imageId)
         val localPath = downloadAndCacheImage(remoteUri, imageId)
 
-        localDb.ImageDao().insertAll(Image(imageId, localPath))
+        localDb.ImageDao().insertAllImages(Image(imageId, localPath))
 
         return localPath
     }

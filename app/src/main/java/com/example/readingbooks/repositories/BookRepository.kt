@@ -22,7 +22,7 @@ class BookRepository(private val bookDao: BookDao, private val firestoreService:
     suspend fun addBook(book: Book) {
         val bookId = firestoreService.addBook(book)  // Assuming this returns the ID
         book.id = bookId.toInt()  // Set the book ID after remote insertion
-        bookDao.insertBook(book)
+        bookDao.insertAllBooks(book)
     }
 
     // Update a book

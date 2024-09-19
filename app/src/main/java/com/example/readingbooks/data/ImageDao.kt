@@ -14,7 +14,7 @@ interface ImageDao {
     fun getImageById(id: String): LiveData<Image>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg images: Image)
+    fun insertAllImages(vararg images: Image)
 
     @Query("DELETE FROM images WHERE id = :id")
     fun deleteImage(id: String)
