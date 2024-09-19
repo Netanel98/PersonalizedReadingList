@@ -18,11 +18,12 @@ interface BookDao {
     fun searchBooks(searchQuery: String?): LiveData<List<Book>>
 
     @Insert
-    fun insertBook(book: Book)
+    fun insertBook(vararg book: Book)
 
     @Delete
     fun deleteBook(book: Book)
 
     @Update
     fun updateBook(book: Book)
+    fun insertBook(book: Book)
 }
