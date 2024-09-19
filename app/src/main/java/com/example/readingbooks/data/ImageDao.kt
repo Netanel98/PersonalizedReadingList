@@ -11,10 +11,10 @@ import com.example.readingbooks.models.Image
 @Dao
 interface ImageDao {
     @Query("SELECT * FROM images WHERE id = :imageId")
-    open fun getImageById(imageId: String?): LiveData<Image?>?
+    fun getImageById(imageId: String?): LiveData<Image?>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertImage(images: Image)
+    fun insertImage(vararg images: Image)
 
     @Query("DELETE FROM images WHERE id = :id")
     fun deleteImage(id: String)

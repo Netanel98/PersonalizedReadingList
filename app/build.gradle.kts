@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.devtools.ksp)
-    alias(libs.plugins.hilt.android)
 
     id("kotlin-android")
     id("com.google.gms.google-services")
@@ -105,11 +104,6 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
-    //Hilt
-    implementation(libs.hilt)
-    ksp(libs.hilt.compiler)
-    //Hilt Navigation Compose
-    implementation(libs.hilt.navigation.compose)
 }
 
 kapt {
