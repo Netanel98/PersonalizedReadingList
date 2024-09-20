@@ -38,7 +38,7 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
 
-    fun signingUp(onSuccess: () -> Unit, onFailure: (error: Exception?) -> Unit) {
+    fun signUp(onSuccess: () -> Unit, onFailure: (error: Exception?) -> Unit) {
         validateForm()
 
         if (!isFormValid) {
@@ -49,7 +49,7 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
         try {
             createUserConcurrently(onSuccess, onFailure)
         } catch (e: Exception) {
-            Log.e("Register", "Error registering user", e)
+            Log.e("SignUp", "Error signing up user", e)
             onFailure(e)
 
         }
@@ -65,7 +65,7 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
                 saveUser(constructUserFromFields())
                 withContext(Dispatchers.Main) { onSuccess() }
             } catch (e: Exception) {
-                Log.e("Register", "Error registering user", e)
+                Log.e("SignUp", "Error signing up user", e)
                 withContext(Dispatchers.Main) { onFailure(e) }
             }
         }
@@ -86,7 +86,7 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
             firstName = firstName.value!!,
             lastName = lastName.value!!,
             email = email.value!!,
-            uid = auth.currentUser!!.uid
+            id = auth.currentUser!!.uid
         )
         user.imageUri = imageUri.value!!
         return user
@@ -94,19 +94,17 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
 
     private suspend fun createAuthUser(email: String, password: String) {
         val task = auth.createUserWithEmailAndPassword(email, password).await()
-        if (task.user?.uid == null) throw Exception("User not created")
+        if (task.user?.uid == null) throw Exception("User was not created")
     }
 
     private suspend fun saveUser(user: User) {
         try {
             userRepository.saveUserInDB(user)
-            userRepository.saveUserImage(user.imageUri!!, user.uid)
+            userRepository.saveUserImage(user.imageUri!!, user.id)
         } catch (e: Exception) {
-            Log.e("Register", "Error saving user", e)
+            Log.e("Sign Up", "Error saving user", e)
             throw e
         }
-
-
         Log.i("UserRepository", "User ${user.json} saved in DB")
     }
 }

@@ -32,6 +32,7 @@ import com.example.readingbooks.databinding.FragmentSignUpBinding
 import com.example.readingbooks.views.ImagePicker
 import com.example.readingbooks.utils.BasicAlert
 import com.example.readingbooks.viewModels.SignUpViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException

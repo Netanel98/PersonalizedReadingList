@@ -35,8 +35,8 @@
             app:popUpTo="@id/signUpFragment"
             app:popUpToInclusive="false" />
         <action
-            android:id="@+id/action_signUpFragment_to_bookListFragment"
-            app:destination="@id/bookListFragment" />
+            android:id="@+id/action_signUpFragment_to_ProfileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

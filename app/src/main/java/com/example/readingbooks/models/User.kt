@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "users")
 data class User(
     @PrimaryKey
-    var uid: String = "",
+    var id: String = "",
     @ColumnInfo(name = "email")
     val email: String? = "",
     @ColumnInfo(name = "first_name")

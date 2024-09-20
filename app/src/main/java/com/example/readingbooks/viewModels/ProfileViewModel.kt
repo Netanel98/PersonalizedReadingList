@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.readingbooks.repositories.UserRepository
-import com.example.readingbooks.services.AuthService
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -84,7 +83,7 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
             try {
                 val user = constructUserFromFields()
                 userRepository.saveUserInDB(user)
-                userRepository.saveUserImage(user.imageUri!!, user.uid)
+                userRepository.saveUserImage(user.imageUri!!, user.id)
                 withContext(Dispatchers.Main) { onSuccess() }
             } catch (e: Exception) {
                 Log.e("Profile", "Error updating user", e)
@@ -106,7 +105,7 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
             firstName = firstName.value!!,
             lastName = lastName.value!!,
             email = auth.currentUser?.email!!,
-            uid = auth.currentUser!!.uid
+            id = auth.currentUser!!.uid
         )
         user.imageUri =
             if (!imageUri.value!!.startsWith("file:///")) "file://${imageUri.value!!}"

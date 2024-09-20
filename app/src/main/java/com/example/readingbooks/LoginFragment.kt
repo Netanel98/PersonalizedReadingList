@@ -39,9 +39,9 @@ class LoginFragment : Fragment() {
         )
         bindViews(binding)
         if (FirebaseAuth.getInstance().currentUser != null) {
-            findNavController().navigate(R.id.action_loginFragment_to_bookListFragment)
+            findNavController().navigate(R.id.action_global_ProfileFragment)
         }
-        setupRegisterLink(binding)
+        setupSignUpLink(binding)
         setupLoginButton(binding)
 
         return binding.root
@@ -52,7 +52,7 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
-    private fun setupRegisterLink(binding: FragmentLoginBinding) {
+    private fun setupSignUpLink(binding: FragmentLoginBinding) {
         signUpLink = binding.root.findViewById(R.id.sign_up_link)
         signUpLink.setOnClickListener {
             findNavController().navigate(R.id.login_to_signUp)
