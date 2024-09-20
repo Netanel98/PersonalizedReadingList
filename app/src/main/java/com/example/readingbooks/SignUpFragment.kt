@@ -104,7 +104,7 @@ class SignUpFragment : Fragment() {
         progressBar = binding.root.findViewById(R.id.progress_bar)
         signUpButton.setOnClickListener {
             showProgressBar()
-            viewModel.signingUp({ onSignUpSuccess() }, { error -> onSignUpFailure(error) })
+            viewModel.signUp({ onSignUpSuccess() }, { error -> onSignUpFailure(error) })
         }
     }
 
