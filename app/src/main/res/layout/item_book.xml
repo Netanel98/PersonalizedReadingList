@@ -12,8 +12,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="8dp"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
         app:cardElevation="4dp">
 
         <LinearLayout
@@ -52,7 +53,17 @@
                     android:layout_height="wrap_content"
                     android:text="@{book.author}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    tools:text="Book Author" />
+                    tools:text="Author" />
+
+                <TextView
+                    android:id="@+id/idTVBookPages"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:text="Book Pages"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="10sp" />
 
             </LinearLayout>
         </LinearLayout>

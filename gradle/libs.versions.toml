@@ -45,6 +45,7 @@ roomCompilerVersion = "2.6.1"
 material3Android = "1.3.0"
 simpleHttpRequest = "v1.0"
 ucrop = "2.2.6"
+volley = "1.1.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -89,6 +90,7 @@ compose-material = { module = "androidx.compose.material:material" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 ucrop = { module = "com.github.yalantis:ucrop", version.ref = "ucrop" }
+volly = { module = "com.android.volley:volley", version.ref = "volly" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
