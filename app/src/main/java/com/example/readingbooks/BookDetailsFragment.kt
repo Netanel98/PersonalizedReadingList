@@ -28,7 +28,7 @@ class BookDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_book_details)
+        setContentView(R.layout.fragment_book_details)
 
         // initializing our variables.
         titleTV = findViewById(R.id.idTVTitle)

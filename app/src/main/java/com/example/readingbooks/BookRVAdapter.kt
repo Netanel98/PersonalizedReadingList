@@ -34,7 +34,7 @@ class BookRVAdapter(
     override fun onBindViewHolder(holder: BookRVAdapter.BookViewHolder, position: Int) {
         val bookInfo = bookList.get(position)
         // below line is use to set image from URL in our image view.
-        Picasso.get().load(bookInfo.thumbnail).into(holder.bookIV);
+        Glide.with(holder.itemView.context).load(bookInfo.thumbnail).into(holder.bookIV);
         holder.bookTitleTV.text = bookInfo.title
         holder.bookPagesTV.text = "Pages : " + bookInfo.pageCount
 
@@ -53,7 +53,6 @@ class BookRVAdapter(
             i.putExtra("thumbnail", bookInfo.thumbnail)
             i.putExtra("previewLink", bookInfo.previewLink)
             i.putExtra("infoLink", bookInfo.infoLink)
-            i.putExtra("buyLink", bookInfo.buyLink)
 
             // after passing that data we are
             // starting our new  intent.
