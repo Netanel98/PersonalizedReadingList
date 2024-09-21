@@ -3,7 +3,7 @@
     <string name="title_activity_book_details">BookDetailsActivity</string>
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
-    <string name="photo_url" >Picture</string>
+    <string name="photo_url">Picture</string>
     <string name="save_changes">Save Changes</string>
     <string name="logout">Logout</string>
     <string name="uploaded_image">Uploaded Image</string>
@@ -31,4 +31,7 @@
     <string name="subtitle">subtitle</string>
     <string name="description">description</string>
     <string name="preview">Preview</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Search</string>
 </resources>
