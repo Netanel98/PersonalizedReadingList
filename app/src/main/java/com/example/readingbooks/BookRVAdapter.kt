@@ -8,11 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.readingbooks.models.Book
 
 class BookRVAdapter(
     // on below line we are passing variables
     // as course list and context
-    private var bookList: ArrayList<BookRVModal>,
+    private var bookList: ArrayList<Book>,
     private var ctx: Context
 ) : RecyclerView.Adapter<BookRVAdapter.BookViewHolder>() {
     override fun onCreateViewHolder(
@@ -42,10 +43,10 @@ class BookRVAdapter(
         holder.itemView.setOnClickListener {
             // inside on click listener method we are calling a new activity
             // and passing all the data of that item in next intent.
-            val i = Intent(ctx, BookDetailsActivity::class.java)
+            val i = Intent(ctx, BookDetailsFragment::class.java)
             i.putExtra("title", bookInfo.title)
             i.putExtra("subtitle", bookInfo.subtitle)
-            i.putExtra("authors", bookInfo.authors)
+            i.putExtra("authors", bookInfo.author)
             i.putExtra("publisher", bookInfo.publisher)
             i.putExtra("publishedDate", bookInfo.publishedDate)
             i.putExtra("description", bookInfo.description)

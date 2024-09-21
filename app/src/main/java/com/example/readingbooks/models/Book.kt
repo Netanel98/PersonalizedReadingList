@@ -7,11 +7,15 @@ import androidx.room.PrimaryKey
 data class Book(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
-    val title: String,
-    val author: String,
-    val pages: Int,
-    val publisher: String,
-    val publishedDate: String,
-    val description: String,
-    val imageUrl: String
+    var title: String,
+    var subtitle: String,
+    var author: ArrayList<String>,
+    var publisher: String,
+    var publishedDate: String,
+    var description: String,
+    var pageCount: Int,
+    var thumbnail: String,
+    var previewLink: String,
+    var infoLink: String,
+    var buyLink: String
 )
