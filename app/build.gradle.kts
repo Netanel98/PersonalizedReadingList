@@ -68,10 +68,10 @@ dependencies {
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx.v282)
     // Room
-    implementation (libs.androidx.room.runtime)
+    implementation (libs.room.runtime)
     ksp (libs.room.compiler)
     // Kotlin Extensions and Coroutines support for Room
-    implementation (libs.androidx.room.ktx)
+    implementation (libs.room.ktx)
     // Firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.firestore)

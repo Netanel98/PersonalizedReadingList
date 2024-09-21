@@ -66,11 +66,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.page_3 -> {
-                    val action = NavGraphDirections.anyPageToMyReviews(true)
-                    navController.navigate(action)
-                    true
-                }
+//                R.id.page_3 -> {
+//                    val action = NavGraphDirections.anyPageToMyReviews(true)
+//                    navController.navigate(action)
+//                    true
+//                }
 
                 else -> false
             }
