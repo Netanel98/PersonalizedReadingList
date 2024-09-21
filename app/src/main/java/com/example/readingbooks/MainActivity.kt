@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 //                }
 
                 R.id.page_2 -> {
-                    navController.navigate(R.id.profileFragment)
+                    navController.navigate(R.id.libraryFragment)
                     true
                 }
 

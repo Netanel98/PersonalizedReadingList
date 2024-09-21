@@ -5,4 +5,5 @@
     <item name="signUp_to_login" type="id" />
     <item name="save_changes_button" type="id" />
     <item name="logout_button" type="id" />
+    <item name="libraryFragment" type="id" />
 </resources>
