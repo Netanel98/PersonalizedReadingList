@@ -24,4 +24,11 @@
     <string name="profile">Profile</string>
     <string name="my_books_list">My Books List</string>
     <string name="library">Library</string>
+    <string name="publish_date">Publish Date</string>
+    <string name="number_of_pages">Number of Pages</string>
+    <string name="publisher">Publisher</string>
+    <string name="title">Title</string>
+    <string name="subtitle">subtitle</string>
+    <string name="description">description</string>
+    <string name="preview">Preview</string>
 </resources>
