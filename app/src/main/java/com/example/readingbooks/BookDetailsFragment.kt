@@ -1,17 +1,15 @@
 package com.example.readingbooks
-
-import android.os.Bundle
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 
-
-
-class BookDetailsActivity : AppCompatActivity() {
+class BookDetailsFragment : AppCompatActivity() {
 
     // creating variables for strings,text view,
     // image views and button.
@@ -61,6 +59,7 @@ class BookDetailsActivity : AppCompatActivity() {
         publisherDateTV.setText("Published On : " + publishedDate)
         descTV.setText(description)
         pageTV.setText("No Of Pages : " + pageCount)
+        Glide.with(this).load(thumbnail).into(bookIV)
 
         // adding on click listener for our preview button.
         previewBtn.setOnClickListener {
@@ -68,7 +67,7 @@ class BookDetailsActivity : AppCompatActivity() {
                 // below toast message is displayed
                 // when preview link is not present.
                 Toast.makeText(
-                    this@BookDetailsActivity,
+                    this@BookDetailsFragment,
                     "No preview Link present",
                     Toast.LENGTH_SHORT
                 )
@@ -87,7 +86,7 @@ class BookDetailsActivity : AppCompatActivity() {
                 // below toast message is displaying
                 // when buy link is empty.
                 Toast.makeText(
-                    this@BookDetailsActivity,
+                    this@BookDetailsFragment,
                     "No buy page present for this book",
                     Toast.LENGTH_SHORT
                 ).show()
