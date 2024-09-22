@@ -16,6 +16,7 @@ class BookRVAdapter(
     private var bookList: ArrayList<Book>,
     private var ctx: Context
 ) : RecyclerView.Adapter<BookRVAdapter.BookViewHolder>() {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -64,6 +65,16 @@ class BookRVAdapter(
 
     override fun getItemCount(): Int {
         return bookList.size
+    }
+
+    fun submitList(books: List<Book>?) {
+        // Replace the current list with the new list
+        bookList.clear()
+        if (books != null) {
+            bookList.addAll(books)
+        }
+        // Notify the adapter that the data has changed
+        //notifyDataSetChanged()
     }
 
     class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

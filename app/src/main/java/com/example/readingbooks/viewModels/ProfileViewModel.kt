@@ -41,7 +41,7 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
                 try {
                     val userId = auth.currentUser?.uid ?: throw Exception("User not logged in")
                     val user = userRepository.getUserById(userId)
-                    withContext(Dispatchers.Main) { setUserFields(user!!) }
+                    withContext(Dispatchers.Main) { setUserFields(user) }
                 } catch (e: Exception) {
                     Log.e("Profile", "Error fetching user details", e)
                 } finally {

@@ -12,12 +12,12 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.readingbooks.models.Book
 
 class LibraryFragment : AppCompatActivity() {
-
     // on below line we are creating variables.
     lateinit var mRequestQueue: RequestQueue
-    lateinit var booksList: ArrayList<BookRVModal>
+    lateinit var booksList: ArrayList<Book>
     lateinit var loadingPB: ProgressBar
     lateinit var searchEdt: EditText
     lateinit var searchBtn: ImageButton
@@ -75,6 +75,8 @@ class LibraryFragment : AppCompatActivity() {
                 for (i in 0 until itemsArray.length()) {
                     val itemsObj = itemsArray.getJSONObject(i)
                     val volumeObj = itemsObj.getJSONObject("volumeInfo")
+                    val id = itemsObj.getInt("id")
+                    val imageUrl = volumeObj.optString("image")
                     val title = volumeObj.optString("title")
                     val subtitle = volumeObj.optString("subtitle")
                     val authorsArray = volumeObj.getJSONArray("authors")
@@ -97,7 +99,9 @@ class LibraryFragment : AppCompatActivity() {
 
                     // after extracting all the data we are
                     // saving this data in our modal class.
-                    val bookInfo = BookRVModal(
+                    val bookInfo = Book(
+                        id,
+                        imageUrl,
                         title,
                         subtitle,
                         authorsArrayList,
