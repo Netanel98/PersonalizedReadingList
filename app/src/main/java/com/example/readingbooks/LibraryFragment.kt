@@ -85,11 +85,11 @@ class LibraryFragment : AppCompatActivity() {
                     val description = volumeObj.optString("description")
                     val pageCount = volumeObj.optInt("pageCount")
                     val imageLinks = volumeObj.optJSONObject("imageLinks")
-                    val thumbnail = imageLinks.optString("thumbnail")
+                    val thumbnail = imageLinks?.optString("thumbnail")
                     val previewLink = volumeObj.optString("previewLink")
                     val infoLink = volumeObj.optString("infoLink")
                     val saleInfoObj = itemsObj.optJSONObject("saleInfo")
-                    val buyLink = saleInfoObj.optString("buyLink")
+                    val buyLink = saleInfoObj?.optString("buyLink")
                     val authorsArrayList: ArrayList<String> = ArrayList()
                     if (authorsArray.length() != 0) {
                         for (j in 0 until authorsArray.length()) {
@@ -104,15 +104,15 @@ class LibraryFragment : AppCompatActivity() {
                         imageUrl,
                         title,
                         subtitle,
-                        authorsArrayList,
+                        authorsArrayList.toString(),
                         publisher,
                         publishedDate,
                         description,
                         pageCount,
-                        thumbnail,
+                        thumbnail.toString(),
                         previewLink,
                         infoLink,
-                        buyLink
+                        buyLink.toString()
                     )
 
                     // below line is use to pass our modal

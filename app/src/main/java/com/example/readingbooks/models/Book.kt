@@ -11,7 +11,7 @@ data class Book(
     var imageUrl: String,
     var title: String,
     var subtitle: String,
-    var author: ArrayList<String>,
+    var author: String,
     var publisher: String,
     var publishedDate: String,
     var description: String,
