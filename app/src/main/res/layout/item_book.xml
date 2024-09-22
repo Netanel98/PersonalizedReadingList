@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
-                    android:text="Book Pages"
+                    android:text="@string/book_pages"
                     android:textColor="@color/black"
                     android:textSize="10sp" />
 
