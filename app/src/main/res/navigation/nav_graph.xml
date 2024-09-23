@@ -5,8 +5,8 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
     <action
-        android:id="@+id/any_page_to_my_list"
-        app:destination="@id/feedFragment"
+        android:id="@+id/any_page_to_library"
+        app:destination="@id/libraryFragment"
         app:popUpTo="@id/booksListFragment"
         app:popUpToInclusive="false" />
     <fragment
@@ -36,8 +36,8 @@
             app:popUpTo="@id/signFragment"
             app:popUpToInclusive="false" />
         <action
-            android:id="@+id/action_registerFragment_to_feedFragment"
-            app:destination="@id/feedFragment" />
+            android:id="@+id/action_signUpFragment_to_libraryFragment"
+            app:destination="@id/libraryFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -56,12 +56,12 @@
             app:popUpToInclusive="false" />
     </fragment>
     <fragment
-        android:id="@+id/feedFragment"
-        android:name="com.example.myapplication.ui.authScreens.feed.Feed"
-        android:label="Feed Fragment"
-        tools:layout="@layout/fragment_feed">
+        android:id="@+id/libraryFragment"
+        android:name="com.example.readingbooks.LibraryFragment"
+        android:label="Library Fragment"
+        tools:layout="@layout/fragment_library">
         <argument
-            android:name="isMyFeed"
+            android:name="isMyLibrary"
             android:defaultValue="false"
             app:argType="boolean" />
         <action
