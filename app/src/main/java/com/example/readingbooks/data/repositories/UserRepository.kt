@@ -47,7 +47,7 @@ class UserRepository(private val context: Context) {
         return user.apply { imageUri = imageRepository.getImagePathById(userId) }
     }
 
-    suspend fun getUserFromFireStore(userId: String): User{
+    private suspend fun getUserFromFireStore(userId: String): User{
         val user = db.collection(USERS_COLLECTION)
             .document(userId)
             .get()
