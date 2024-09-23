@@ -38,7 +38,7 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
 
-    fun register(onSuccess: () -> Unit, onFailure: (error: Exception?) -> Unit) {
+    fun signUp(onSuccess: () -> Unit, onFailure: (error: Exception?) -> Unit) {
         validateForm()
 
         if (!isFormValid) {

@@ -36,10 +36,10 @@ import com.yalantis.ucrop.UCrop
 import com.yalantis.ucrop.model.AspectRatio
 import java.io.File
 
-class Register : Fragment() {
+class SignUpFragment : Fragment() {
 
     companion object {
-        fun newInstance() = Register()
+        fun newInstance() = SignUpFragment()
     }
 
     private val userRepository: UserRepository by lazy { UserRepository(requireContext()) }
