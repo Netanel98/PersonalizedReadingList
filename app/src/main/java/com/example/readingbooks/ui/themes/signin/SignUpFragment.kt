@@ -1,8 +1,9 @@
 package com.example.readingbooks.ui.themes.signin
-
-
+import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -10,11 +11,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.Observable
+import androidx.databinding.Observable.OnPropertyChangedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.readingbooks.R
@@ -22,19 +29,23 @@ import com.example.readingbooks.data.repositories.UserRepository
 import com.example.readingbooks.databinding.FragmentSignUpBinding
 import com.example.readingbooks.views.ImagePicker
 import com.example.readingbooks.utils.BasicAlert
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.yalantis.ucrop.UCrop
+import com.yalantis.ucrop.model.AspectRatio
+import java.io.File
 
-class SignUpFragment : Fragment() {
+class Register : Fragment() {
 
     companion object {
-        fun newInstance() = SignUpFragment()
+        fun newInstance() = Register()
     }
 
     private val userRepository: UserRepository by lazy { UserRepository(requireContext()) }
     private val viewModel: SignUpViewModel by viewModels { SignUpViewModelFactory(userRepository) }
     lateinit var loginLink: View
-    lateinit var signUpButton: Button
+    lateinit var registerButton: Button
     lateinit var imageView: ImagePicker
     lateinit var progressBar: ProgressBar
     private val imagePicker: ActivityResultLauncher<String> = getImagePicker()
@@ -51,7 +62,7 @@ class SignUpFragment : Fragment() {
 
         setupUploadButton(binding)
         setupLoginLink(binding)
-        setupSignUpButton(binding)
+        setupRegisterButton(binding)
         imageView.requestStoragePermission(requireContext(), requireActivity())
 
         return binding.root
@@ -85,54 +96,54 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun setupSignUpButton(binding: FragmentSignUpBinding) {
-        signUpButton = binding.root.findViewById(R.id.signUp_button)
+    private fun setupRegisterButton(binding: FragmentSignUpBinding) {
+        registerButton = binding.root.findViewById(R.id.signUp_button)
         progressBar = binding.root.findViewById(R.id.progress_bar)
-        signUpButton.setOnClickListener {
+        registerButton.setOnClickListener {
             showProgressBar()
-            viewModel.signUp({ onSignUpSuccess() }, { error -> onSignUpFailure(error) })
+            viewModel.signUp({ onRegisterSuccess() }, { error -> onRegisterFailure(error) })
         }
     }
 
-    private fun onSignUpSuccess() {
-        BasicAlert("Success", "You have successfully Signed Up.", requireContext()).show()
+    private fun onRegisterSuccess() {
+        BasicAlert("Success", "You have successfully registered.", requireContext()).show()
     }
 
-    private fun onSignUpFailure(error: Exception?) {
+    private fun onRegisterFailure(error: Exception?) {
         if (error == null) {
-            signUpButton.visibility = View.VISIBLE
+            registerButton.visibility = View.VISIBLE
             progressBar.visibility = View.GONE
             return
         }
 
-        Log.e("Sign Up", "Error Signing Up", error)
-        handleSignUpError(error)
-        showSignUpButton()
+        Log.e("Register", "Error Registering", error)
+        handleRegisterError(error)
+        showRegisterButton()
     }
 
-    private fun handleSignUpError(error: Exception) {
+    private fun handleRegisterError(error: Exception) {
         when (error) {
             is FirebaseAuthUserCollisionException -> {
                 BasicAlert(
-                    "Sign Up Error",
+                    "Register Error",
                     "User with this email already exists",
                     requireContext()
                 ).show()
             }
 
             else -> {
-                BasicAlert("Sign Up Error", "An error occurred", requireContext()).show()
+                BasicAlert("Register Error", "An error occurred", requireContext()).show()
             }
         }
     }
 
-    private fun showSignUpButton() {
-        signUpButton.visibility = View.VISIBLE
+    private fun showRegisterButton() {
+        registerButton.visibility = View.VISIBLE
         progressBar.visibility = View.GONE
     }
 
     private fun showProgressBar() {
-        signUpButton.visibility = View.GONE
+        registerButton.visibility = View.GONE
         progressBar.visibility = View.VISIBLE
     }
 

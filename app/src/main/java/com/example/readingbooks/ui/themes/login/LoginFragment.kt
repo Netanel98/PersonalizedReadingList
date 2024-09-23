@@ -1,6 +1,4 @@
 package com.example.readingbooks.ui.themes.login
-
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,14 +17,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 
-class LoginFragment : Fragment() {
+class Login : Fragment() {
 
     companion object {
-        fun newInstance() = LoginFragment()
+        fun newInstance() = Login()
     }
 
     private val viewModel: LoginViewModel by viewModels()
-    private lateinit var signUpLink: View
+    private lateinit var registerLink: View
     private lateinit var loginButton: Button
     private lateinit var progressBar: ProgressBar
 
@@ -39,9 +37,9 @@ class LoginFragment : Fragment() {
         )
         bindViews(binding)
         if (FirebaseAuth.getInstance().currentUser != null) {
-            findNavController().navigate(R.id.action_global_ProfileFragment)
+            findNavController().navigate(R.id.action_loginFragment_to_libraryFragment)
         }
-        setupSignUpLink(binding)
+        setupRegisterLink(binding)
         setupLoginButton(binding)
 
         return binding.root
@@ -52,9 +50,9 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
-    private fun setupSignUpLink(binding: FragmentLoginBinding) {
-        signUpLink = binding.root.findViewById(R.id.sign_up_link)
-        signUpLink.setOnClickListener {
+    private fun setupRegisterLink(binding: FragmentLoginBinding) {
+        registerLink = binding.root.findViewById(R.id.sign_up_link)
+        registerLink.setOnClickListener {
             findNavController().navigate(R.id.login_to_signUp)
         }
     }

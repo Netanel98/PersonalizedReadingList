@@ -1,18 +1,17 @@
 package com.example.readingbooks.ui.themes.profile
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.readingbooks.data.repositories.UserRepository
+import com.example.readingbooks.models.User
+import com.example.readingbooks.utils.Validator
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
-import com.example.readingbooks.utils.Validator
-import com.example.readingbooks.models.User
-
 
 class ProfileViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -26,6 +25,7 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
     val isLastNameValid = MutableLiveData(true)
     val isImageUriValid = MutableLiveData(true)
     val isLoading = MutableLiveData(false)
+
 
     val isFormValid: Boolean
         get() = isFirstNameValid.value!! && isLastNameValid.value!! && isImageUriValid.value!!
@@ -111,35 +111,5 @@ class ProfileViewModel(private val userRepository: UserRepository) : ViewModel()
             if (!imageUri.value!!.startsWith("file:///")) "file://${imageUri.value!!}"
             else imageUri.value!!
         return user
-    }
-
-    // Private mutable LiveData for internal updates
-    private val _statusMessage = MutableLiveData<String>()
-    // Public immutable LiveData for external observers
-    val statusMessage: LiveData<String> = _statusMessage
-
-    // Function to update status message
-    fun updateStatusMessage(message: String) {
-        _statusMessage.value = message
-    }
-
-    private val _userLiveData = MutableLiveData<User>()
-    val userLiveData: LiveData<User> = _userLiveData
-    // Example function that might trigger a status message update
-    fun loadUserData(userId: String) {
-
-        viewModelScope.launch {
-            try {
-                val user = userRepository.getUserFromFireStore(userId)
-                if (user != null) {
-                    _userLiveData.postValue(user)
-                    _statusMessage.postValue("User data loaded successfully.")
-                } else {
-                    _statusMessage.postValue("Failed to load user data.")
-                }
-            } catch (e: Exception) {
-                _statusMessage.postValue("Error fetching user: ${e.message}")
-            }
-        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.readingbooks.ui.themes.signin
 
 import android.util.Log
+import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -37,7 +38,7 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
 
-    fun signUp(onSuccess: () -> Unit, onFailure: (error: Exception?) -> Unit) {
+    fun register(onSuccess: () -> Unit, onFailure: (error: Exception?) -> Unit) {
         validateForm()
 
         if (!isFormValid) {
@@ -101,9 +102,11 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
             userRepository.saveUserInDB(user)
             userRepository.saveUserImage(user.imageUri!!, user.id)
         } catch (e: Exception) {
-            Log.e("Sign Up", "Error saving user", e)
+            Log.e("SignUp", "Error saving user", e)
             throw e
         }
+
+
         Log.i("UserRepository", "User ${user.json} saved in DB")
     }
 }

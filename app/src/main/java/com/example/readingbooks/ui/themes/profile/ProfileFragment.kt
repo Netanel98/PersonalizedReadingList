@@ -24,10 +24,10 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.yalantis.ucrop.UCrop
 
-class ProfileFragment : Fragment() {
+class Profile : Fragment() {
 
     companion object {
-        fun newInstance() = ProfileFragment()
+        fun newInstance() = Profile()
     }
 
     private val userRepository: UserRepository by lazy { UserRepository(requireContext()) }
