@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.viewModels
 import android.os.Bundle
-import android.provider.ContactsContract
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +20,7 @@ import com.example.readingbooks.databinding.FragmentProfileBinding
 import com.example.readingbooks.views.ImagePicker
 import com.example.readingbooks.utils.BasicAlert
 import com.example.readingbooks.viewModels.ProfileViewModel
+import com.example.readingbooks.viewModels.ProfileViewModelFactory
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.yalantis.ucrop.UCrop

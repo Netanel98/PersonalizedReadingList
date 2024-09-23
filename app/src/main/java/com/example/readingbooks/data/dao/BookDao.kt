@@ -1,4 +1,4 @@
-package com.example.readingbooks.data
+package com.example.readingbooks.data.dao
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete

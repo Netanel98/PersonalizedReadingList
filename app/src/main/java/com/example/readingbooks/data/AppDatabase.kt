@@ -4,6 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.readingbooks.data.dao.BookDao
+import com.example.readingbooks.data.dao.ImageDao
+import com.example.readingbooks.data.dao.UserDao
 import com.example.readingbooks.models.Book
 import com.example.readingbooks.models.Image
 import com.example.readingbooks.models.User

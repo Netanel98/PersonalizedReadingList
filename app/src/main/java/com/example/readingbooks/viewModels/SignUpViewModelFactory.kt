@@ -1,16 +1,15 @@
-package com.example.readingbooks
-
+package com.example.readingbooks.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.readingbooks.repositories.UserRepository
-import com.example.readingbooks.viewModels.ProfileViewModel
 
-class ProfileViewModelFactory(private val userRepository: UserRepository) : ViewModelProvider.Factory {
+class SignUpViewModelFactory(private val userRepository: UserRepository) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return ProfileViewModel(userRepository) as T
+            return SignUpViewModel(userRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
