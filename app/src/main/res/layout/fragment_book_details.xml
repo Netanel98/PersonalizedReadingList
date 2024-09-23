@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.readingbooks.BookDetailsActivity">
+    tools:context="com.example.readingbooks.BookDetailsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!--Displaying our book image-->
             <ImageView
                 android:id="@+id/idIVbook"
                 android:layout_width="130dp"
@@ -28,7 +27,6 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
-                <!--Displaying book publisher-->
                 <TextView
                     android:id="@+id/idTVpublisher"
                     android:layout_width="match_parent"
@@ -38,7 +36,6 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <!--Displaying number of pages of book-->
                 <TextView
                     android:id="@+id/idTVNoOfPages"
                     android:layout_width="match_parent"
@@ -49,7 +46,6 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <!--Displaying book publish date-->
                 <TextView
                     android:id="@+id/idTVPublishDate"
                     android:layout_width="match_parent"
@@ -64,7 +60,6 @@
 
         </LinearLayout>
 
-        <!--Displaying book title-->
         <TextView
             android:id="@+id/idTVTitle"
             android:layout_width="match_parent"
@@ -75,7 +70,6 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
 
-        <!--Displaying book subtitle-->
         <TextView
             android:id="@+id/idTVSubTitle"
             android:layout_width="match_parent"
@@ -86,7 +80,6 @@
             android:textColor="@color/black"
             android:textSize="12sp" />
 
-        <!--Displaying book description-->
         <TextView
             android:id="@+id/idTVDescription"
             android:layout_width="match_parent"
@@ -105,7 +98,6 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <!--button for displaying book preview-->
             <Button
                 android:id="@+id/idBtnPreview"
                 style="?android:attr/buttonBarButtonStyle"
@@ -116,15 +108,14 @@
                 android:text="@string/preview"
                 android:textAllCaps="false" />
 
-            <!--button for opening buying page of the book-->
             <Button
-                android:id="@+id/idBtnBuy"
+                android:id="@+id/idBtnAddToList"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:text="Buy"
+                android:text="@string/add_to_list"
                 android:textAllCaps="false" />
 
         </LinearLayout>

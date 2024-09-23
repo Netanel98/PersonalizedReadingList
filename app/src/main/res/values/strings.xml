@@ -37,4 +37,5 @@
     <string name="book_pages">Book Pages</string>
     <string name="booksListFragment" />
     <string name="delete">Delete</string>
+    <string name="add_to_list">Add to List</string>
 </resources>
