@@ -22,7 +22,7 @@ class BookDetailsFragment : Fragment() {
     private lateinit var pageTV: TextView
     private lateinit var publisherDateTV: TextView
     private lateinit var previewBtn: Button
-    private lateinit var buyBtn: Button
+    private lateinit var addToBtn: Button
     private lateinit var bookIV: ImageView
 
     override fun onCreateView(
@@ -45,7 +45,7 @@ class BookDetailsFragment : Fragment() {
         pageTV = view.findViewById(R.id.idTVNoOfPages)
         publisherDateTV = view.findViewById(R.id.idTVPublishDate)
         previewBtn = view.findViewById(R.id.idBtnPreview)
-        buyBtn = view.findViewById(R.id.idBtnBuy)
+        addToBtn = view.findViewById(R.id.idBtnAddToList)
         bookIV = view.findViewById(R.id.idIVbook)
 
         // Retrieve data from arguments
@@ -85,7 +85,7 @@ class BookDetailsFragment : Fragment() {
                 }
             }
 
-            buyBtn.setOnClickListener {
+            addToBtn.setOnClickListener {
                 buyLink?.let { link ->
                     if (link.isNotEmpty()) {
                         val uri = Uri.parse(link)
