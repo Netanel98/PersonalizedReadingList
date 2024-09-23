@@ -1,9 +1,12 @@
 package com.example.readingbooks.models
 
+import com.bumptech.glide.load.model.GlideUrl
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.bumptech.glide.load.model.GlideUrl
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "books")
 data class Book(
     @PrimaryKey(autoGenerate = true)
@@ -17,7 +20,5 @@ data class Book(
     var description: String,
     var pageCount: Int,
     var thumbnail: String,
-    var previewLink: String,
-    var infoLink: String,
-    var buyLink: String
-)
+    var previewLink: String
+) : Parcelable

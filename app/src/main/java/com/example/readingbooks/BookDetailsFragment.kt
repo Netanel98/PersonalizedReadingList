@@ -14,11 +14,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.readingbooks.data.RepositoryProvider
+import com.example.readingbooks.models.Book
 
 class BookDetailsFragment : Fragment() {
 
     private val viewModel: BookDetailsViewModel by viewModels {
-        BookDetailsViewModelFactory(RepositoryProvider.provideBookRepository(requireContext()))
+        BookDetailsViewModelFactory(requireContext())
     }
 
     private lateinit var titleTV: TextView
@@ -56,6 +57,7 @@ class BookDetailsFragment : Fragment() {
 
         // Retrieve data from arguments
         arguments?.let {
+            val bookId = it.getParcelable<Book>("id") ?: return@let
             val title = it.getString("title")
             val subtitle = it.getString("subtitle")
             val publisher = it.getString("publisher")
@@ -90,7 +92,7 @@ class BookDetailsFragment : Fragment() {
             }
 
             addToBtn.setOnClickListener {
-                book?.let { bk ->
+                bookId.let { bk ->
                     viewModel.addBookToReadingList(bk)
                     Toast.makeText(context, "Book added to reading list!", Toast.LENGTH_SHORT).show()
                 }

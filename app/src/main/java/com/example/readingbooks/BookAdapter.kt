@@ -54,8 +54,6 @@ class BookAdapter(
             i.putExtra("pageCount", bookInfo.pageCount)
             i.putExtra("thumbnail", bookInfo.thumbnail)
             i.putExtra("previewLink", bookInfo.previewLink)
-            i.putExtra("infoLink", bookInfo.infoLink)
-
             // after passing that data we are
             // starting our new  intent.
             ctx.startActivity(i)

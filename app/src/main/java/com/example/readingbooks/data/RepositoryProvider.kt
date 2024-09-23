@@ -1,8 +1,6 @@
 package com.example.readingbooks.data
 
 import android.content.Context
-import com.example.readingbooks.data.AppDatabase
-import com.example.readingbooks.data.dao.BookDao
 import com.example.readingbooks.data.repositories.BookRepository
 import com.example.readingbooks.services.FirestoreService
 

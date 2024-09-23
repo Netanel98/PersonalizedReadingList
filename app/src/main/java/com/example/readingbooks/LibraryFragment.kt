@@ -113,8 +113,6 @@ class LibraryFragment : Fragment() {
                         pageCount,
                         imageUrl,
                         previewLink,
-                        infoLink,
-                        buyLink ?: ""
                     )
                     booksList.add(bookInfo)
                 }

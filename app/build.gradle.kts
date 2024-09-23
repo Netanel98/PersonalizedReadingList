@@ -8,6 +8,7 @@ plugins {
     id("com.google.gms.google-services")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -106,6 +107,8 @@ dependencies {
     ksp(libs.room.compiler)
 
     implementation(libs.volley)
+
+
 }
 
 kapt {
