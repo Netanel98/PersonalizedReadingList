@@ -1,4 +1,4 @@
-package com.example.readingbooks
+package com.example.readingbooks.ui.themes.profile
 
 import android.app.Activity
 import android.content.Intent
@@ -15,12 +15,11 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
+import com.example.readingbooks.R
 import com.example.readingbooks.repositories.UserRepository
 import com.example.readingbooks.databinding.FragmentProfileBinding
 import com.example.readingbooks.views.ImagePicker
 import com.example.readingbooks.utils.BasicAlert
-import com.example.readingbooks.viewModels.ProfileViewModel
-import com.example.readingbooks.viewModels.ProfileViewModelFactory
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.yalantis.ucrop.UCrop

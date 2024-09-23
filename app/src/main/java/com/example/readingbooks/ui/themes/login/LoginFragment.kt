@@ -1,4 +1,4 @@
-package com.example.readingbooks
+package com.example.readingbooks.ui.themes.login
 
 
 import android.os.Bundle
@@ -12,9 +12,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.readingbooks.R
 import com.example.readingbooks.databinding.FragmentLoginBinding
 import com.example.readingbooks.utils.BasicAlert
-import com.example.readingbooks.viewModels.LoginViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException

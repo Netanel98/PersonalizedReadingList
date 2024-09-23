@@ -1,4 +1,4 @@
-package com.example.readingbooks
+package com.example.readingbooks.ui.themes.signin
 
 
 import android.app.Activity
@@ -17,12 +17,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.readingbooks.R
 import com.example.readingbooks.repositories.UserRepository
 import com.example.readingbooks.databinding.FragmentSignUpBinding
 import com.example.readingbooks.views.ImagePicker
 import com.example.readingbooks.utils.BasicAlert
-import com.example.readingbooks.viewModels.SignUpViewModel
-import com.example.readingbooks.viewModels.SignUpViewModelFactory
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.yalantis.ucrop.UCrop
 

@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.readingbooks.ProfileFragment">
+    tools:context="com.example.readingbooks.ui.themes.profile.ProfileFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.readingbooks.viewModels.ProfileViewModel" />
+            type="com.example.readingbooks.ui.themes.profile.ProfileViewModel" />
     </data>
 
     <LinearLayout
