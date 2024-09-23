@@ -1,52 +1,90 @@
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
-
+    <action
+        android:id="@+id/any_page_to_my_list"
+        app:destination="@id/feedFragment"
+        app:popUpTo="@id/booksListFragment"
+        app:popUpToInclusive="false" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.readingbooks.ui.themes.login.LoginFragment"
+        android:name="com.example.readingbooks.ui.themes.login.Login"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/login_to_signUp"
-            app:destination="@id/signUpFragment"
+            app:destination="@id/signFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="false" />
         <action
-            android:id="@+id/action_loginFragment_to_bookListFragment"
-            app:destination="@id/bookListFragment"
+            android:id="@+id/action_loginFragment_to_libraryFragment"
+            app:destination="@id/libraryFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="false"/>
-        <action
-            android:id="@+id/action_global_ProfileFragment"
-            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
-        android:id="@+id/signUpFragment"
+        android:id="@+id/signFragment"
         android:name="com.example.readingbooks.ui.themes.signin.SignUpFragment"
-        android:label="RegisterFragment"
+        android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/signUp_to_login"
             app:destination="@id/loginFragment"
-            app:popUpTo="@id/signUpFragment"
+            app:popUpTo="@id/signFragment"
             app:popUpToInclusive="false" />
         <action
-            android:id="@+id/action_signUpFragment_to_ProfileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_registerFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.readingbooks.ui.themes.profile.ProfileFragment"
-        android:label="profileFragment"
+        android:name="com.example.readingbooks.ui.themes.profile.Profile"
+        android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/bookListFragment"
+        android:id="@+id/booksListFragment"
         android:name="com.example.readingbooks.BookListFragment"
-        android:label="BookList"
-        tools:layout="@layout/fragment_book_list" />
-    <!-- Add other fragments like registration if needed -->
+        android:label="@string/booksListFragment"
+        tools:layout="@layout/fragment_book_list">
+        <action
+            android:id="@+id/action_booksListFragment_to_addNewBookFragment"
+            app:destination="@id/addNewReviewFragment"
+            app:popUpTo="@id/booksListFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.example.myapplication.ui.authScreens.feed.Feed"
+        android:label="Feed Fragment"
+        tools:layout="@layout/fragment_feed">
+        <argument
+            android:name="isMyFeed"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_feedFragment_to_addNewReviewFragment"
+            app:destination="@id/addNewReviewFragment"
+            app:popUpTo="@id/feedFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewReviewFragment"
+        android:name="com.example.myapplication.ui.authScreens.addNewReview.AddNewReview"
+        android:label="Add New Review"
+        tools:layout="@layout/fragment_add_new_review">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+        <argument
+            android:name="reviewId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_addNewReviewFragment_to_feedFragment"
+            app:destination="@id/feedFragment"
+            app:popUpTo="@id/addNewReviewFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
 </navigation>
