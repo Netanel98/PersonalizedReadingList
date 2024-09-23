@@ -36,4 +36,5 @@
     <string name="search">Search</string>
     <string name="book_pages">Book Pages</string>
     <string name="booksListFragment" />
+    <string name="delete">Delete</string>
 </resources>

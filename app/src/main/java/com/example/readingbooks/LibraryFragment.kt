@@ -16,7 +16,6 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.readingbooks.models.Book
-import com.example.readingbooks.R
 import org.json.JSONObject
 
 class LibraryFragment : Fragment() {
@@ -119,7 +118,7 @@ class LibraryFragment : Fragment() {
                     )
                     booksList.add(bookInfo)
                 }
-                val adapter = BookRVAdapter(booksList, requireContext())
+                val adapter = BookAdapter(booksList, requireContext())
                 val mRecyclerView = view?.findViewById<RecyclerView>(R.id.idRVBooks)
                 mRecyclerView?.layoutManager = GridLayoutManager(requireContext(), 3)
                 mRecyclerView?.adapter = adapter

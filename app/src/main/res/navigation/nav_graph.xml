@@ -46,7 +46,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/booksListFragment"
-        android:name="com.example.readingbooks.BookListFragment"
+        android:name="com.example.readingbooks.listbooks.MyBookListFragment"
         android:label="@string/booksListFragment"
         tools:layout="@layout/fragment_book_list">
         <action

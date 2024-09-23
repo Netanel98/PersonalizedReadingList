@@ -10,17 +10,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.readingbooks.models.Book
 
-class BookRVAdapter(
+class BookAdapter(
     // on below line we are passing variables
     // as course list and context
     private var bookList: ArrayList<Book>,
     private var ctx: Context
-) : RecyclerView.Adapter<BookRVAdapter.BookViewHolder>() {
+) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BookRVAdapter.BookViewHolder {
+    ): BookAdapter.BookViewHolder {
         // this method is use to inflate the layout file
         // which we have created for our recycler view.
         // on below line we are inflating our layout file.
@@ -30,10 +30,10 @@ class BookRVAdapter(
         )
         // at last we are returning our view holder
         // class with our item View File.
-        return BookRVAdapter.BookViewHolder(itemView)
+        return BookAdapter.BookViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: BookRVAdapter.BookViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BookAdapter.BookViewHolder, position: Int) {
         val bookInfo = bookList.get(position)
         // below line is use to set image from URL in our image view.
         Glide.with(holder.itemView.context).load(bookInfo.thumbnail).into(holder.bookIV);
