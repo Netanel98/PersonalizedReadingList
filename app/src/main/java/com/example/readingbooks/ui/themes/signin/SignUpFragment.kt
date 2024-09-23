@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.readingbooks.R
-import com.example.readingbooks.repositories.UserRepository
+import com.example.readingbooks.data.repositories.UserRepository
 import com.example.readingbooks.databinding.FragmentSignUpBinding
 import com.example.readingbooks.views.ImagePicker
 import com.example.readingbooks.utils.BasicAlert

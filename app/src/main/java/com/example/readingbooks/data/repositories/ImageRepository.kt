@@ -1,4 +1,4 @@
-package com.example.readingbooks.repositories
+package com.example.readingbooks.data.repositories
 
 import android.content.Context
 import android.net.Uri

@@ -16,7 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import com.example.readingbooks.R
-import com.example.readingbooks.repositories.UserRepository
+import com.example.readingbooks.data.repositories.UserRepository
 import com.example.readingbooks.databinding.FragmentProfileBinding
 import com.example.readingbooks.views.ImagePicker
 import com.example.readingbooks.utils.BasicAlert

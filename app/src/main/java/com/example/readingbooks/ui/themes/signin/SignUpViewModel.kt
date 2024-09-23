@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.readingbooks.repositories.UserRepository
+import com.example.readingbooks.data.repositories.UserRepository
 import com.example.readingbooks.models.User
 import com.example.readingbooks.utils.Validator
 import com.google.firebase.auth.FirebaseAuth

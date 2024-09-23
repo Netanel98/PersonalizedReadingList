@@ -2,7 +2,7 @@ package com.example.readingbooks.ui.themes.signin
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.readingbooks.repositories.UserRepository
+import com.example.readingbooks.data.repositories.UserRepository
 
 class SignUpViewModelFactory(private val userRepository: UserRepository) :
     ViewModelProvider.Factory {

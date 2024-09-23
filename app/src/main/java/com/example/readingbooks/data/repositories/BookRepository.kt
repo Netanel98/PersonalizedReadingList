@@ -1,4 +1,4 @@
-package com.example.readingbooks.repositories
+package com.example.readingbooks.data.repositories
 
 import androidx.lifecycle.LiveData
 import com.example.readingbooks.data.dao.BookDao
