@@ -50,8 +50,8 @@
         android:label="@string/booksListFragment"
         tools:layout="@layout/fragment_book_list">
         <action
-            android:id="@+id/action_booksListFragment_to_addNewBookFragment"
-            app:destination="@id/addNewReviewFragment"
+            android:id="@+id/action_booksListFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment"
             app:popUpTo="@id/booksListFragment"
             app:popUpToInclusive="false" />
     </fragment>
@@ -65,26 +65,23 @@
             android:defaultValue="false"
             app:argType="boolean" />
         <action
-            android:id="@+id/action_feedFragment_to_addNewReviewFragment"
-            app:destination="@id/addNewReviewFragment"
-            app:popUpTo="@id/feedFragment"
+            android:id="@+id/action_libraryFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment"
+            app:popUpTo="@id/libraryFragment"
             app:popUpToInclusive="false" />
     </fragment>
     <fragment
-        android:id="@+id/addNewReviewFragment"
-        android:name="com.example.myapplication.ui.authScreens.addNewReview.AddNewReview"
+        android:id="@+id/bookDetailsFragment"
+        android:name="com.example.readingbooks.BookDetailsFragment"
         android:label="Add New Review"
-        tools:layout="@layout/fragment_add_new_review">
+        tools:layout="@layout/fragment_book_details">
         <argument
-            android:name="movieId"
+            android:name="bookId"
             app:argType="integer" />
-        <argument
-            android:name="reviewId"
-            app:argType="string" />
         <action
-            android:id="@+id/action_addNewReviewFragment_to_feedFragment"
-            app:destination="@id/feedFragment"
-            app:popUpTo="@id/addNewReviewFragment"
+            android:id="@+id/action_bookDetailsFragment_to_libraryFragment"
+            app:destination="@id/libraryFragment"
+            app:popUpTo="@id/bookDetailsFragment"
             app:popUpToInclusive="false" />
     </fragment>
 </navigation>

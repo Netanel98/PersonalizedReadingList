@@ -12,40 +12,28 @@ import com.example.readingbooks.R
 import com.example.readingbooks.databinding.FragmentBookListBinding
 import com.example.readingbooks.models.Book
 
-class BookListFragment : Fragment() {
+class MyBookListFragment : Fragment() {
+    private lateinit var binding: FragmentBookListBinding
+    private val bookViewModel: MyBookListViewModel by viewModels()
 
-    private var _binding: FragmentBookListBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel: MyBookListViewModel by viewModels()
-    private lateinit var bookAdapter: MyBookListAdapter
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentBookListBinding.inflate(inflater, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentBookListBinding.inflate(inflater, container, false)
+        setupRecyclerView()
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupRecyclerView()
-        viewModel.books.observe(viewLifecycleOwner) { books ->
-            bookAdapter.submitList(books)
-        }
-    }
-
     private fun setupRecyclerView() {
-        bookAdapter = MyBookListAdapter(object : MyBookListAdapter.DeleteCallback {
-            override fun onDelete(book: Book) {
-                viewModel.deleteBook(book)
-            }
-        })
+        val adapter = MyBookListAdapter(bookViewModel::deleteBook)
         binding.booksRecyclerView.apply {
-            adapter = bookAdapter
             layoutManager = LinearLayoutManager(context)
+            this.adapter = adapter
         }
-    }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        bookViewModel.books.observe(viewLifecycleOwner) { books ->
+            adapter.submitList(books)
+        }
     }
 }

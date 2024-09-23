@@ -7,9 +7,6 @@
         <variable
             name="book"
             type="com.example.readingbooks.models.Book" />
-        <variable
-            name="deleteCallback"
-            type="com.example.readingbooks.listbooks.MyBookListViewModel"/>
     </data>
 
     <androidx.cardview.widget.CardView
@@ -70,8 +67,7 @@
                     android:id="@+id/btnDelete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/delete"
-                    android:onClick="@{() -> deleteCallback.onDelete(book)}" />
+                    android:text="@string/delete" />
 
             </LinearLayout>
         </LinearLayout>

@@ -4,14 +4,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.readingbooks.databinding.ItemBookBinding
-import com.example.readingbooks.listbooks.MyBookListViewModel
 import com.example.readingbooks.models.Book
 
-class MyBookListAdapter(private val deleteCallback: DeleteCallback) : ListAdapter<Book, MyBookListAdapter.BookViewHolder>(BookDiffCallback()) {
-
-    interface DeleteCallback {
-        fun onDelete(book: Book)
-    }
+class MyBookListAdapter(private val onDelete: (Book) -> Unit) : ListAdapter<Book, MyBookListAdapter.BookViewHolder>(BookDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         return BookViewHolder(
@@ -20,7 +15,7 @@ class MyBookListAdapter(private val deleteCallback: DeleteCallback) : ListAdapte
                 parent,
                 false
             ),
-            deleteCallback
+            onDelete  // Passing the lambda directly to the ViewHolder
         )
     }
 
@@ -31,12 +26,16 @@ class MyBookListAdapter(private val deleteCallback: DeleteCallback) : ListAdapte
 
     class BookViewHolder(
         private val binding: ItemBookBinding,
-        private val deleteCallback: DeleteCallback
+        private val onDelete: (Book) -> Unit  // Using the lambda function directly
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(book: Book) {
             binding.book = book
-            binding.deleteCallback = deleteCallback
             binding.executePendingBindings()
+
+            // Set up the delete button click listener to use the lambda function
+            binding.btnDelete.setOnClickListener {
+                onDelete(book)  // Invoking the lambda function directly
+            }
         }
     }
 
