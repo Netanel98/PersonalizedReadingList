@@ -15,19 +15,20 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() {
-    val imageUri = MutableLiveData("")
+
     val firstName = MutableLiveData("")
     val lastName = MutableLiveData("")
     val email = MutableLiveData("")
     val password = MutableLiveData("")
     val confirmPassword = MutableLiveData("")
-
-    val isImageUriValid = MutableLiveData(true)
+    val imageUri = MutableLiveData("")
+    
     val isFirstNameValid = MutableLiveData(true)
     val isLastNameValid = MutableLiveData(true)
     val isEmailValid = MutableLiveData(true)
     val isPasswordValid = MutableLiveData(true)
     val isConfirmPasswordValid = MutableLiveData(true)
+    val isImageUriValid = MutableLiveData(true)
 
     val isFormValid: Boolean
         get() = isFirstNameValid.value!! && isLastNameValid.value!! && isEmailValid.value!!
