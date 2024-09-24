@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_1"
+        android:id="@+id/profileFragment"
         android:enabled="true"
         android:icon="@drawable/profile_nav_icon"
         android:title="@string/profile" />
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/libraryFragment"
         android:enabled="true"
         android:icon="@drawable/library_icon"
         android:title="@string/library" />
     <item
-        android:id="@+id/page_3"
+        android:id="@+id/fab"
+        android:title=""
+        android:enabled="false"/>
+    <item
+        android:id="@+id/booksListFragment"
         android:enabled="true"
         android:icon="@drawable/my_list_icon"
         android:title="@string/my_books_list" />
+    <item android:id="@+id/settingsFragment"
+        android:icon="@drawable/settings"
+        android:title="@string/settings"/>
+
 </menu>

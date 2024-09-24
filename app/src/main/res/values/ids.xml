@@ -7,4 +7,6 @@
     <item name="logout_button" type="id" />
     <item name="libraryFragment" type="id" />
     <item name="action_loginFragment_to_libraryFragment" type="id" />
+    <item name="action_loginFragment_to_signUpFragment" type="id" />
+    <item name="action_signUpFragment_to_logInFragment" type="id" />
 </resources>
