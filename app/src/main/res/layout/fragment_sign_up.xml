@@ -106,7 +106,7 @@
         android:fontFamily="@font/poppins"/>
 
     <Button
-        android:id="@+id/signUp_to_log_in"
+        android:id="@+id/signUp_to_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
