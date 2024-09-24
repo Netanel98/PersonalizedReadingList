@@ -15,20 +15,19 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() {
+    val imageUri = MutableLiveData("")
     val firstName = MutableLiveData("")
     val lastName = MutableLiveData("")
     val email = MutableLiveData("")
     val password = MutableLiveData("")
     val confirmPassword = MutableLiveData("")
-    val imageUri = MutableLiveData("")
 
-
+    val isImageUriValid = MutableLiveData(true)
     val isFirstNameValid = MutableLiveData(true)
     val isLastNameValid = MutableLiveData(true)
     val isEmailValid = MutableLiveData(true)
     val isPasswordValid = MutableLiveData(true)
     val isConfirmPasswordValid = MutableLiveData(true)
-    val isImageUriValid = MutableLiveData(true)
 
     val isFormValid: Boolean
         get() = isFirstNameValid.value!! && isLastNameValid.value!! && isEmailValid.value!!
@@ -72,13 +71,13 @@ class SignUpViewModel(private val userRepository: UserRepository) : ViewModel() 
     }
 
     private fun validateForm() {
+        isImageUriValid.value = validator.validateImageUri(imageUri.value!!)
         isFirstNameValid.value = validator.validateName(firstName.value!!)
         isLastNameValid.value = validator.validateName(lastName.value!!)
         isEmailValid.value = validator.validateEmail(email.value!!)
         isPasswordValid.value = validator.validatePassword(password.value!!)
         isConfirmPasswordValid.value =
             validator.validateConfirmPassword(password.value!!, confirmPassword.value!!)
-        isImageUriValid.value = validator.validateImageUri(imageUri.value!!)
     }
 
     private fun constructUserFromFields(): User {
