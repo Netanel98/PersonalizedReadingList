@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.utils.addToStdlib.safeAs
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -109,7 +111,6 @@ dependencies {
     ksp(libs.room.compiler)
 
     implementation(libs.volley)
-
 
 }
 

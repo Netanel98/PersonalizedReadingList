@@ -1,6 +1,5 @@
 package com.example.readingbooks
 
-
 import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
@@ -10,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
@@ -33,6 +33,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.storage
+import com.example.readingbooks.EditProfileFragmentArgs
 
 class EditProfileFragment : Fragment() {
 
@@ -40,7 +41,7 @@ class EditProfileFragment : Fragment() {
     private lateinit var viewModel: AuthViewModel
     private val mainActivity: MainActivity
         get() = activity as MainActivity
-    private val args: EditProfileFragmentArg by navArgs()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,13 +70,12 @@ class EditProfileFragment : Fragment() {
         val addFab = requireActivity().findViewById<FloatingActionButton>(R.id.addBotton)
         addFab.isEnabled = false
 
-        val name = args.name
-        val photoUrl = args.photoUrl
-        binding.etName.setText(name)
-        val imageView: ImageView = binding.imageView
-        val progressBar: ProgressBar = binding.progressBar
-        ImageUtil.showImgInViewFromUrl(photoUrl, imageView, progressBar)
+        val name = arguments?.getString("name") ?: ""
+        val photoUrl = arguments?.getString("photoUrl") ?: ""
 
+        binding.etName.setText(name)
+        ImageUtil.showImgInViewFromUrl(photoUrl, binding.imageView, binding.progressBar)
+        
         binding.saveChanges.setOnClickListener {
             val currUserImage = viewModel.currUser.value?.photoUrl
             val displayedName = binding.etName.text.toString()

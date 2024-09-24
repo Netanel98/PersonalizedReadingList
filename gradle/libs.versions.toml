@@ -8,8 +8,8 @@ devtoolsKsp = "2.0.20-RC-1.0.24"
 #Libraries
 composeBom = "2024.09.02"
 compose = "1.5.15"
-navigationCompose = "1.2.0"
-navigationDynamicFeaturesFragment = "2.5.3"
+navigation = "2.8.1"
+navigationDynamicFeaturesFragment = "2.8.1"
 room = "2.7.0-alpha08"
 agp = "8.5.2"
 converterGson = "2.11.0"
@@ -50,6 +50,7 @@ androidx-lifecycle-livedata-ktx-v282 = { module = "androidx.lifecycle:lifecycle-
 androidx-navigation-dynamic-features-fragment = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigationFragment" }
 androidx-navigation-dynamic-features-fragment-v253 = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigationDynamicFeaturesFragment" }
 androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigationFragment" }
+androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationFragment" }
 androidx-navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigationFragment" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
@@ -94,3 +95,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "devtoolsKsp" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+navigation-safe-args-kotlin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
