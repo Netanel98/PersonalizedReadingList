@@ -4,85 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
-    <action
-        android:id="@+id/any_page_to_library"
-        app:destination="@id/libraryFragment"
-        app:popUpTo="@id/booksListFragment"
-        app:popUpToInclusive="false" />
+
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.readingbooks.ui.themes.login.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/fragment_login">
+        android:id="@+id/bookDetailsFragment"
+        android:name="com.example.readingbooks.BookDetailsFragment"
+        android:label="BookDetailsFragment"
+        tools:layout="@layout/fragment_book_details" >
         <action
-            android:id="@+id/login_to_signUp"
-            app:destination="@id/signFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_loginFragment_to_libraryFragment"
-            app:destination="@id/libraryFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="false"/>
-    </fragment>
-    <fragment
-        android:id="@+id/signFragment"
-        android:name="com.example.readingbooks.ui.themes.signin.SignUpFragment"
-        android:label="SignUpFragment"
-        tools:layout="@layout/fragment_sign_up">
-        <action
-            android:id="@+id/signUp_to_login"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/signFragment"
-            app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_signUpFragment_to_libraryFragment"
+            android:id="@+id/action_bookDetailsFragment_to_libraryFragment"
             app:destination="@id/libraryFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.readingbooks.ui.themes.profile.Profile"
-        android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/booksListFragment"
-        android:name="com.example.readingbooks.listbooks.MyBookListFragment"
-        android:label="@string/booksListFragment"
-        tools:layout="@layout/fragment_book_list">
         <action
-            android:id="@+id/action_booksListFragment_to_bookDetailsFragment"
-            app:destination="@id/bookDetailsFragment"
-            app:popUpTo="@id/booksListFragment"
-            app:popUpToInclusive="false" />
+            android:id="@+id/action_bookDetailsFragment_to_feedFragment"
+            app:destination="@id/bookListFragment" />
     </fragment>
     <fragment
         android:id="@+id/libraryFragment"
         android:name="com.example.readingbooks.LibraryFragment"
-        android:label="Library Fragment"
-        tools:layout="@layout/fragment_library">
-        <argument
-            android:name="isMyLibrary"
-            android:defaultValue="false"
-            app:argType="boolean" />
+        android:label="libraryFragment" >
         <action
             android:id="@+id/action_libraryFragment_to_bookDetailsFragment"
-            app:destination="@id/bookDetailsFragment"
-            app:popUpTo="@id/libraryFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/bookDetailsFragment" />
+        <action
+            android:id="@+id/action_libraryFragment_to_bookListFragment"
+            app:destination="@id/bookListFragment" />
+        <action
+            android:id="@+id/action_libraryFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/bookDetailsFragment"
-        android:name="com.example.readingbooks.BookDetailsFragment"
-        android:label="Add New Review"
-        tools:layout="@layout/fragment_book_details">
-        <argument
-            android:name="bookId"
-            app:argType="integer" />
+        android:id="@+id/bookListFragment"
+        android:name="com.example.readingbooks.listbooks.MyBookListFragment"
+        android:label="bookListFragment"
+        tools:layout="@layout/fragment_book_list" >
         <action
-            android:id="@+id/action_bookDetailsFragment_to_libraryFragment"
-            app:destination="@id/libraryFragment"
-            app:popUpTo="@id/bookDetailsFragment"
-            app:popUpToInclusive="false" />
+            android:id="@+id/action_bookListFragment_to_libraryFragment"
+            app:destination="@id/libraryFragment" />
+        <action
+            android:id="@+id/action_bookListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_bookListFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.readingbooks.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_bookListFragment"
+            app:destination="@id/bookListFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_logInFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_libraryFragment"
+            app:destination="@id/libraryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.readingbooks.ui.themes.login.LoginFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_logInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_libraryFragment"
+            app:destination="@id/libraryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.readingbooks.ui.themes.signin.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_logInFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_libraryFragment"
+            app:destination="@id/libraryFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
