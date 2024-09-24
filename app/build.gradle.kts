@@ -6,9 +6,9 @@ plugins {
 
     id("kotlin-android")
     id("com.google.gms.google-services")
-    id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
     id ("kotlin-parcelize")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -87,6 +87,8 @@ dependencies {
     // Navigation Components
     implementation (libs.androidx.navigation.fragment)
     implementation (libs.androidx.navigation.ui)
+    implementation (libs.androidx.navigation.dynamic.features.fragment.v253)
+
     // Glide
     implementation (libs.glide)
     ksp (libs.ksp)

@@ -9,6 +9,7 @@ devtoolsKsp = "2.0.20-RC-1.0.24"
 composeBom = "2024.09.02"
 compose = "1.5.15"
 navigationCompose = "1.2.0"
+navigationDynamicFeaturesFragment = "2.5.3"
 room = "2.7.0-alpha08"
 agp = "8.5.2"
 converterGson = "2.11.0"
@@ -47,6 +48,7 @@ volley = "1.2.1"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-livedata-ktx-v282 = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtxVersion" }
 androidx-navigation-dynamic-features-fragment = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigationFragment" }
+androidx-navigation-dynamic-features-fragment-v253 = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigationDynamicFeaturesFragment" }
 androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigationFragment" }
 androidx-navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigationFragment" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }

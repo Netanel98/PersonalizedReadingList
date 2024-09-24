@@ -9,4 +9,5 @@
     <item name="action_loginFragment_to_libraryFragment" type="id" />
     <item name="action_loginFragment_to_signUpFragment" type="id" />
     <item name="action_signUpFragment_to_logInFragment" type="id" />
+    <item name="action_settingsFragment_to_logInFragment" type="id" />
 </resources>

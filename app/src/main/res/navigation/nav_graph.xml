@@ -11,7 +11,7 @@
         app:popUpToInclusive="false" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.readingbooks.ui.themes.login.Login"
+        android:name="com.example.readingbooks.ui.themes.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -83,5 +83,20 @@
             app:destination="@id/libraryFragment"
             app:popUpTo="@id/bookDetailsFragment"
             app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.readingbooks.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="photoUrl"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -48,4 +48,7 @@
     <string name="name_placeholder">User Name</string>
     <string name="email_example">user@gmail.com</string>
     <string name="email_headline">Email:</string>
+    <string name="no_changes">No Changes</string>
+    <string name="change_picture">Change Profile picture</string>
+    <string name="return_content_desc">return content description</string>
 </resources>
