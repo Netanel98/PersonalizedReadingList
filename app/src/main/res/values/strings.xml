@@ -51,4 +51,6 @@
     <string name="no_changes">No Changes</string>
     <string name="change_picture">Change Profile picture</string>
     <string name="return_content_desc">return content description</string>
+    <string name="select_profile_picture">Select Your Profile Picture</string>
+    <string name="return_books">Cancel aading a book</string>
 </resources>
