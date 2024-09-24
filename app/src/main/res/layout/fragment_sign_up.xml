@@ -2,9 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.readingbooks.ui.themes.signin.SignUpFragment">
+    tools:context=".ui.themes.signin.SignUpViewModel">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.readingbooks.ui.themes.signin.SignUpViewModel" />
@@ -15,13 +16,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
-
-        <com.example.readingbooks.views.ImagePicker
-            android:id="@+id/image_view"
-            android:layout_width="150sp"
-            android:layout_height="150sp"
-            android:contentDescription="@string/uploaded_image"
-            android:src="@drawable/add_image" />
 
         <com.example.readingbooks.views.CustomTextInput
             android:id="@+id/first_name"
@@ -56,6 +50,7 @@
 
         <com.example.readingbooks.views.CustomTextInput
             android:id="@+id/password"
+            endiconMode="password_toggle"
             android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:hint="@string/password"
@@ -67,6 +62,7 @@
 
         <com.example.readingbooks.views.CustomTextInput
             android:id="@+id/confirm_password"
+            endiconMode="password_toggle"
             android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:hint="@string/confirm_password"
@@ -76,8 +72,15 @@
             app:helperTextEnabled="@{!viewModel.isConfirmPasswordValid()}"
             app:helperTextTextColor="@color/design_default_color_error" />
 
+        <com.example.readingbooks.views.ImagePicker
+            android:id="@+id/image_view"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:contentDescription="@string/uploaded_image"
+            android:src="@drawable/add_image" />
+
         <Button
-            android:id="@+id/signUp_button"
+            android:id="@+id/register_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_up"
