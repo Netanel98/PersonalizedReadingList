@@ -5,25 +5,25 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/libraryFragment">
 
-    <fragment
-        android:id="@+id/bookDetailsFragment"
-        android:name="com.example.readingbooks.BookDetailsFragment"
-        android:label="BookDetailsFragment"
+
+    <activity
+        android:id="@+id/bookDetailsActivity"
+        android:label="bookDetailsActivity"
         tools:layout="@layout/activity_book_details" >
         <action
-            android:id="@+id/action_bookDetailsFragment_to_libraryFragment"
+            android:id="@+id/action_bookDetailsActivity_to_libraryFragment"
             app:destination="@id/libraryFragment" />
         <action
-            android:id="@+id/action_bookDetailsFragment_to_bookListFragment"
+            android:id="@+id/action_bookDetailsActivity_to_bookListFragment"
             app:destination="@id/bookListFragment" />
-    </fragment>
+    </activity>
     <fragment
         android:id="@+id/libraryFragment"
         android:name="com.example.readingbooks.LibraryFragment"
         android:label="libraryFragment" >
         <action
-            android:id="@+id/action_libraryFragment_to_bookDetailsFragment"
-            app:destination="@id/bookDetailsFragment" />
+            android:id="@+id/action_libraryFragment_to_bookDetailsActivity"
+            app:destination="@id/bookDetailsActivity" />
         <action
             android:id="@+id/action_libraryFragment_to_bookListFragment"
             app:destination="@id/bookListFragment" />
@@ -43,8 +43,8 @@
             android:id="@+id/action_bookListFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_bookListFragment_to_bookDetailsFragment"
-            app:destination="@id/bookDetailsFragment" />
+            android:id="@+id/action_bookListFragment_to_bookDetailsActivity"
+            app:destination="@id/bookDetailsActivity" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
