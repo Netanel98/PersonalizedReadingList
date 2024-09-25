@@ -67,8 +67,6 @@ class EditProfileFragment : Fragment() {
         for (i in 0 until size) {
             bottomNavigationView.menu.getItem(i).isEnabled = false
         }
-        val addFab = requireActivity().findViewById<FloatingActionButton>(R.id.addBotton)
-        addFab.isEnabled = false
 
         val name = arguments?.getString("name") ?: ""
         val photoUrl = arguments?.getString("photoUrl") ?: ""
@@ -88,7 +86,6 @@ class EditProfileFragment : Fragment() {
             for (i in 0 until size) {
                 bottomNavigationView.menu.getItem(i).isEnabled = true
             }
-            addFab.isEnabled = true
             Navigation.findNavController(requireView()).popBackStack(R.id.settingsFragment, false)
         }
 
@@ -129,7 +126,6 @@ class EditProfileFragment : Fragment() {
                 for (i in 0 until size) {
                     bottomNavigationView.menu.getItem(i).isEnabled = true
                 }
-                addFab.isEnabled = true
                 Navigation.findNavController(requireView()).popBackStack(R.id.settingsFragment, false)
             } else {
                 Toast.makeText(requireContext(), "Couldn't update your info", Toast.LENGTH_SHORT).show()

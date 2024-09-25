@@ -52,8 +52,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView = binding.bottomNavigationView
         navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
         navController = navHostFragment.navController
-        cancelButton = binding.cancelBotton
-        addButton = binding.addBotton
 
         NavigationUI.setupWithNavController(
             bottomNavigationView,navController
@@ -65,8 +63,6 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.loginFragment)
         }
 
-        val cancelButton: FloatingActionButton = binding.cancelBotton
-        val addButton: FloatingActionButton = binding.addBotton
 
         addButton.setOnClickListener {
             navController.navigate(R.id.libraryFragment)
@@ -98,9 +94,6 @@ class MainActivity : AppCompatActivity() {
             bottomNavigationView.menu.getItem(i).isChecked = false
             bottomNavigationView.menu.getItem(i).isEnabled = false
         }
-
-        val menuItemDashboard = bottomNavigationView.menu.findItem(R.id.fab)
-        menuItemDashboard.isChecked = true
     }
 
     fun enableNavBar() {
@@ -114,12 +107,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun hideNavBar() {
-        binding.addBotton.isVisible = false
         binding.bottomAppBar.isVisible = false
     }
 
     fun displayNavBar() {
-        binding.addBotton.isVisible = true
         binding.bottomAppBar.isVisible = true
     }
     override fun onSaveInstanceState(outState: Bundle) {
