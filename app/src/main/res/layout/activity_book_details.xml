@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="3">
 
             <!--button for displaying book preview-->
             <Button
@@ -112,6 +112,16 @@
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:text="Preview"
+                android:textAllCaps="false" />
+
+            <!--button for saving book in the list-->
+            <Button
+                android:id="@+id/idBtnSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:text="Save"
                 android:textAllCaps="false" />
 
             <!--button for opening buying page of the book-->

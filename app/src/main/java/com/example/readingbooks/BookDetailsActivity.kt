@@ -1,4 +1,5 @@
 package com.example.readingbooks
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -7,9 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.example.readingbooks.listbooks.MyBookListViewModel
 
 class BookDetailsActivity : AppCompatActivity() {
 
@@ -20,6 +23,7 @@ class BookDetailsActivity : AppCompatActivity() {
     lateinit var pageTV: TextView
     lateinit var publisherDateTV: TextView
     lateinit var previewBtn: Button
+    lateinit var saveBtn: Button
     lateinit var buyBtn: Button
     lateinit var bookIV: ImageView
 
@@ -34,19 +38,22 @@ class BookDetailsActivity : AppCompatActivity() {
         pageTV = findViewById(R.id.idTVNoOfPages)
         publisherDateTV = findViewById(R.id.idTVPublishDate)
         previewBtn = findViewById(R.id.idBtnPreview)
+        saveBtn = findViewById(R.id.idBtnSave)
         buyBtn = findViewById(R.id.idBtnBuy)
         bookIV = findViewById(R.id.idIVbook)
 
-        val title = intent.getStringExtra("title")
-        val subtitle = intent.getStringExtra("subtitle")
-        val publisher = intent.getStringExtra("publisher")
-        val publishedDate = intent.getStringExtra("publishedDate")
-        val description = intent.getStringExtra("description")
+        val id = intent.getStringExtra("id").toString()
+        val title = intent.getStringExtra("title").toString()
+        val subtitle = intent.getStringExtra("subtitle").toString()
+        val author = intent.getStringExtra("author").toString()
+        val publisher = intent.getStringExtra("publisher").toString()
+        val publishedDate = intent.getStringExtra("publishedDate").toString()
+        val description = intent.getStringExtra("description").toString()
         val pageCount = intent.getIntExtra("pageCount", 0)
-        val thumbnail = intent.getStringExtra("thumbnail")
-        val previewLink = intent.getStringExtra("previewLink")
-        val infoLink = intent.getStringExtra("infoLink")
-        val buyLink = intent.getStringExtra("buyLink")
+        val thumbnail = intent.getStringExtra("thumbnail").toString()
+        val previewLink = intent.getStringExtra("previewLink").toString()
+        val infoLink = intent.getStringExtra("infoLink").toString()
+        val buyLink = intent.getStringExtra("buyLink").toString()
 
         titleTV.text = title
         subtitleTV.text = subtitle
@@ -68,6 +75,13 @@ class BookDetailsActivity : AppCompatActivity() {
                 val uri: Uri = Uri.parse(previewLink)
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
+        }
+
+        saveBtn.setOnClickListener {
+            // Assuming `book` is a variable representing the book details
+            val book = BookModal(id, title, subtitle, author, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink, buyLink)
+            // You might need a ViewModel or a direct database access here to save the book
+            //MyBookListViewModel.addBook(book)
         }
 
         buyBtn.setOnClickListener {
