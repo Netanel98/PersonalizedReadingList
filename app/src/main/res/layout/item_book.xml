@@ -12,7 +12,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_margin="5dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="4dp">
@@ -20,7 +19,7 @@
         <!--on below line we are creating a
           linear layout for grid view item-->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="407dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -28,9 +27,9 @@
                  a simple image view-->
             <ImageView
                 android:id="@+id/idIVBook"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
+                android:layout_width="88dp"
+                android:layout_height="101dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="8dp"
                 android:padding="5dp"
                 android:scaleType="fitCenter"
@@ -38,23 +37,26 @@
 
             <!--on below line we are creating
                 a simple text view-->
+
+            <!--on below line we are creating
+                a text view for page number-->
+
             <TextView
                 android:id="@+id/idTVBookName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:baselineAligned="false"
                 android:lines="2"
                 android:maxLines="2"
                 android:padding="4dp"
-                android:text="@string/app_name"
+                android:text="@string/title"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 tools:ignore="RtlCompat" />
 
-            <!--on below line we are creating
-                a text view for page number-->
             <TextView
                 android:id="@+id/idTVBookPages"
                 android:layout_width="match_parent"
