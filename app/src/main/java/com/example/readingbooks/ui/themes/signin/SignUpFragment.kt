@@ -58,7 +58,7 @@ class SignUpFragment : Fragment() {
         )[AuthViewModel::class.java]
 
         binding.signUpToLogin.setOnClickListener {
-            Navigation.findNavController(requireView()).navigate(R.id.action_signUpFragment_to_logInFragment)
+            Navigation.findNavController(requireView()).navigate(R.id.action_signUpFragment_to_loginFragment)
         }
 
         mainActivity.hideNavBar()
