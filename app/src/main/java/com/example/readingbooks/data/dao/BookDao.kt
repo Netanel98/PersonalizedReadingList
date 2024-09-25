@@ -13,7 +13,7 @@ interface BookDao {
     @Query("SELECT * FROM books")
     fun getAllBooks(): LiveData<List<BookModal>>
 
-    @Query("SELECT * FROM books WHERE title LIKE :searchQuery OR authors LIKE :searchQuery")
+    @Query("SELECT * FROM books WHERE title LIKE :searchQuery OR author LIKE :searchQuery")
     fun searchBooks(searchQuery: String?): LiveData<List<BookModal>>
 
     // Adjusted to use REPLACE strategy for consistency with MovieDao

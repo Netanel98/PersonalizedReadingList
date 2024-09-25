@@ -54,7 +54,7 @@ class BookAdapter(
             val i = Intent(ctx, BookDetailsActivity::class.java)
             i.putExtra("title", bookInfo.title)
             i.putExtra("subtitle", bookInfo.subtitle)
-            i.putExtra("authors", bookInfo.authors)
+            i.putExtra("author", bookInfo.author)
             i.putExtra("publisher", bookInfo.publisher)
             i.putExtra("publishedDate", bookInfo.publishedDate)
             i.putExtra("description", bookInfo.description)

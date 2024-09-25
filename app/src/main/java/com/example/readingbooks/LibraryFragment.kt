@@ -40,7 +40,7 @@ class LibraryFragment : Fragment() {
         searchBtn.setOnClickListener {
             loadingPB.visibility = View.VISIBLE
             // Checking if our EditText field is empty.
-            if (searchEdt.text.toString().isNullOrEmpty()) {
+            if (searchEdt.text.toString().isEmpty()) {
                 searchEdt.error = "Please enter search query"
             } else {
                 // If the search query is not empty, we call the method to load books from the API.
@@ -51,59 +51,57 @@ class LibraryFragment : Fragment() {
     }
 
     private fun getBooksData(searchQuery: String) {
-        // Creating a new ArrayList.
         booksList = ArrayList()
-
-        // Initializing the variable for our request queue.
         mRequestQueue = Volley.newRequestQueue(requireContext())
-
-        // Clearing cache when our data is being updated.
         mRequestQueue.cache.clear()
 
-        // The URL for getting data from API in JSON format.
         val url = "https://www.googleapis.com/books/v1/volumes?q=$searchQuery"
 
-        // Creating a new request queue.
         val request = JsonObjectRequest(Request.Method.GET, url, null, { response ->
             loadingPB.visibility = View.GONE
-            // Extracting JSON data inside the onResponse method.
             try {
                 val itemsArray = response.getJSONArray("items")
                 for (i in 0 until itemsArray.length()) {
                     val itemsObj = itemsArray.getJSONObject(i)
                     val volumeObj = itemsObj.getJSONObject("volumeInfo")
-                    val title = volumeObj.optString("title")
-                    val subtitle = volumeObj.optString("subtitle")
-                    val authorsArray = volumeObj.getJSONArray("authors")
-                    val publisher = volumeObj.optString("publisher")
-                    val publishedDate = volumeObj.optString("publishedDate")
-                    val description = volumeObj.optString("description")
-                    val pageCount = volumeObj.optInt("pageCount")
+
+                    val id = volumeObj.optString("id", "N/A")
+                    val title = volumeObj.optString("title", "N/A")
+                    val subtitle = volumeObj.optString("subtitle", "N/A")
+                    val authors = volumeObj.optString("authors", "N/A")
+                    val publisher = volumeObj.optString("publisher", "N/A")
+                    val publishedDate = volumeObj.optString("publishedDate", "N/A")
+                    val description = volumeObj.optString("description", "N/A")
+                    val pageCount = volumeObj.optInt("pageCount", 0)  // Default to 0 if not present
+
                     val imageLinks = volumeObj.optJSONObject("imageLinks")
-                    val thumbnail = imageLinks.optString("thumbnail")
-                    val previewLink = volumeObj.optString("previewLink")
-                    val infoLink = volumeObj.optString("infoLink")
+                    val thumbnail = imageLinks?.optString("thumbnail", "N/A") ?: "N/A"  // Default thumbnail if not present
+
+                    val previewLink = volumeObj.optString("previewLink", "N/A")
+                    val infoLink = volumeObj.optString("infoLink", "N/A")
+
                     val saleInfoObj = itemsObj.optJSONObject("saleInfo")
-                    val buyLink = saleInfoObj.optString("buyLink")
-                    val authorsArrayList = ArrayList<String>()
-                    for (j in 0 until authorsArray.length()) {
-                        authorsArrayList.add(authorsArray.optString(j))
-                    }
-                    val bookInfo = BookModal(title, subtitle, authorsArrayList, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink, buyLink)
+                    val buyLink = saleInfoObj?.optString("buyLink", "N/A") ?: "N/A"  // Default buyLink if not present
+
+                    val bookInfo = BookModal(id, title, subtitle, authors, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink, buyLink)
                     booksList.add(bookInfo)
                 }
-                // Setting up the RecyclerView.
-                val adapter = BookAdapter(booksList, requireContext())
-                val layoutManager = GridLayoutManager(context, 3)
-                val mRecyclerView = view?.findViewById<RecyclerView>(R.id.idRVBooks)
-                mRecyclerView?.layoutManager = layoutManager
-                mRecyclerView?.adapter = adapter
+                setupRecyclerView()
             } catch (e: Exception) {
+                Toast.makeText(context, "Error parsing book data.", Toast.LENGTH_SHORT).show()
                 e.printStackTrace()
             }
         }, { error ->
             Toast.makeText(context, "No books found..", Toast.LENGTH_SHORT).show()
         })
         mRequestQueue.add(request)
+    }
+
+    private fun setupRecyclerView() {
+        val adapter = BookAdapter(booksList, requireContext())
+        val layoutManager = GridLayoutManager(context, 3)
+        val mRecyclerView = view?.findViewById<RecyclerView>(R.id.idRVBooks)
+        mRecyclerView?.layoutManager = layoutManager
+        mRecyclerView?.adapter = adapter
     }
 }
