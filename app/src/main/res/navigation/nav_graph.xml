@@ -14,7 +14,7 @@
             android:id="@+id/action_bookDetailsFragment_to_libraryFragment"
             app:destination="@id/libraryFragment" />
         <action
-            android:id="@+id/action_bookDetailsFragment_to_feedFragment"
+            android:id="@+id/action_bookDetailsFragment_to_bookListFragment"
             app:destination="@id/bookListFragment" />
     </fragment>
     <fragment
@@ -55,7 +55,7 @@
             android:id="@+id/action_settingsFragment_to_bookListFragment"
             app:destination="@id/bookListFragment" />
         <action
-            android:id="@+id/action_settingsFragment_to_logInFragment"
+            android:id="@+id/action_settingsFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_settingsFragment_to_editProfileFragment"

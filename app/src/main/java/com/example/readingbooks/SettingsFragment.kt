@@ -43,7 +43,7 @@ class SettingsFragment : Fragment() {
 
         binding.signout.setOnClickListener {
             viewModel.logOut()
-            Navigation.findNavController(requireView()).navigate(R.id.action_settingsFragment_to_logInFragment)
+            Navigation.findNavController(requireView()).navigate(R.id.action_settingsFragment_to_loginFragment)
         }
 
         binding.editUser.setOnClickListener(
