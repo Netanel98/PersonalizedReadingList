@@ -70,10 +70,10 @@
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_logInFragment_to_signUpFragment"
+            android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
         <action
-            android:id="@+id/action_logInFragment_to_libraryFragment"
+            android:id="@+id/action_loginFragment_to_libraryFragment"
             app:destination="@id/libraryFragment" />
     </fragment>
     <fragment
@@ -82,7 +82,7 @@
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
-            android:id="@+id/action_signUpFragment_to_logInFragment"
+            android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_signUpFragment_to_libraryFragment"
