@@ -33,9 +33,9 @@ class MyBookListAdapter(private val onDelete: (BookModal) -> Unit) : ListAdapter
             binding.executePendingBindings()
 
             // Set up the delete button click listener to use the lambda function
-            binding.btnDelete.setOnClickListener {
-                onDelete(book)  // Invoking the lambda function directly
-            }
+//            binding.btnDelete.setOnClickListener {
+//                onDelete(book)  // Invoking the lambda function directly
+//            }
         }
     }
 
