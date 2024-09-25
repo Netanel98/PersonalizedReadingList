@@ -3,9 +3,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.readingbooks.BookModal
 import com.example.readingbooks.databinding.ItemBookBinding
 
-class MyBookListAdapter(private val onDelete: (Book) -> Unit) : ListAdapter<Book, MyBookListAdapter.BookViewHolder>(BookDiffCallback()) {
+class MyBookListAdapter(private val onDelete: (BookModal) -> Unit) : ListAdapter<BookModal, MyBookListAdapter.BookViewHolder>(BookDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         return BookViewHolder(
@@ -25,9 +26,9 @@ class MyBookListAdapter(private val onDelete: (Book) -> Unit) : ListAdapter<Book
 
     class BookViewHolder(
         private val binding: ItemBookBinding,
-        private val onDelete: (Book) -> Unit  // Using the lambda function directly
+        private val onDelete: (BookModal) -> Unit  // Using the lambda function directly
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(book: Book) {
+        fun bind(book: BookModal) {
             binding.book = book
             binding.executePendingBindings()
 
@@ -38,12 +39,12 @@ class MyBookListAdapter(private val onDelete: (Book) -> Unit) : ListAdapter<Book
         }
     }
 
-    class BookDiffCallback : DiffUtil.ItemCallback<Book>() {
-        override fun areItemsTheSame(oldItem: Book, newItem: Book): Boolean {
+    class BookDiffCallback : DiffUtil.ItemCallback<BookModal>() {
+        override fun areItemsTheSame(oldItem: BookModal, newItem: BookModal): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Book, newItem: Book): Boolean {
+        override fun areContentsTheSame(oldItem: BookModal, newItem: BookModal): Boolean {
             return oldItem == newItem
         }
     }

@@ -6,70 +6,66 @@
     <data>
         <variable
             name="book"
-            type="com.example.readingbooks.models.Book" />
+            type="com.example.readingbooks.BookModal" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="5dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="4dp">
 
+        <!--on below line we are creating a
+          linear layout for grid view item-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp">
+            android:orientation="vertical">
 
+            <!--on below line we are creating
+                 a simple image view-->
             <ImageView
-                android:id="@+id/bookCoverImageView"
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:layout_marginEnd="16dp"
-                app:imageUrl="@{book.imageUrl}"
-                tools:src="@drawable/ic_book_cover_placeholder"
-                android:contentDescription="@string/book_cover_image" />
+                android:id="@+id/idIVBook"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_book_cover_placeholder" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
+            <!--on below line we are creating
+                a simple text view-->
+            <TextView
+                android:id="@+id/idTVBookName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:lines="2"
+                android:maxLines="2"
+                android:padding="4dp"
+                android:text="@string/app_name"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
 
-                <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{book.title}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                    tools:text="Book Title" />
+            <!--on below line we are creating
+                a text view for page number-->
+            <TextView
+                android:id="@+id/idTVBookPages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:text="Book Pages"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
 
-                <TextView
-                    android:id="@+id/tvAuthor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{book.author}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    tools:text="Author" />
-
-                <TextView
-                    android:id="@+id/idTVBookPages"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:text="@string/book_pages"
-                    android:textColor="@color/black"
-                    android:textSize="10sp" />
-
-                <Button
-                    android:id="@+id/btnDelete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/delete" />
-
-            </LinearLayout>
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </layout>

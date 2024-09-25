@@ -51,7 +51,7 @@ class BookAdapter(
         holder.itemView.setOnClickListener {
             // inside on click listener method we are calling a new activity
             // and passing all the data of that item in next intent.
-            val i = Intent(ctx, BookDetailsFragment::class.java)
+            val i = Intent(ctx, BookDetailsActivity::class.java)
             i.putExtra("title", bookInfo.title)
             i.putExtra("subtitle", bookInfo.subtitle)
             i.putExtra("authors", bookInfo.authors)
