@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/editProfileFragment"
         android:enabled="true"
         android:icon="@drawable/profile_nav_icon"
         android:title="@string/profile" />
@@ -10,10 +10,6 @@
         android:enabled="true"
         android:icon="@drawable/library_icon"
         android:title="@string/library" />
-    <item
-        android:id="@+id/fab"
-        android:title=""
-        android:enabled="false"/>
     <item
         android:id="@+id/booksListFragment"
         android:enabled="true"
