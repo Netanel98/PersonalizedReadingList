@@ -1,4 +1,5 @@
 package com.example.readingbooks
+
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,12 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.readingbooks.models.Book
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 
 class BookAdapter(
     // on below line we are passing variables
     // as course list and context
-    private var bookList: ArrayList<Book>,
+    private var bookList: ArrayList<BookModal>,
     private var ctx: Context
 ) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
@@ -34,11 +36,16 @@ class BookAdapter(
     }
 
     override fun onBindViewHolder(holder: BookAdapter.BookViewHolder, position: Int) {
-        val bookInfo = bookList.get(position)
-        // below line is use to set image from URL in our image view.
-        Glide.with(holder.itemView.context).load(bookInfo.thumbnail).into(holder.bookIV);
+        val bookInfo = bookList[position]
+        // below line is use to set image from URL in our image view using Glide.
+        Glide.with(ctx)
+            .load(bookInfo.thumbnail)
+            .apply(RequestOptions().placeholder(R.drawable.placeholder).error(R.drawable.error))
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(holder.bookIV)
+
         holder.bookTitleTV.text = bookInfo.title
-        holder.bookPagesTV.text = "Pages : " + bookInfo.pageCount
+        holder.bookPagesTV.text = "Pages: " + bookInfo.pageCount
 
         // below line is use to add on click listener for our item of recycler view.
         holder.itemView.setOnClickListener {
@@ -47,39 +54,31 @@ class BookAdapter(
             val i = Intent(ctx, BookDetailsFragment::class.java)
             i.putExtra("title", bookInfo.title)
             i.putExtra("subtitle", bookInfo.subtitle)
-            i.putExtra("authors", bookInfo.author)
+            i.putExtra("authors", bookInfo.authors)
             i.putExtra("publisher", bookInfo.publisher)
             i.putExtra("publishedDate", bookInfo.publishedDate)
             i.putExtra("description", bookInfo.description)
             i.putExtra("pageCount", bookInfo.pageCount)
             i.putExtra("thumbnail", bookInfo.thumbnail)
             i.putExtra("previewLink", bookInfo.previewLink)
+            i.putExtra("infoLink", bookInfo.infoLink)
+            i.putExtra("buyLink", bookInfo.buyLink)
+
             // after passing that data we are
-            // starting our new  intent.
+            // starting our new intent.
             ctx.startActivity(i)
         }
-
     }
 
     override fun getItemCount(): Int {
         return bookList.size
     }
 
-    fun submitList(books: List<Book>?) {
-        // Replace the current list with the new list
-        bookList.clear()
-        if (books != null) {
-            bookList.addAll(books)
-        }
-        // Notify the adapter that the data has changed
-        //notifyDataSetChanged()
-    }
-
     class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // on below line we are initializing our
         // course name text view and our image view.
-        val bookTitleTV: TextView = itemView.findViewById(R.id.tvTitle)
+        val bookTitleTV: TextView = itemView.findViewById(R.id.idTVBookName)
         val bookPagesTV: TextView = itemView.findViewById(R.id.idTVBookPages)
-        val bookIV: ImageView = itemView.findViewById(R.id.bookCoverImageView)
+        val bookIV: ImageView = itemView.findViewById(R.id.idIVBook)
     }
 }

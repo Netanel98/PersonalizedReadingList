@@ -6,15 +6,15 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.readingbooks.models.Image
+import com.example.readingbooks.models.ImageModel
 
 @Dao
 interface ImageDao {
     @Query("SELECT * FROM images WHERE id = :id")
-    fun getImageById(id: String): LiveData<Image>
+    fun getImageById(id: String): LiveData<ImageModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllImages(images: Image)
+    fun insertAllImages(images: ImageModel)
 
     @Query("DELETE FROM images WHERE id = :id")
     fun deleteImage(id: String)

@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.Uri
 import com.bumptech.glide.Glide
 import com.example.readingbooks.data.AppDatabase
-import com.example.readingbooks.models.Image
+import com.example.readingbooks.models.ImageModel
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.tasks.await
 
@@ -20,7 +20,7 @@ class ImageRepository(private val context: Context) {
         val imageRef = storage.reference.child("$IMAGES_REF/$imageId")
         imageRef.putFile(imageUri).await()
 
-        localDb.ImageDao().insertAllImages(Image(imageId, imageUri.toString()))
+        localDb.ImageDao().insertAllImages(ImageModel(imageId, imageUri.toString()))
     }
 
     suspend fun getImageRemoteUri(imageId: String): Uri {
@@ -36,7 +36,7 @@ class ImageRepository(private val context: Context) {
             .submit()
             .get()
 
-        localDb.ImageDao().insertAllImages(Image(imageId, file.absolutePath))
+        localDb.ImageDao().insertAllImages(ImageModel(imageId, file.absolutePath))
 
         return file.absolutePath
     }
@@ -53,7 +53,7 @@ class ImageRepository(private val context: Context) {
         val remoteUri = getImageRemoteUri(imageId)
         val localPath = downloadAndCacheImage(remoteUri, imageId)
 
-        localDb.ImageDao().insertAllImages(Image(imageId, localPath))
+        localDb.ImageDao().insertAllImages(ImageModel(imageId, localPath))
 
         return localPath
     }

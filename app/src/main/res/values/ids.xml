@@ -10,4 +10,6 @@
     <item name="action_loginFragment_to_signUpFragment" type="id" />
     <item name="action_signUpFragment_to_logInFragment" type="id" />
     <item name="action_settingsFragment_to_logInFragment" type="id" />
+    <item name="idIVBook" type="id">Book Cover</item>
+    <item name="idTVBookName" type="id">Book Title</item>
 </resources>

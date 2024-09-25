@@ -2,7 +2,6 @@ package com.example.readingbooks.data.repositories
 
 import androidx.lifecycle.LiveData
 import com.example.readingbooks.data.dao.BookDao
-import com.example.readingbooks.models.Book
 import com.example.readingbooks.services.FirestoreService
 
 class BookRepository(private val bookDao: BookDao, private val firestoreService: FirestoreService) {

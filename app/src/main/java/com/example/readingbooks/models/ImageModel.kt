@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "images")
-data class Image(
+data class ImageModel(
     @PrimaryKey
     val id: String = "",
     @ColumnInfo(name = "uri")

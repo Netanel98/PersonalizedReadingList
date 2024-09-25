@@ -31,6 +31,7 @@
     <string name="subtitle">subtitle</string>
     <string name="description">description</string>
     <string name="preview">Preview</string>
+    <string name="previewLink" />
     <string name="line">________________________________</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -53,4 +54,5 @@
     <string name="return_content_desc">return content description</string>
     <string name="select_profile_picture">Select Your Profile Picture</string>
     <string name="return_books">Cancel aading a book</string>
+    <string name="buy_link">Buy Link</string>
 </resources>

@@ -8,7 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:orientation="vertical"
-    tools:context=".LibraryFragment">
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/idLLsearch"
@@ -22,18 +22,15 @@
         <EditText
             android:id="@+id/idEdtSearchBooks"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:autofillHints="string/search_books"
-            android:inputType="" />
+            android:layout_height="wrap_content"
+            android:layout_weight="4" />
 
         <!--image button for our search button -->
         <ImageButton
             android:id="@+id/idBtnSearch"
-            android:layout_width="1dp"
-            android:layout_height="59dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:contentDescription="@string/search"
             android:src="@drawable/ic_search" />
 
     </LinearLayout>

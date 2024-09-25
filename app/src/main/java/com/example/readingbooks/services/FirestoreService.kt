@@ -1,6 +1,5 @@
 package com.example.readingbooks.services
 
-import com.example.readingbooks.models.Book
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 

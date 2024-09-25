@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.readingbooks.R
 import com.example.readingbooks.databinding.FragmentBookListBinding
-import com.example.readingbooks.models.Book
 
 class MyBookListFragment : Fragment() {
     private lateinit var binding: FragmentBookListBinding
