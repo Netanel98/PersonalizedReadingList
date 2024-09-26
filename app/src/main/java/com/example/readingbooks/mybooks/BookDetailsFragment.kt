@@ -1,6 +1,5 @@
-package com.example.readingbooks
+package com.example.readingbooks.mybooks
 
-import MyBookListAdapter
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.example.readingbooks.R
 import com.example.readingbooks.mybooks.listbooks.MyBookListViewModel
 
 class BookDetailsFragment : Fragment() {

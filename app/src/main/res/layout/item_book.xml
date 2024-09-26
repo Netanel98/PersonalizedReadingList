@@ -7,7 +7,7 @@
     <data>
         <variable
             name="book"
-            type="com.example.readingbooks.BookModal" />
+            type="com.example.readingbooks.mybooks.BookModal" />
     </data>
 
     <androidx.cardview.widget.CardView

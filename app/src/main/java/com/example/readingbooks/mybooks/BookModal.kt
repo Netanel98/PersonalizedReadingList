@@ -1,4 +1,4 @@
-package com.example.readingbooks
+package com.example.readingbooks.mybooks
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

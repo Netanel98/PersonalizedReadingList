@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.readingbooks.BookModal
+import com.example.readingbooks.mybooks.BookModal
 import com.example.readingbooks.data.repositories.BookRepository
 import kotlinx.coroutines.launch
 

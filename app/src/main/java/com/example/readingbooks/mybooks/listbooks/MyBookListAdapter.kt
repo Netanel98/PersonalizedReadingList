@@ -3,7 +3,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.readingbooks.BookModal
+import com.example.readingbooks.mybooks.BookModal
 import com.example.readingbooks.databinding.ItemBookBinding
 
 class MyBookListAdapter(private val onDelete: (BookModal) -> Unit) : ListAdapter<BookModal, MyBookListAdapter.BookViewHolder>(BookDiffCallback()) {

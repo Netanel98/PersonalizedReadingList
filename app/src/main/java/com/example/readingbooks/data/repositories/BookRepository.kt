@@ -1,7 +1,7 @@
 package com.example.readingbooks.data.repositories
 
 import androidx.lifecycle.LiveData
-import com.example.readingbooks.BookModal
+import com.example.readingbooks.mybooks.BookModal
 import com.example.readingbooks.data.dao.BookDao
 import com.example.readingbooks.services.FirestoreService
 
