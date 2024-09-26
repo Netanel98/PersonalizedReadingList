@@ -9,17 +9,19 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.readingbooks.databinding.FragmentLibraryBinding
+import com.example.readingbooks.mybooks.BookAdapter
 import com.example.readingbooks.mybooks.BookModal
 
 class LibraryFragment : Fragment() {
 
-    // Creating variables.
+    private lateinit var binding: FragmentLibraryBinding
     private lateinit var mRequestQueue: RequestQueue
     private lateinit var booksList: ArrayList<BookModal>
     private lateinit var loadingPB: ProgressBar
@@ -98,10 +100,17 @@ class LibraryFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val adapter = com.example.readingbooks.mybooks.BookAdapter(booksList, requireContext())
-        val layoutManager = GridLayoutManager(context, 3)
-        val mRecyclerView = view?.findViewById<RecyclerView>(R.id.idRVBooks)
-        mRecyclerView?.layoutManager = layoutManager
-        mRecyclerView?.adapter = adapter
+        val adapter = BookAdapter(ArrayList(), book = BookModal("", "", "", "", "",
+            "", "", 0, "",
+            "", ""), ctx = requireContext()) { book ->
+            navigateToBookDetails(book)
+        }
+        binding.idRVBooks.layoutManager = GridLayoutManager(context, 3)
+        binding.idRVBooks.adapter = adapter
+    }
+
+    private fun navigateToBookDetails(book: BookModal) {
+        val action = LibraryFragmentDirections.actionLibraryFragmentToBookDetailsFragment()
+        findNavController().navigate(action)
     }
 }

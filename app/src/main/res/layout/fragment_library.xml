@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--on below line we are creating a swipe to refresh layout-->
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:orientation="vertical"
     tools:context=".LibraryFragment">
@@ -17,15 +17,12 @@
         android:orientation="horizontal"
         android:weightSum="5">
 
-        <!--edit text for getting the search
-            query for book from user-->
         <EditText
             android:id="@+id/idEdtSearchBooks"
             android:layout_width="286dp"
             android:layout_height="wrap_content"
             android:layout_weight="4" />
 
-        <!--image button for our search button -->
         <ImageButton
             android:id="@+id/idBtnSearch"
             android:layout_width="wrap_content"
