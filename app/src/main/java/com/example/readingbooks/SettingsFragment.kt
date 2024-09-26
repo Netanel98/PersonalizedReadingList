@@ -54,6 +54,8 @@ class SettingsFragment : Fragment() {
 
         binding.editUser.setOnClickListener {
             viewModel.currUser.value?.let { user ->
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_settingsFragment_to_editProfileFragment)
                 if (user != null && user.displayName != null && user.photoUrl != null) {
                     Navigation.createNavigateOnClickListener(
                         SettingsFragmentDirections.actionSettingsFragmentToEditProfileFragment(

@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/bookListFragment"
-        android:name="com.example.readingbooks.listbooks.MyBookListFragment"
+        android:name="com.example.readingbooks.mybooks.listbooks.MyBookListFragment"
         android:label="bookListFragment"
         tools:layout="@layout/fragment_book_list" >
         <action

@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.readingbooks.listbooks.MyBookListFragment">
+    tools:context="com.example.readingbooks.mybooks.listbooks.MyBookListFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.readingbooks.listbooks.MyBookListViewModel" />
+            type="com.example.readingbooks.mybooks.listbooks.MyBookListViewModel" />
         <import type="android.view.View"/>
     </data>
 

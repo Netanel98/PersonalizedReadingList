@@ -97,7 +97,7 @@ class LibraryFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val adapter = BookAdapter(booksList, requireContext())
+        val adapter = com.example.readingbooks.mybooks.BookAdapter(booksList, requireContext())
         val layoutManager = GridLayoutManager(context, 3)
         val mRecyclerView = view?.findViewById<RecyclerView>(R.id.idRVBooks)
         mRecyclerView?.layoutManager = layoutManager

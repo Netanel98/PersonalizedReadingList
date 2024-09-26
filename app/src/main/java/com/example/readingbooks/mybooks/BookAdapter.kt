@@ -1,4 +1,4 @@
-package com.example.readingbooks
+package com.example.readingbooks.mybooks
 
 import android.content.Context
 import android.content.Intent
@@ -15,32 +15,36 @@ import com.bumptech.glide.request.RequestOptions
 class BookAdapter(
     // on below line we are passing variables
     // as course list and context
-    private var bookList: ArrayList<BookModal>,
+    private var bookList: ArrayList<com.example.readingbooks.BookModal>,
     private var ctx: Context
-) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
+) : RecyclerView.Adapter<com.example.readingbooks.mybooks.BookAdapter.BookViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BookAdapter.BookViewHolder {
+    ): _root_ide_package_.com.example.readingbooks.mybooks.BookAdapter.BookViewHolder {
         // this method is use to inflate the layout file
         // which we have created for our recycler view.
         // on below line we are inflating our layout file.
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_book,
+            _root_ide_package_.com.example.readingbooks.R.layout.item_book,
             parent, false
         )
         // at last we are returning our view holder
         // class with our item View File.
-        return BookAdapter.BookViewHolder(itemView)
+        return _root_ide_package_.com.example.readingbooks.mybooks.BookAdapter.BookViewHolder(
+            itemView
+        )
     }
 
-    override fun onBindViewHolder(holder: BookAdapter.BookViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: _root_ide_package_.com.example.readingbooks.mybooks.BookAdapter.BookViewHolder, position: Int) {
         val bookInfo = bookList[position]
         // below line is use to set image from URL in our image view using Glide.
         Glide.with(ctx)
             .load(bookInfo.thumbnail)
-            .apply(RequestOptions().placeholder(R.drawable.placeholder).error(R.drawable.error))
+            .apply(RequestOptions().placeholder(_root_ide_package_.com.example.readingbooks.R.drawable.placeholder).error(
+                _root_ide_package_.com.example.readingbooks.R.drawable.error
+            ))
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(holder.bookIV)
 
@@ -51,7 +55,7 @@ class BookAdapter(
         holder.itemView.setOnClickListener {
             // inside on click listener method we are calling a new activity
             // and passing all the data of that item in next intent.
-            val i = Intent(ctx, BookDetailsFragment::class.java)
+            val i = Intent(ctx, _root_ide_package_.com.example.readingbooks.BookDetailsFragment::class.java)
             i.putExtra("title", bookInfo.title)
             i.putExtra("subtitle", bookInfo.subtitle)
             i.putExtra("author", bookInfo.author)
@@ -75,8 +79,8 @@ class BookAdapter(
     class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // on below line we are initializing our
         // course name text view and our image view.
-        val bookTitleTV: TextView = itemView.findViewById(R.id.idTVBookName)
-        val bookPagesTV: TextView = itemView.findViewById(R.id.idTVBookPages)
-        val bookIV: ImageView = itemView.findViewById(R.id.idIVBook)
+        val bookTitleTV: TextView = itemView.findViewById(_root_ide_package_.com.example.readingbooks.R.id.idTVBookName)
+        val bookPagesTV: TextView = itemView.findViewById(_root_ide_package_.com.example.readingbooks.R.id.idTVBookPages)
+        val bookIV: ImageView = itemView.findViewById(_root_ide_package_.com.example.readingbooks.R.id.idIVBook)
     }
 }
