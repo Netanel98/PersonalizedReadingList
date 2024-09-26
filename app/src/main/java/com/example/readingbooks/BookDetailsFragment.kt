@@ -110,7 +110,6 @@ class BookDetailsFragment : Fragment() {
             }
 
             saveBtn.setOnClickListener {
-                // Assuming you have a method to convert the data into your book model
                 saveBookToMyList()
             }
         }
