@@ -28,7 +28,6 @@ class BookDetailsFragment : Fragment() {
     private lateinit var publisherDateTV: TextView
     private lateinit var previewLink: TextView
     private lateinit var infoLink: TextView
-    private lateinit var buyLink: TextView
     private lateinit var previewBtn: Button
     private lateinit var saveBtn: Button
     private lateinit var buyBtn: Button
@@ -49,7 +48,6 @@ class BookDetailsFragment : Fragment() {
             pageCount = pageTV.text.toString().filter { it.isDigit() }.toInt(),
             previewLink = previewLink.text.toString(),
             infoLink = infoLink.text.toString(),
-            buyLink = buyLink.text.toString(),
             thumbnail = "" // Handle image URL saving appropriately
         )
         viewModel.addBook(book)
@@ -75,7 +73,6 @@ class BookDetailsFragment : Fragment() {
         publisherDateTV = view.findViewById(R.id.idTVPublishDate)
         previewBtn = view.findViewById(R.id.idBtnPreview)
         saveBtn = view.findViewById(R.id.idBtnSave)
-        buyBtn = view.findViewById(R.id.idBtnBuy)
         bookIV = view.findViewById(R.id.idIVbook)
 
         arguments?.let {
@@ -115,15 +112,6 @@ class BookDetailsFragment : Fragment() {
             saveBtn.setOnClickListener {
                 // Assuming you have a method to convert the data into your book model
                 saveBookToMyList()
-            }
-
-            buyBtn.setOnClickListener {
-                if (buyLink.isNullOrEmpty()) {
-                    Toast.makeText(context, "No buy page present for this book", Toast.LENGTH_SHORT).show()
-                } else {
-                    val uri = Uri.parse(buyLink)
-                    startActivity(Intent(Intent.ACTION_VIEW, uri))
-                }
             }
         }
     }

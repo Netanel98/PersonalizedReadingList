@@ -19,5 +19,4 @@ data class BookModal (
     @ColumnInfo(name = "thumbnail") var thumbnail: String,
     @ColumnInfo(name = "previewLink") var previewLink: String,
     @ColumnInfo(name = "infoLink") var infoLink: String,
-    @ColumnInfo(name = "buyLink") var buyLink: String
 )

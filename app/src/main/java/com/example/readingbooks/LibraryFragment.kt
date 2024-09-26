@@ -81,9 +81,8 @@ class LibraryFragment : Fragment() {
                     val infoLink = volumeObj.optString("infoLink", "N/A")
 
                     val saleInfoObj = itemsObj.optJSONObject("saleInfo")
-                    val buyLink = saleInfoObj?.optString("buyLink", "N/A") ?: "N/A"  // Default buyLink if not present
 
-                    val bookInfo = BookModal(id, title, subtitle, authors, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink, buyLink)
+                    val bookInfo = BookModal(id, title, subtitle, authors, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink)
                     booksList.add(bookInfo)
                 }
                 setupRecyclerView()
