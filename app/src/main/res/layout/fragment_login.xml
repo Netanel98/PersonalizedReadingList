@@ -63,7 +63,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
         android:fontFamily="@font/poppins"
-        android:backgroundTint="@color/ligthBlue"/>
+        android:backgroundTint="@color/blue"/>
 
     <ProgressBar
         android:id="@+id/register_progress"
