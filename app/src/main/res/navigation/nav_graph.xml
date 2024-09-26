@@ -7,14 +7,15 @@
 
 
     <fragment
-        android:id="@+id/bookDetailsActivity"
-        android:label="bookDetailsActivity"
+        android:id="@+id/bookDetailsFragment"
+        android:name="com.example.readingbooks.BookDetailsFragment"
+        android:label="bookDetailsFragment"
         tools:layout="@layout/fragment_book_details" >
         <action
-            android:id="@+id/action_bookDetailsActivity_to_libraryFragment"
+            android:id="@+id/action_bookDetailsFragment_to_libraryFragment"
             app:destination="@id/libraryFragment" />
         <action
-            android:id="@+id/action_bookDetailsActivity_to_bookListFragment"
+            android:id="@+id/action_bookDetailsFragment_to_bookListFragment"
             app:destination="@id/bookListFragment" />
     </fragment>
     <fragment
@@ -22,8 +23,8 @@
         android:name="com.example.readingbooks.LibraryFragment"
         android:label="libraryFragment" >
         <action
-            android:id="@+id/action_libraryFragment_to_bookDetailsActivity"
-            app:destination="@id/bookDetailsActivity" />
+            android:id="@+id/action_libraryFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
         <action
             android:id="@+id/action_libraryFragment_to_bookListFragment"
             app:destination="@id/bookListFragment" />
@@ -44,7 +45,7 @@
             app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_bookListFragment_to_bookDetailsActivity"
-            app:destination="@id/bookDetailsActivity" />
+            app:destination="@id/bookDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

@@ -20,9 +20,14 @@ class BookRepository(private val bookDao: BookDao, private val firestoreService:
 
     // Add a new book to both local and remote databases
     suspend fun addBook(book: BookModal) {
-        val bookId = firestoreService.addBook(book)  // Assuming this returns the ID
-        book.id = bookId  // Set the book ID after remote insertion
-        bookDao.insertAllBooks(book)
+        try {
+            val bookId = firestoreService.addBook(book)  // Assuming this returns the ID and can throw an exception
+            book.id = bookId  // Set the book ID after remote insertion
+            bookDao.insertAllBooks(book)  // Ensure DAO supports this operation for a single book
+        } catch (e: Exception) {
+            // Handle exceptions
+            throw RuntimeException("Failed to add book: ${e.message}", e)
+        }
     }
 
     // Update a book

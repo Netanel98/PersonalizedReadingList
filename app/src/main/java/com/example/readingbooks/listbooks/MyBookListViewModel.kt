@@ -38,8 +38,8 @@ class MyBookListViewModel(private val bookRepository: BookRepository) : ViewMode
     fun addBook(book: BookModal) {
         viewModelScope.launch {
             _isLoading.value = true
-            bookRepository.addBook((book))
-            fetchBooks()
+            bookRepository.addBook(book)
+            _isLoading.value = false
         }
     }
 
