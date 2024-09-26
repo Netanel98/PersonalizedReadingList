@@ -23,7 +23,7 @@ class BookDetailsActivity : AppCompatActivity() {
     lateinit var pageTV: TextView
     lateinit var publisherDateTV: TextView
     lateinit var previewBtn: Button
-    lateinit var saveBtn: Button
+    //lateinit var saveBtn: Button
     lateinit var buyBtn: Button
     lateinit var bookIV: ImageView
 
@@ -38,7 +38,7 @@ class BookDetailsActivity : AppCompatActivity() {
         pageTV = findViewById(R.id.idTVNoOfPages)
         publisherDateTV = findViewById(R.id.idTVPublishDate)
         previewBtn = findViewById(R.id.idBtnPreview)
-        saveBtn = findViewById(R.id.idBtnSave)
+        //saveBtn = findViewById(R.id.idBtnSave)
         buyBtn = findViewById(R.id.idBtnBuy)
         bookIV = findViewById(R.id.idIVbook)
 
@@ -75,13 +75,6 @@ class BookDetailsActivity : AppCompatActivity() {
                 val uri: Uri = Uri.parse(previewLink)
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
-        }
-
-        saveBtn.setOnClickListener {
-            // Assuming `book` is a variable representing the book details
-            val book = BookModal(id, title, subtitle, author, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink, buyLink)
-            // You might need a ViewModel or a direct database access here to save the book
-            //MyBookListViewModel.addBook(book)
         }
 
         buyBtn.setOnClickListener {
