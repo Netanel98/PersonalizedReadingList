@@ -97,6 +97,12 @@
         <action
             android:id="@+id/action_editProfileFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_libraryFragment"
+            app:destination="@id/libraryFragment" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_bookListFragment"
+            app:destination="@id/bookListFragment" />
         <argument
             android:name="name"
             app:argType="string" />
