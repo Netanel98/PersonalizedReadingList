@@ -27,7 +27,7 @@
         android:id="@+id/imageView"
         android:layout_width="170dp"
         android:layout_height="154dp"
-        android:src="@drawable/MagicBook"
+        android:src="@drawable/magic_book"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
