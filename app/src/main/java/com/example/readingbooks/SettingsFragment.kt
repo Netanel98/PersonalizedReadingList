@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.readingbooks.R
@@ -27,7 +28,7 @@ class SettingsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
         val firestoreDb: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -46,17 +47,21 @@ class SettingsFragment : Fragment() {
             Navigation.findNavController(requireView()).navigate(R.id.action_settingsFragment_to_loginFragment)
         }
 
-        binding.editUser.setOnClickListener(
-            viewModel.currUser.value?.let {user ->
+        binding.editUser.setOnClickListener {
+            val user = viewModel.currUser.value
+            if (user != null && user.displayName != null && user.photoUrl != null) {
                 Navigation.createNavigateOnClickListener(
                     SettingsFragmentDirections.actionSettingsFragmentToEditProfileFragment(
                         user.displayName!!,
                         user.photoUrl.toString()
                     )
-                )
+                ).onClick(it)
+            } else {
+                // Handle the case where user, displayName, or photoUrl is null
+                // For example, show a Toast message or log the error
+                Toast.makeText(requireContext(), "User data is not available", Toast.LENGTH_SHORT).show()
             }
-
-        )
+        }
 
         viewModel.currUser.observe(viewLifecycleOwner) { user ->
             user?.let {
