@@ -33,7 +33,7 @@
                 android:layout_margin="8dp"
                 android:padding="5dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_book_cover_placeholder" />
+                android:src="@mipmap/ic_launcher" />
 
             <!--on below line we are creating
                 a simple text view-->
@@ -67,13 +67,6 @@
                 android:textColor="@color/black"
                 android:textSize="10sp" />
 
-            <Button
-                android:id="@+id/btnDelete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Delete"
-                android:layout_marginTop="4dp"
-                android:backgroundTint="@color/red" />
 
         </LinearLayout>
 
