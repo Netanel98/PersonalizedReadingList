@@ -33,7 +33,11 @@ class SettingsFragment : Fragment() {
 
         val firestoreDb: FirebaseFirestore = FirebaseFirestore.getInstance()
         val firestoreAuth: FirebaseAuth = FirebaseAuth.getInstance()
-        val userRepository = UserRepository(firestoreDb, firestoreAuth, UserDatabase.getDatabase(requireContext()).userDao())
+        val userRepository = UserRepository(
+            firestoreDb,
+            firestoreAuth,
+            UserDatabase.getDatabase(requireContext()).userDao()
+        )
 
         viewModel = ViewModelProvider(
             this,
@@ -44,22 +48,28 @@ class SettingsFragment : Fragment() {
 
         binding.signout.setOnClickListener {
             viewModel.logOut()
-            Navigation.findNavController(requireView()).navigate(R.id.action_settingsFragment_to_loginFragment)
+            Navigation.findNavController(requireView())
+                .navigate(R.id.action_settingsFragment_to_loginFragment)
         }
 
         binding.editUser.setOnClickListener {
-            val user = viewModel.currUser.value
-            if (user != null && user.displayName != null && user.photoUrl != null) {
-                Navigation.createNavigateOnClickListener(
-                    SettingsFragmentDirections.actionSettingsFragmentToEditProfileFragment(
-                        user.displayName!!,
-                        user.photoUrl.toString()
-                    )
-                ).onClick(it)
-            } else {
-                // Handle the case where user, displayName, or photoUrl is null
-                // For example, show a Toast message or log the error
-                Toast.makeText(requireContext(), "User data is not available", Toast.LENGTH_SHORT).show()
+            viewModel.currUser.value?.let { user ->
+                if (user != null && user.displayName != null && user.photoUrl != null) {
+                    Navigation.createNavigateOnClickListener(
+                        SettingsFragmentDirections.actionSettingsFragmentToEditProfileFragment(
+                            user.displayName!!,
+                            user.photoUrl.toString()
+                        )
+                    ).onClick(it)
+                } else {
+                    // Handle the case where user, displayName, or photoUrl is null
+                    // For example, show a Toast message or log the error
+                    Toast.makeText(
+                        requireContext(),
+                        "User data is not available",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
 
