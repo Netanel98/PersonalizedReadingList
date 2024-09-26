@@ -82,6 +82,12 @@ class EditProfileFragment : Fragment() {
                 viewModel.updateProfile(displayedName, profileImageRef, displayedImg!!, displayedImg != currUserImage)
             }
         }
+        binding.cancel.setOnClickListener {
+            for (i in 0 until size) {
+                bottomNavigationView.menu.getItem(i).isEnabled = true
+            }
+            Navigation.findNavController(requireView()).popBackStack(R.id.settingsFragment, false)
+        }
 
         binding.changePic.setOnClickListener{
             mainActivity.requestPermission.launch(
