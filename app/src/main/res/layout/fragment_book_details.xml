@@ -112,7 +112,8 @@
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:text="Preview"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:backgroundTint="@color/yellow"/>
 
             <!--button for saving book in the list-->
             <Button
@@ -122,7 +123,8 @@
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:text="Save"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:backgroundTint="@color/goldPink"/>
 
         </LinearLayout>
 
