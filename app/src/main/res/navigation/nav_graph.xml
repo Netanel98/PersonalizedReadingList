@@ -6,17 +6,17 @@
     app:startDestination="@id/libraryFragment">
 
 
-    <activity
+    <fragment
         android:id="@+id/bookDetailsActivity"
         android:label="bookDetailsActivity"
-        tools:layout="@layout/activity_book_details" >
+        tools:layout="@layout/fragment_book_details" >
         <action
             android:id="@+id/action_bookDetailsActivity_to_libraryFragment"
             app:destination="@id/libraryFragment" />
         <action
             android:id="@+id/action_bookDetailsActivity_to_bookListFragment"
             app:destination="@id/bookListFragment" />
-    </activity>
+    </fragment>
     <fragment
         android:id="@+id/libraryFragment"
         android:name="com.example.readingbooks.LibraryFragment"
