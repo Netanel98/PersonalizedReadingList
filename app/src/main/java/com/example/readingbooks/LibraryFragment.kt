@@ -9,19 +9,19 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.example.readingbooks.databinding.FragmentLibraryBinding
+import com.example.readingbooks.R
 import com.example.readingbooks.mybooks.BookAdapter
 import com.example.readingbooks.mybooks.BookModal
 
 class LibraryFragment : Fragment() {
 
-    private lateinit var binding: FragmentLibraryBinding
+    // Creating variables.
     private lateinit var mRequestQueue: RequestQueue
     private lateinit var booksList: ArrayList<BookModal>
     private lateinit var loadingPB: ProgressBar
@@ -32,7 +32,7 @@ class LibraryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_library, container, false)
+        val view = inflater.inflate(R.layout.activity_main, container, false)
 
         // Initializing our variables with their IDs.
         loadingPB = view.findViewById(R.id.idLoadingPB)
@@ -43,7 +43,7 @@ class LibraryFragment : Fragment() {
         searchBtn.setOnClickListener {
             loadingPB.visibility = View.VISIBLE
             // Checking if our EditText field is empty.
-            if (searchEdt.text.toString().isEmpty()) {
+            if (searchEdt.text.toString().isNullOrEmpty()) {
                 searchEdt.error = "Please enter search query"
             } else {
                 // If the search query is not empty, we call the method to load books from the API.
@@ -54,63 +54,55 @@ class LibraryFragment : Fragment() {
     }
 
     private fun getBooksData(searchQuery: String) {
+        // Creating a new ArrayList.
         booksList = ArrayList()
+
+        // Initializing the variable for our request queue.
         mRequestQueue = Volley.newRequestQueue(requireContext())
+
+        // Clearing cache when our data is being updated.
         mRequestQueue.cache.clear()
 
+        // The URL for getting data from API in JSON format.
         val url = "https://www.googleapis.com/books/v1/volumes?q=$searchQuery"
 
+        // Creating a new request queue.
         val request = JsonObjectRequest(Request.Method.GET, url, null, { response ->
             loadingPB.visibility = View.GONE
+            // Extracting JSON data inside the onResponse method.
             try {
                 val itemsArray = response.getJSONArray("items")
                 for (i in 0 until itemsArray.length()) {
                     val itemsObj = itemsArray.getJSONObject(i)
                     val volumeObj = itemsObj.getJSONObject("volumeInfo")
-
-                    val id = volumeObj.optString("id", "N/A")
-                    val title = volumeObj.optString("title", "N/A")
-                    val subtitle = volumeObj.optString("subtitle", "N/A")
-                    val authors = volumeObj.optString("authors", "N/A")
-                    val publisher = volumeObj.optString("publisher", "N/A")
-                    val publishedDate = volumeObj.optString("publishedDate", "N/A")
-                    val description = volumeObj.optString("description", "N/A")
-                    val pageCount = volumeObj.optInt("pageCount", 0)  // Default to 0 if not present
-
+                    val id = itemsObj.optString("id")
+                    val title = volumeObj.optString("title")
+                    val subtitle = volumeObj.optString("subtitle")
+                    val author = volumeObj.optString("author")
+                    val publisher = volumeObj.optString("publisher")
+                    val publishedDate = volumeObj.optString("publishedDate")
+                    val description = volumeObj.optString("description")
+                    val pageCount = volumeObj.optInt("pageCount")
                     val imageLinks = volumeObj.optJSONObject("imageLinks")
-                    val thumbnail = imageLinks?.optString("thumbnail", "N/A") ?: "N/A"  // Default thumbnail if not present
+                    val thumbnail = imageLinks.optString("thumbnail")
+                    val previewLink = volumeObj.optString("previewLink")
+                    val infoLink = volumeObj.optString("infoLink")
 
-                    val previewLink = volumeObj.optString("previewLink", "N/A")
-                    val infoLink = volumeObj.optString("infoLink", "N/A")
-
-                    val saleInfoObj = itemsObj.optJSONObject("saleInfo")
-
-                    val bookInfo = BookModal(id, title, subtitle, authors, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink)
+                    val bookInfo = BookModal(id, title, subtitle, author, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink)
                     booksList.add(bookInfo)
                 }
-                setupRecyclerView()
+                // Setting up the RecyclerView.
+                val adapter = BookAdapter(booksList, requireContext())
+                val layoutManager = GridLayoutManager(context, 3)
+                val mRecyclerView = view?.findViewById<RecyclerView>(R.id.idRVBooks)
+                mRecyclerView?.layoutManager = layoutManager
+                mRecyclerView?.adapter = adapter
             } catch (e: Exception) {
-                Toast.makeText(context, "Error parsing book data.", Toast.LENGTH_SHORT).show()
                 e.printStackTrace()
             }
         }, { error ->
             Toast.makeText(context, "No books found..", Toast.LENGTH_SHORT).show()
         })
         mRequestQueue.add(request)
-    }
-
-    private fun setupRecyclerView() {
-        val adapter = BookAdapter(ArrayList(), book = BookModal("", "", "", "", "",
-            "", "", 0, "",
-            "", ""), ctx = requireContext()) { book ->
-            navigateToBookDetails(book)
-        }
-        binding.idRVBooks.layoutManager = GridLayoutManager(context, 3)
-        binding.idRVBooks.adapter = adapter
-    }
-
-    private fun navigateToBookDetails(book: BookModal) {
-        val action = LibraryFragmentDirections.actionLibraryFragmentToBookDetailsFragment()
-        findNavController().navigate(action)
     }
 }

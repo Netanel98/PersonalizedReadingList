@@ -84,7 +84,6 @@ class SettingsFragment : Fragment() {
                 binding.userName.text = user.displayName
             }
         }
-
         return binding.root
     }
 }
