@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.readingbooks.ui.themes.login.LoginFragment"
+        android:name="com.example.readingbooks.ui.themes.profile.LoginFragment"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_login" >
         <action
@@ -84,7 +84,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.readingbooks.ui.themes.signin.SignUpFragment"
+        android:name="com.example.readingbooks.ui.themes.profile.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -96,7 +96,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.example.readingbooks.EditProfileFragment"
+        android:name="com.example.readingbooks.ui.themes.profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" >
         <action

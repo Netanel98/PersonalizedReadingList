@@ -10,14 +10,12 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.example.readingbooks.R
 import com.example.readingbooks.data.UserDatabase
 import com.example.readingbooks.data.repositories.UserRepository
 import com.example.readingbooks.databinding.FragmentSettingsBinding
 import com.example.readingbooks.utils.ImageUtil
-import com.example.readingbooks.ui.themes.AuthViewModel
+import com.example.readingbooks.ui.themes.profile.AuthViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 
 class SettingsFragment : Fragment() {

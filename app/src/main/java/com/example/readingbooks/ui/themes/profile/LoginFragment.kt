@@ -1,4 +1,4 @@
-package com.example.readingbooks.ui.themes.login
+package com.example.readingbooks.ui.themes.profile
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -16,7 +16,6 @@ import com.example.readingbooks.R
 import com.example.readingbooks.data.UserDatabase
 import com.example.readingbooks.data.repositories.UserRepository
 import com.example.readingbooks.databinding.FragmentLoginBinding
-import com.example.readingbooks.ui.themes.AuthViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 

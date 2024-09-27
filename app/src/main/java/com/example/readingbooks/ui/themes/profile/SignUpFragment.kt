@@ -1,7 +1,6 @@
-package com.example.readingbooks.ui.themes.signin
+package com.example.readingbooks.ui.themes.profile
 
 import android.content.pm.ActivityInfo
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +26,6 @@ import com.google.firebase.storage.storage
 import android.util.Log
 import android.widget.ImageView
 import androidx.navigation.Navigation
-import com.example.readingbooks.ui.themes.AuthViewModel
 
 class SignUpFragment : Fragment() {
 

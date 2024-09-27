@@ -1,4 +1,4 @@
-package com.example.readingbooks
+package com.example.readingbooks.ui.themes.profile
 
 import android.content.pm.ActivityInfo
 import android.net.Uri
@@ -9,8 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -18,22 +16,18 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.navArgs
+import com.example.readingbooks.MainActivity
 import com.example.readingbooks.R
 import com.example.readingbooks.data.UserDatabase
 import com.example.readingbooks.data.repositories.UserRepository
 import com.example.readingbooks.databinding.FragmentEditProfileBinding
-import com.example.readingbooks.MainActivity
-import com.example.readingbooks.ui.themes.AuthViewModel
 import com.example.readingbooks.utils.ImageUtil
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.storage
-import com.example.readingbooks.EditProfileFragmentArgs
 
 class EditProfileFragment : Fragment() {
 
