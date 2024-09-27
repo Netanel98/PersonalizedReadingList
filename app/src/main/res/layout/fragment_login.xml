@@ -22,13 +22,12 @@
                 android:id="@+id/imageView"
                 android:layout_width="170dp"
                 android:layout_height="154dp"
+                android:layout_marginTop="100dp"
                 android:src="@drawable/magic_book"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="100dp" />
-            <?xml version="1.0" encoding="utf-8"?>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.example.readingbooks.views.CustomTextInput
                 android:id="@+id/email"
