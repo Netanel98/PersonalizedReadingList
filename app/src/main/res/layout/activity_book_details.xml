@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mybooks.BookDetailsFragment">
+    tools:context=".mybooks.BookDetailsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!--ImageModel view for displaying our book image-->
+            <!--Image view for displaying our book image-->
             <ImageView
                 android:id="@+id/idIVbook"
                 android:layout_width="130dp"
@@ -112,22 +113,18 @@
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:text="Preview"
-                android:textAllCaps="false"
-                android:backgroundTint="@color/yellow"/>
+                android:textAllCaps="false" />
 
-            <!--button for saving book in the list-->
+            <!--button for opening buying page of the book-->
             <Button
-                android:id="@+id/idBtnSave"
+                android:id="@+id/idBtnBuy"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:text="Save"
-                android:textAllCaps="false"
-                android:backgroundTint="@color/goldPink"/>
+                android:text="Buy"
+                android:textAllCaps="false" />
 
         </LinearLayout>
-
     </LinearLayout>
-
 </ScrollView>

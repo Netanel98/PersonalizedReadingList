@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/libraryFragment">
 
-    <fragment
-        android:id="@+id/bookDetailsFragment"
-        android:name="com.example.readingbooks.mybooks.BookDetailsFragment"
-        android:label="bookDetailsFragment"
-        tools:layout="@layout/fragment_book_details" >
-        <!--- fft
-        <action
-            android:id="@+id/action_bookDetailsFragment_to_libraryFragment"
-            app:destination="@id/libraryFragment" />
-        <action
-            android:id="@+id/action_bookDetailsFragment_to_bookListFragment"
-            app:destination="@id/bookListFragment" />
-        <action
-            android:id="@+id/action_bookDetailsFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-        <action
-            android:id="@+id/action_bookDetailsFragment_to_editProfileFragment"
-            app:destination="@id/editProfileFragment" />
-            -->
-    </fragment>
+    <!---
+        <fragment
+            android:id="@+id/bookDetailsFragment"
+            android:name="com.example.readingbooks.mybooks.BookDetailsFragment"
+            android:label="bookDetailsFragment"
+            tools:layout="@layout/fragment_bookls" >
+
+            <action
+                android:id="@+id/action_bookDetailsFragment_to_libraryFragment"
+                app:destination="@id/libraryFragment" />
+            <action
+                android:id="@+id/action_bookDetailsFragment_to_bookListFragment"
+                app:destination="@id/bookListFragment" />
+            <action
+                android:id="@+id/action_bookDetailsFragment_to_settingsFragment"
+                app:destination="@id/settingsFragment" />
+            <action
+                android:id="@+id/action_bookDetailsFragment_to_editProfileFragment"
+                app:destination="@id/editProfileFragment" />
+    </fragment>-->
+
     <fragment
         android:id="@+id/libraryFragment"
         android:name="com.example.readingbooks.LibraryFragment"

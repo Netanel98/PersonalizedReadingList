@@ -90,5 +90,3 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.selectedItemId = selectedItemId
     }
 }
-
-
