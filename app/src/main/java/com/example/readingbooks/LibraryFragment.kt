@@ -32,7 +32,7 @@ class LibraryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.activity_main, container, false)
+        val view = inflater.inflate(R.layout.fragment_library, container, false)
 
         // Initializing our variables with their IDs.
         loadingPB = view.findViewById(R.id.idLoadingPB)
