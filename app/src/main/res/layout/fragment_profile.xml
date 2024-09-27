@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.myapplication.ui.authScreens.profile.ProfileViewModel" />
+            type="com.example.readingbooks.ui.themes.profile.ProfileViewModel" />
     </data>
 
     <LinearLayout

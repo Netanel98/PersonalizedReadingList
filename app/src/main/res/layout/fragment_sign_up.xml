@@ -1,133 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.themes.profile.SignUpFragment">
+    tools:context=".ui.unAuthScreens.register.Register">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="170dp"
-        android:layout_height="154dp"
-        android:src="@drawable/magic_book"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="80dp" />
+    <data>
 
-    <TextView
-        android:id="@+id/imageEx"
-        android:layout_width="wrap_content"
-        android:fontFamily="@font/poppins"
-        android:layout_height="wrap_content"
-        android:text="@string/select_profile_picture"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        <variable
+            name="viewModel"
+            type="com.example.readingbooks.ui.themes.profile.SignUpViewModel" />
+    </data>
 
-    <EditText
-        android:id="@+id/etName"
-        android:fontFamily="@font/poppins"
-        android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="50dp"
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageEx" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <EditText
-        android:fontFamily="@font/poppins"
-        android:id="@+id/etEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="50dp"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etName" />
+        <com.example.readingbooks.views.ImagePicker
+            android:id="@+id/image_view"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:contentDescription="@string/uploaded_image"
+            android:src="@drawable/add_image" />
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="0dp"
-        android:fontFamily="@font/poppins"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="50dp"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        <com.example.readingbooks.views.CustomTextInput
+            android:id="@+id/first_name"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/firstName"
+            android:text="@={viewModel.firstName}"
+            app:helperText="@{viewModel.isFirstNameValid ? null : @string/name_error}"
+            app:helperTextEnabled="@{!viewModel.isFirstNameValid}"
+            app:helperTextTextColor="@color/design_default_color_error" />
 
-    <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/sign_up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        android:fontFamily="@font/poppins"
-        android:backgroundTint="@color/blue"/>
+        <com.example.readingbooks.views.CustomTextInput
+            android:id="@+id/last_name"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/lastName"
+            android:text="@={viewModel.lastName}"
+            app:helperText="@{viewModel.isLastNameValid() ? null : @string/name_error}"
+            app:helperTextEnabled="@{!viewModel.isLastNameValid()}"
+            app:helperTextTextColor="@color/design_default_color_error" />
 
-    <TextView
-        android:id="@+id/line"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignUp"
-        android:layout_marginTop="20dp"
-        android:textColor="#979696"
-        android:fontFamily="@font/poppins"/>
+        <com.example.readingbooks.views.CustomTextInput
+            android:id="@+id/email"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:text="@={viewModel.email}"
+            app:helperText="@{ viewModel.isEmailValid() ? null : @string/email_error}"
+            app:helperTextEnabled="@{!viewModel.isEmailValid()}"
+            app:helperTextTextColor="@color/design_default_color_error" />
 
-    <Button
-        android:id="@+id/signUp_to_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:text="@string/login_link"
-        android:textColor="#979696"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:fontFamily="@font/poppins"
-        app:layout_constraintTop_toBottomOf="@+id/line" />
+        <com.example.readingbooks.views.CustomTextInput
+            android:id="@+id/password"
+            endiconMode="password_toggle"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:text="@={viewModel.password}"
+            app:helperText="@{viewModel.isPasswordValid() ? null :@string/password_error}"
+            app:helperTextEnabled="@{!viewModel.isPasswordValid()}"
+            app:helperTextTextColor="@color/design_default_color_error" />
 
-    <ProgressBar
-        android:id="@+id/register_progress"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_centerInParent="true"
-        android:indeterminateTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSignUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnSignUp"
-        android:visibility="invisible"/>
+        <com.example.readingbooks.views.CustomTextInput
+            android:id="@+id/confirm_password"
+            endiconMode="password_toggle"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
+            android:text="@={viewModel.confirmPassword}"
+            app:helperText="@{ viewModel.isConfirmPasswordValid() ? null : @string/confirm_password_error}"
+            app:helperTextEnabled="@{!viewModel.isConfirmPasswordValid()}"
+            app:helperTextTextColor="@color/design_default_color_error" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"
+            android:textSize="20sp" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_bar"
+            style="@style/Widget.MaterialComponents.CircularProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/login_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_link"
+            android:textColor="?attr/colorPrimary" />
+    </LinearLayout>
+</layout>

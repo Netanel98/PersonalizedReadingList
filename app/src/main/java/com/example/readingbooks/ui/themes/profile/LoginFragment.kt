@@ -1,23 +1,22 @@
 package com.example.readingbooks.ui.themes.profile
 
-import android.content.pm.ActivityInfo
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import com.example.readingbooks.MainActivity
+import android.widget.Button
+import android.widget.ProgressBar
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.readingbooks.R
-import com.example.readingbooks.data.UserDatabase
-import com.example.readingbooks.data.repositories.UserRepository
 import com.example.readingbooks.databinding.FragmentLoginBinding
+import com.example.readingbooks.utils.BasicAlert
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 
 class LoginFragment : Fragment() {
 
@@ -25,89 +24,85 @@ class LoginFragment : Fragment() {
         fun newInstance() = LoginFragment()
     }
 
-    private lateinit var binding: FragmentLoginBinding
+    private val viewModel: LoginViewModel by viewModels()
+    private lateinit var registerLink: View
+    private lateinit var loginButton: Button
+    private lateinit var progressBar: ProgressBar
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val firestoreDb: FirebaseFirestore = FirebaseFirestore.getInstance()
-        val firestoreAuth: FirebaseAuth = FirebaseAuth.getInstance()
-        val userRepository = UserRepository(firestoreDb, firestoreAuth, UserDatabase.getDatabase(requireContext()).userDao())
-
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
-
-        viewModel = ViewModelProvider(
-            this,
-            AuthViewModel.AuthModelFactory(userRepository)
-        )[AuthViewModel::class.java]
-
-        binding.loginToSignUp.setOnClickListener {
-            Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_signUpFragment)
+        val binding: FragmentLoginBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_login, container, false
+        )
+        bindViews(binding)
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            findNavController().navigate(R.id.action_loginFragment_to_libraryFragment)
         }
-
-
-        mainActivity.hideNavBar()
-
-        binding.btnLogIn.setOnClickListener {
-            if(validation()) {
-                viewModel.login(
-                    email = binding.etEmail.text.toString(),
-                    password = binding.etPassword.text.toString()
-                ) { errorMessage ->
-                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-
-        viewModel.loginSuccessfull.observe(viewLifecycleOwner, Observer { isSuccess ->
-            if (isSuccess) {
-                mainActivity.displayNavBar()
-                Navigation.findNavController(requireView()).popBackStack(R.id.libraryFragment,false)
-            } else {
-                Toast.makeText(requireContext(), "Couldn't log you in", Toast.LENGTH_SHORT).show()
-            }
-        })
-
-        viewModel.loading.observe(viewLifecycleOwner, Observer { isLoading ->
-            if (isLoading) {
-                binding.registerProgress.isVisible = true
-                binding.btnLogIn.text = ""
-            } else {
-                binding.registerProgress.isVisible = false
-                binding.btnLogIn.text = getString(R.string.login)
-            }
-        })
+        setupRegisterLink(binding)
+        setupLoginButton(binding)
 
         return binding.root
     }
-    private lateinit var viewModel: AuthViewModel
-    private val mainActivity: MainActivity
-        get() = activity as MainActivity
 
-    fun validation(): Boolean {
-        val email = binding.etEmail.text
-        val password = binding.etPassword.text
-
-        if (email.isNullOrEmpty()){
-            Toast.makeText(requireContext(), getString(R.string.email), Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        if (password.isNullOrEmpty()){
-            Toast.makeText(requireContext(), getString(R.string.password), Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        return true
+    private fun bindViews(binding: FragmentLoginBinding) {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
-    override fun onResume() {
-        super.onResume()
-        getActivity()?.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    private fun setupRegisterLink(binding: FragmentLoginBinding) {
+        registerLink = binding.root.findViewById(R.id.sign_up_link)
+        registerLink.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
+        }
     }
 
-    override fun onPause() {
-        super.onPause()
-        getActivity()?.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
+    private fun setupLoginButton(binding: FragmentLoginBinding) {
+        loginButton = binding.root.findViewById(R.id.login_button)
+        progressBar = binding.root.findViewById(R.id.progress_bar)
+
+
+        loginButton.setOnClickListener {
+            showProgressBar()
+            viewModel.login({ onLoginSuccess() }, { error -> onLoginFailure(error) })
+        }
+    }
+
+    private fun onLoginSuccess() {
+        BasicAlert("Login", "Login Successful", requireContext()).show()
+    }
+
+    private fun onLoginFailure(error: Exception?) {
+        if (error == null) {
+            showLoginButton()
+            return
+        }
+
+        Log.e("Login", "Error signing in user", error)
+        handleLoginError(error)
+        showLoginButton()
+    }
+
+    private fun handleLoginError(error: Exception) {
+        when (error) {
+            is FirebaseAuthInvalidUserException, is FirebaseAuthInvalidCredentialsException -> {
+                BasicAlert("Login Error", "User not found", requireContext()).show()
+            }
+
+            else -> {
+                BasicAlert("Login Error", "An error occurred", requireContext()).show()
+            }
+        }
+    }
+
+    private fun showLoginButton() {
+        loginButton.visibility = View.VISIBLE
+        progressBar.visibility = View.GONE
+    }
+
+    private fun showProgressBar() {
+        loginButton.visibility = View.GONE
+        progressBar.visibility = View.VISIBLE
     }
 }
