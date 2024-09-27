@@ -6,34 +6,10 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/libraryFragment">
 
-    <!---
-        <fragment
-            android:id="@+id/bookDetailsFragment"
-            android:name="com.example.readingbooks.mybooks.BookDetailsFragment"
-            android:label="bookDetailsFragment"
-            tools:layout="@layout/fragment_bookls" >
-
-            <action
-                android:id="@+id/action_bookDetailsFragment_to_libraryFragment"
-                app:destination="@id/libraryFragment" />
-            <action
-                android:id="@+id/action_bookDetailsFragment_to_bookListFragment"
-                app:destination="@id/bookListFragment" />
-            <action
-                android:id="@+id/action_bookDetailsFragment_to_settingsFragment"
-                app:destination="@id/settingsFragment" />
-            <action
-                android:id="@+id/action_bookDetailsFragment_to_editProfileFragment"
-                app:destination="@id/editProfileFragment" />
-    </fragment>-->
-
     <fragment
         android:id="@+id/libraryFragment"
         android:name="com.example.readingbooks.LibraryFragment"
         android:label="libraryFragment" >
-        <action
-            android:id="@+id/action_libraryFragment_to_bookDetailsFragment"
-            app:destination="@id/bookDetailsFragment" />
         <action
             android:id="@+id/action_libraryFragment_to_bookListFragment"
             app:destination="@id/bookListFragment" />
@@ -52,9 +28,6 @@
         <action
             android:id="@+id/action_bookListFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
-        <action
-            android:id="@+id/action_bookListFragment_to_bookDetailsFragment"
-            app:destination="@id/bookDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -106,12 +79,6 @@
         <action
             android:id="@+id/action_editProfileFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
-        <action
-            android:id="@+id/action_editProfileFragment_to_libraryFragment"
-            app:destination="@id/libraryFragment" />
-        <action
-            android:id="@+id/action_editProfileFragment_to_bookListFragment"
-            app:destination="@id/bookListFragment" />
         <argument
             android:name="name"
             app:argType="string" />

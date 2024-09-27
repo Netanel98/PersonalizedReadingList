@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/editProfileFragment"
-        android:enabled="true"
-        android:icon="@drawable/profile_nav_icon"
-        android:title="@string/profile" />
-    <item
         android:id="@+id/libraryFragment"
         android:enabled="true"
-        android:icon="@drawable/library_icon"
+        android:icon="@drawable/book_24dp_5f6368_fill0_wght400_grad0_opsz24"
         android:title="@string/library" />
     <item
         android:id="@+id/booksListFragment"
         android:enabled="true"
         android:icon="@drawable/my_list_icon"
         android:title="@string/my_books_list" />
-    <item android:id="@+id/settingsFragment"
+    <item
+        android:id="@+id/settingsFragment"
         android:icon="@drawable/settings"
         android:title="@string/settings"/>
 

@@ -16,7 +16,8 @@ class BookAdapter(
     // on below line we are passing variables
     // as course list and context
     private var bookList: ArrayList<BookModal>,
-    private var ctx: Context
+    private var ctx: Context,
+    private val itemClickListener: (BookModal) -> Unit
 ) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -51,7 +52,7 @@ class BookAdapter(
         holder.itemView.setOnClickListener {
             // inside on click listener method we are calling a new activity
             // and passing all the data of that item in next intent.
-            val i = Intent(ctx, BookDetailsFragment::class.java)
+            val i = Intent(ctx, BookDetailsActivity::class.java)
             i.putExtra("title", bookInfo.title)
             i.putExtra("subtitle", bookInfo.subtitle)
             i.putExtra("authors", bookInfo.author)
@@ -67,6 +68,7 @@ class BookAdapter(
             // starting our new intent.
             ctx.startActivity(i)
         }
+        holder.bind(bookInfo, itemClickListener)
     }
 
     override fun getItemCount(): Int {
@@ -79,5 +81,10 @@ class BookAdapter(
         val bookTitleTV: TextView = itemView.findViewById(R.id.idTVBookName)
         val bookPagesTV: TextView = itemView.findViewById(R.id.idTVBookPages)
         val bookIV: ImageView = itemView.findViewById(R.id.idIVBook)
+
+        fun bind(book: BookModal, clickListener: (BookModal) -> Unit) {
+            // Bind data to itemView here
+            itemView.setOnClickListener { clickListener(book) }
+        }
     }
 }
