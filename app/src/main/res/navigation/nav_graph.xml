@@ -7,6 +7,11 @@
     app:startDestination="@id/libraryFragment">
 
     <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.readingbooks.ui.themes.profile.Profile"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
         android:id="@+id/libraryFragment"
         android:name="com.example.readingbooks.LibraryFragment"
         android:label="libraryFragment" >
