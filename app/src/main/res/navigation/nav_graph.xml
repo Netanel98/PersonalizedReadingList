@@ -10,6 +10,7 @@
         android:name="com.example.readingbooks.mybooks.BookDetailsFragment"
         android:label="bookDetailsFragment"
         tools:layout="@layout/fragment_book_details" >
+        <!--- fft
         <action
             android:id="@+id/action_bookDetailsFragment_to_libraryFragment"
             app:destination="@id/libraryFragment" />
@@ -22,6 +23,7 @@
         <action
             android:id="@+id/action_bookDetailsFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+            -->
     </fragment>
     <fragment
         android:id="@+id/libraryFragment"
@@ -49,7 +51,7 @@
             android:id="@+id/action_bookListFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_bookListFragment_to_bookDetailsActivity"
+            android:id="@+id/action_bookListFragment_to_bookDetailsFragment"
             app:destination="@id/bookDetailsFragment" />
     </fragment>
     <fragment
