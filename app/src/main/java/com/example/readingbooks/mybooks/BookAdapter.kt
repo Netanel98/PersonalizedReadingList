@@ -17,7 +17,7 @@ class BookAdapter(
     // as course list and context
     private var bookList: ArrayList<BookModal>,
     private var ctx: Context,
-    private val navigateToDetails: (String) -> Unit
+    private val navigateToDetails: (BookModal) -> Unit
 ) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -51,7 +51,7 @@ class BookAdapter(
 
         // below line is use to add on click listener for our item of recycler view.
         holder.itemView.setOnClickListener {
-            navigateToDetails(bookInfo.id)
+            navigateToDetails(bookInfo)
         }
     }
 
