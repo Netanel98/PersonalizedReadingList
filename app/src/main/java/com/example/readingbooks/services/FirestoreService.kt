@@ -8,9 +8,9 @@ class FirestoreService {
     private val db = FirebaseFirestore.getInstance()
 
     // Add a book to Firestore and return the document ID
-    suspend fun addBook(book: BookModal): String {
-        val document = db.collection("books").add(book).await()
-        return document.id  // Return the new document ID
+    fun addBook(book: BookModal): String {
+        val document = db.collection("books").add(book)
+        return document.toString()
     }
 
     // Update a book in Firestore

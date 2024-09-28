@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.readingbooks.R
-import com.example.readingbooks.mybooks.listbooks.MyBookListViewModel
+import com.example.readingbooks.data.repositories.BookRepository
 
 class BookDetailsActivity : AppCompatActivity() {
 
@@ -26,9 +26,8 @@ class BookDetailsActivity : AppCompatActivity() {
     lateinit var previewBtn: Button
     lateinit var saveBtn: Button
     lateinit var closeBtn: TextView
-//    lateinit var buyBtn: Button
     lateinit var bookIV: ImageView
-    private lateinit var ViewModel: MyBookListViewModel
+    private lateinit var bookRepository: BookRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +44,6 @@ class BookDetailsActivity : AppCompatActivity() {
         previewBtn = findViewById(R.id.idBtnPreview)
         saveBtn = findViewById(R.id.idBtnSave)
         closeBtn = findViewById(R.id.idBtnClose)
-//        buyBtn = findViewById(R.id.idBtnBuy)
         bookIV = findViewById(R.id.idIVbook)
 
         // getting the data which we have passed from our adapter class.
@@ -58,8 +56,6 @@ class BookDetailsActivity : AppCompatActivity() {
         val pageCount = intent.getIntExtra("pageCount", 0)
         val thumbnail = intent.getStringExtra("thumbnail")
         val previewLink = intent.getStringExtra("previewLink")
-//        val infoLink = intent.getStringExtra("infoLink")
-//        val buyLink = intent.getStringExtra("buyLink")
 
         // setting the data to our text views and image view.
         titleTV.text = title
@@ -76,7 +72,7 @@ class BookDetailsActivity : AppCompatActivity() {
             .apply(RequestOptions.placeholderOf(R.drawable.placeholder).error(R.drawable.error))
             .into(bookIV)
 
-        // adding on click listener for our preview button.
+        // click listener for our preview button.
         previewBtn.setOnClickListener {
             if (previewLink.isNullOrEmpty()) {
                 Toast.makeText(this, "No preview Link present", Toast.LENGTH_SHORT).show()
@@ -86,42 +82,33 @@ class BookDetailsActivity : AppCompatActivity() {
                 startActivity(i)
             }
         }
+
+        // click listener for save button
         saveBtn.setOnClickListener {
             // Logic to save the book to the database or however you manage your list
-            saveBook()
-            Toast.makeText(this, "Book saved!", Toast.LENGTH_SHORT).show()
+            val book = BookModal(
+                id = "", // Generate or fetch an ID if necessary
+                title = titleTV.text.toString(),
+                subtitle = subtitleTV.text.toString(),
+                author = authorTV.text.toString(),
+                publisher = publisherTV.text.toString(),
+                publishedDate = publisherDateTV.text.toString(),
+                description = descTV.text.toString(),
+                pageCount = pageTV.text.toString().toInt(),
+                thumbnail = "", // Fetch if needed
+                previewLink = "", // Fetch if needed
+                infoLink = ""  // Fetch if needed
+            )
+            saveBook(book)
         }
 
         // Implement the close action
         closeBtn.setOnClickListener {
             finish() // This will close the current activity and go back
         }
-        // adding click listener for buy button
-//        buyBtn.setOnClickListener {
-//            if (buyLink.isNullOrEmpty()) {
-//                Toast.makeText(this, "No buy page present for this book", Toast.LENGTH_SHORT).show()
-//            } else {
-//                val uri = Uri.parse(buyLink)
-//                val i = Intent(Intent.ACTION_VIEW, uri)
-//                startActivity(i)
-//            }
-//        }
     }
-    private fun saveBook() {
-        val book = BookModal(
-            id = "", // Generate or fetch an ID if necessary
-            title = titleTV.text.toString(),
-            subtitle = subtitleTV.text.toString(),
-            author = authorTV.text.toString(), // Modify as needed
-            publisher = publisherTV.text.toString(),
-            publishedDate = publisherDateTV.text.toString(),
-            description = descTV.text.toString(),
-            pageCount = pageTV.text.toString().toInt(),
-            thumbnail = "", // Fetch if needed
-            previewLink = "", // Fetch if needed
-            infoLink = ""  // Fetch if needed
-        )
-        // Assuming there's a static way to access the ViewModel or repository, which needs setup
-        ViewModel.addBook(book) // You may need to adjust this part according to your architecture
+    private fun saveBook(book: BookModal) {
+        bookRepository.addBook(book)
+        Toast.makeText(this, "Book saved to your list!", Toast.LENGTH_SHORT).show()
     }
 }

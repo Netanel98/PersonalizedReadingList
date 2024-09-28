@@ -18,7 +18,7 @@ interface BookDao {
 
     // Adjusted to use REPLACE strategy for consistency with MovieDao
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllBooks(book: BookModal)
+    fun insertAllBooks(book: BookModal)
 
     @Delete
     fun deleteBook(book: BookModal)
