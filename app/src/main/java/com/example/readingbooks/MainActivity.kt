@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
 
         if (intent.hasExtra("openFragment") && intent.getStringExtra("openFragment") == "BookList") {
             showMyBookListFragment()
+        } else {
+            navigateToLibraryFragment()  // Add this method to navigate to the Library Fragment
         }
     }
 
@@ -76,8 +78,12 @@ class MainActivity : AppCompatActivity() {
         return navHost.navController
     }
 
+    private fun navigateToLibraryFragment() {
+        // Navigate to Library Fragment as the default screen
+        getNavController().navigate(R.id.libraryFragment)
+    }
+
     private fun showMyBookListFragment() {
-        // Assume NavController setup is correct
         findNavController(R.id.nav_host_fragment).navigate(R.id.MyBookListFragment)
     }
 }

@@ -17,7 +17,6 @@ class BookAdapter(
     // as course list and context
     private var bookList: ArrayList<BookModal>,
     private var ctx: Context,
-    private val navigateToDetails: (BookModal) -> Unit
 ) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -51,7 +50,22 @@ class BookAdapter(
 
         // below line is use to add on click listener for our item of recycler view.
         holder.itemView.setOnClickListener {
-            navigateToDetails(bookInfo)
+            // inside on click listener method we are calling a new activity
+            // and passing all the data of that item in next intent.
+            val i = Intent(ctx, BookDetailsActivity::class.java)
+            i.putExtra("title", bookInfo.title)
+            i.putExtra("subtitle", bookInfo.subtitle)
+            i.putExtra("authors", bookInfo.author)
+            i.putExtra("publisher", bookInfo.publisher)
+            i.putExtra("publishedDate", bookInfo.publishedDate)
+            i.putExtra("description", bookInfo.description)
+            i.putExtra("pageCount", bookInfo.pageCount)
+            i.putExtra("thumbnail", bookInfo.thumbnail)
+            i.putExtra("previewLink", bookInfo.previewLink)
+            i.putExtra("infoLink", bookInfo.infoLink)
+            // after passing that data we are
+            // starting our new  intent.
+            ctx.startActivity(i)
         }
     }
 
