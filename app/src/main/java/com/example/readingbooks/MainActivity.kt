@@ -21,47 +21,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        localDb = AppDatabase.getDatabase(applicationContext)
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+
+        localDb = AppDatabase.getDatabase(applicationContext)
+        navigationMenu = findViewById(R.id.bottom_navigation)
+        setupNavigationMenu()
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        navigationMenu = findViewById(R.id.bottom_navigation)
 
-        if (FirebaseAuth.getInstance().currentUser != null) {
-            navigationMenu.visibility = View.VISIBLE
+        if (intent.hasExtra("openFragment") && intent.getStringExtra("openFragment") == "BookList") {
+            showMyBookListFragment()
         }
-        setupNavigationMenu()
     }
 
     private fun setupNavigationMenu() {
         val navController = getNavController()
-        navigationMenu = findViewById(R.id.bottom_navigation)
-
-        // check for extras to determine which fragment to display
-        if (intent.hasExtra("openFragment") && intent.getStringExtra("openFragment") == "BookList") {
-            // Assume you have a method or logic to show MyBookListFragment
-            showMyBookListFragment()
-        }
-
-        FirebaseAuth.getInstance().addAuthStateListener { auth ->
-            if (auth.currentUser == null) {
-                navigationMenu.visibility = View.GONE
-                navController.navigate(R.id.loginFragment)
-            } else {
-                navigationMenu.visibility = View.VISIBLE
-                navigationMenu.selectedItemId = R.id.libraryFragment
-            }
-        }
         navigationMenu.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.profileFragment -> {
                     navController.navigate(R.id.profileFragment)
                     true
                 }
-
                 R.id.libraryFragment -> {
                     navController.navigate(R.id.libraryFragment)
                     true
@@ -71,6 +55,17 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 else -> false
+            }
+        }
+
+        FirebaseAuth.getInstance().addAuthStateListener { auth ->
+            if (auth.currentUser == null) {
+                navigationMenu.visibility = View.GONE
+                navController.navigate(R.id.loginFragment)
+            } else {
+                navigationMenu.visibility = View.VISIBLE
+                // Make sure the initial selected item doesn't trigger unnecessary navigation:
+                navigationMenu.selectedItemId = R.id.libraryFragment
             }
         }
     }
