@@ -20,8 +20,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="170dp"
-                android:layout_height="154dp"
+                android:layout_width="230dp"
+                android:layout_height="235dp"
                 android:layout_marginTop="100dp"
                 android:src="@drawable/magic_book"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="?attr/colorPrimary"
+                android:backgroundTint="@color/blue"
                 android:text="@string/login"
                 android:textColor="?attr/colorOnPrimary" />
 
@@ -76,7 +76,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up_link"
-                android:textColor="?attr/colorPrimary" />
-
+                android:textColor="@color/ligthBlue" />
         </LinearLayout>
 </layout>

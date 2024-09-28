@@ -83,6 +83,7 @@
             android:id="@+id/register_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:text="@string/sign_up"
             android:textSize="20sp" />
 
@@ -100,6 +101,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_link"
-            android:textColor="?attr/colorPrimary" />
+            android:textColor="@color/ligthBlue" />
     </LinearLayout>
 </layout>
