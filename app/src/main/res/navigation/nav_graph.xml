@@ -10,22 +10,31 @@
         android:id="@+id/profileFragment"
         android:name="com.example.readingbooks.ui.themes.profile.Profile"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+    <action
+        android:id="@+id/action_profileFragment_to_libraryFragment"
+        app:destination="@id/libraryFragment" />
+    <action
+        android:id="@+id/action_profileFragment_to_MyBookListFragment"
+        app:destination="@id/MyBookListFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/libraryFragment"
         android:name="com.example.readingbooks.LibraryFragment"
         android:label="libraryFragment" >
         <action
-            android:id="@+id/action_libraryFragment_to_bookListFragment"
-            app:destination="@id/bookListFragment" />
+            android:id="@+id/action_libraryFragment_to_MyBookListFragment"
+            app:destination="@id/MyBookListFragment" />
         <action
             android:id="@+id/action_libraryFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/bookListFragment"
+        android:id="@+id/MyBookListFragment"
         android:name="com.example.readingbooks.mybooks.listbooks.MyBookListFragment"
-        android:label="bookListFragment"
+        android:label="MyBookListFragment"
         tools:layout="@layout/fragment_book_list" >
         <action
             android:id="@+id/action_bookListFragment_to_libraryFragment"
@@ -34,6 +43,7 @@
             android:id="@+id/action_bookListFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.readingbooks.ui.themes.profile.LoginFragment"
@@ -46,6 +56,7 @@
             android:id="@+id/action_loginFragment_to_libraryFragment"
             app:destination="@id/libraryFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.readingbooks.ui.themes.profile.SignUpFragment"

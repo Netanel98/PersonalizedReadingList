@@ -5,7 +5,6 @@
     tools:context=".ui.themes.profile.Profile">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.readingbooks.ui.themes.profile.ProfileViewModel" />
