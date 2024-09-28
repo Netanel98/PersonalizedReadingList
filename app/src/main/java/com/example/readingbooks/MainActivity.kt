@@ -1,6 +1,5 @@
 package com.example.readingbooks
 
-
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -41,6 +40,12 @@ class MainActivity : AppCompatActivity() {
         val navController = getNavController()
         navigationMenu = findViewById(R.id.bottom_navigation)
 
+        // check for extras to determine which fragment to display
+        if (intent.hasExtra("openFragment") && intent.getStringExtra("openFragment") == "BookList") {
+            // Assume you have a method or logic to show MyBookListFragment
+            showMyBookListFragment()
+        }
+
         FirebaseAuth.getInstance().addAuthStateListener { auth ->
             if (auth.currentUser == null) {
                 navigationMenu.visibility = View.GONE
@@ -61,9 +66,8 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.libraryFragment)
                     true
                 }
-
-                R.id.booksListFragment -> {
-                    navController.navigate(R.id.booksListFragment)
+                R.id.MyBookListFragment -> {
+                    navController.navigate(R.id.MyBookListFragment)
                     true
                 }
                 else -> false
@@ -75,5 +79,10 @@ class MainActivity : AppCompatActivity() {
         val navHost =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         return navHost.navController
+    }
+
+    private fun showMyBookListFragment() {
+        // Assume NavController setup is correct
+        findNavController(R.id.nav_host_fragment).navigate(R.id.MyBookListFragment)
     }
 }

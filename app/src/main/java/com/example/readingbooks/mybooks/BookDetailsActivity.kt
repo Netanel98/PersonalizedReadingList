@@ -1,4 +1,5 @@
 package com.example.readingbooks.mybooks
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.readingbooks.MainActivity
 import com.example.readingbooks.R
 import com.example.readingbooks.data.repositories.BookRepository
 
@@ -110,5 +112,13 @@ class BookDetailsActivity : AppCompatActivity() {
     private fun saveBook(book: BookModal) {
         bookRepository.addBook(book)
         Toast.makeText(this, "Book saved to your list!", Toast.LENGTH_SHORT).show()
+
+        // Start MainActivity with a flag to open MyBookListFragment
+        val intent = Intent(this, MainActivity::class.java).apply {
+            putExtra("openFragment", "BookList")
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        startActivity(intent)
+        finish()
     }
 }
