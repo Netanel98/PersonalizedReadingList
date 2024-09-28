@@ -1,4 +1,4 @@
-package com.example.readingbooks.ui.themes.profile
+package com.example.readingbooks.ui.profile
 
 import android.os.Bundle
 import android.util.Log

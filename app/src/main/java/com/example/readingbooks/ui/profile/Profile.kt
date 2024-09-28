@@ -1,4 +1,4 @@
-package com.example.readingbooks.ui.themes.profile
+package com.example.readingbooks.ui.profile
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri

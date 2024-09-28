@@ -1,4 +1,4 @@
-package com.example.readingbooks.ui.themes.profile
+package com.example.readingbooks.ui.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

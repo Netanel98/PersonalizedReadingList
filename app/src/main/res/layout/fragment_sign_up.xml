@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.readingbooks.ui.themes.profile.SignUpViewModel" />
+            type="com.example.readingbooks.ui.profile.SignUpViewModel" />
     </data>
 
     <LinearLayout

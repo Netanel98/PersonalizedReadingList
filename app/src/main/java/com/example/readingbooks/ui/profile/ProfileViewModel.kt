@@ -1,4 +1,4 @@
-package com.example.readingbooks.ui.themes.profile
+package com.example.readingbooks.ui.profile
 
 
 import android.util.Log
@@ -11,7 +11,6 @@ import com.example.readingbooks.utils.Validator
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class ProfileViewModel(private val userRepository: UserRepository) : ViewModel() {

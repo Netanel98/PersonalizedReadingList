@@ -9,7 +9,7 @@
 
             <variable
                 name="viewModel"
-                type="com.example.readingbooks.ui.themes.profile.LoginViewModel" />
+                type="com.example.readingbooks.ui.profile.LoginViewModel" />
         </data>
 
         <LinearLayout
