@@ -95,16 +95,16 @@ class LibraryFragment : Fragment() {
     private fun setupRecyclerView() {
         val adapter = BookAdapter(booksList, requireContext()) { book ->
             val intent = Intent(activity, BookDetailsActivity::class.java).apply {
-                putExtra("title", book.title)
-                putExtra("subtitle", book.subtitle)
-                putExtra("authors", book.author)
-                putExtra("publisher", book.publisher)
-                putExtra("publishedDate", book.publishedDate)
-                putExtra("description", book.description)
-                putExtra("pageCount", book.pageCount)
-                putExtra("thumbnail", book.thumbnail)
-                putExtra("previewLink", book.previewLink)
-                putExtra("infoLink", book.infoLink)
+//                putExtra("title", book.title)
+//                putExtra("subtitle", book.subtitle)
+//                putExtra("authors", book.author)
+//                putExtra("publisher", book.publisher)
+//                putExtra("publishedDate", book.publishedDate)
+//                putExtra("description", book.description)
+//                putExtra("pageCount", book.pageCount)
+//                putExtra("thumbnail", book.thumbnail)
+//                putExtra("previewLink", book.previewLink)
+//                putExtra("infoLink", book.infoLink)
                 // add all other necessary extras
             }
             startActivity(intent)
