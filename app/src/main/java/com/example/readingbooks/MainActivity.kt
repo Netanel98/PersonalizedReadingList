@@ -66,11 +66,6 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.booksListFragment)
                     true
                 }
-                R.id.settingsFragment -> {
-                    navController.navigate(R.id.settingsFragment)
-                    true
-                }
-
                 else -> false
             }
         }
