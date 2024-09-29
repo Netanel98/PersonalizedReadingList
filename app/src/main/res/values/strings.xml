@@ -55,4 +55,6 @@
     <string name="select_profile_picture">Select Your Profile Picture</string>
     <string name="return_books">Cancel aading a book</string>
     <string name="buy_link">Buy Link</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
 </resources>

@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.readingbooks.MainActivity
 import com.example.readingbooks.R
 import com.example.readingbooks.data.repositories.BookRepository
 
