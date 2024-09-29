@@ -10,6 +10,7 @@ composeBom = "2024.09.02"
 compose = "1.5.15"
 navigation = "2.8.1"
 navigationDynamicFeaturesFragment = "2.8.1"
+picasso = "2.71828"
 room = "2.7.0-alpha08"
 agp = "8.5.2"
 converterGson = "2.11.0"
@@ -75,6 +76,7 @@ androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", ve
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebaseStorageKtx" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converterGson" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompilerVersion" }

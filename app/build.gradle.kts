@@ -112,6 +112,7 @@ dependencies {
     ksp(libs.room.compiler)
 
     implementation(libs.volley)
+    implementation (libs.picasso)
 
 }
 
