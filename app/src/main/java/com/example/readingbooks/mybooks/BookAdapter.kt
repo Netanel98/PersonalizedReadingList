@@ -23,15 +23,12 @@ class BookAdapter(
         parent: ViewGroup,
         viewType: Int
     ): BookAdapter.BookViewHolder {
-        // this method is use to inflate the layout file
-        // which we have created for our recycler view.
-        // on below line we are inflating our layout file.
+
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.item_book,
             parent, false
         )
-        // at last we are returning our view holder
-        // class with our item View File.
+
         return BookAdapter.BookViewHolder(itemView)
     }
 
@@ -45,7 +42,6 @@ class BookAdapter(
             .into(holder.bookIV)
 
         holder.bookTitleTV.text = bookInfo.title
-        holder.bookAuthorTV.text = "Written By: " + bookInfo.author
         holder.bookPagesTV.text = "Pages: " + bookInfo.pageCount
 
         // below line is use to add on click listener for our item of recycler view.
@@ -63,8 +59,7 @@ class BookAdapter(
             i.putExtra("thumbnail", bookInfo.thumbnail)
             i.putExtra("previewLink", bookInfo.previewLink)
             i.putExtra("infoLink", bookInfo.infoLink)
-            // after passing that data we are
-            // starting our new  intent.
+
             ctx.startActivity(i)
         }
     }
@@ -74,11 +69,9 @@ class BookAdapter(
     }
 
     class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // on below line we are initializing our
-        // course name text view and our image view.
+
         val bookTitleTV: TextView = itemView.findViewById(R.id.idTVBookName)
         val bookPagesTV: TextView = itemView.findViewById(R.id.idTVBookPages)
         val bookIV: ImageView = itemView.findViewById(R.id.idIVBook)
-        val bookAuthorTV: TextView = itemView.findViewById(R.id.idTVAuthor)
     }
 }
