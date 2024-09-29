@@ -11,11 +11,12 @@ import com.example.readingbooks.data.dao.UserDao
 import com.example.readingbooks.models.ImageModel
 import com.example.readingbooks.models.User
 
-@Database(entities = [User::class, BookModal::class, ImageModel::class], version = 1, exportSchema = false)
+@Database(entities = [User::class, BookModal::class, ImageModel::class, Review::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun BookDao(): BookDao
     abstract fun UserDao(): UserDao
     abstract fun ImageDao(): ImageDao
+    abstract fun ReviewDao(): ReviewDao
 
     companion object {
         @Volatile

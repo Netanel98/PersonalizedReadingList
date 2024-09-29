@@ -16,6 +16,9 @@ interface BookDao {
     @Query("SELECT * FROM books WHERE title LIKE :searchQuery OR author LIKE :searchQuery")
     fun searchBooks(searchQuery: String?): LiveData<List<BookModal>>
 
+    @Query("SELECT * FROM books WHERE id = :movieId")
+    fun getBookById(bookId: Int): BookModal
+
     // Adjusted to use REPLACE strategy for consistency with MovieDao
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllBooks(book: BookModal)

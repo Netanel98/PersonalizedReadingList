@@ -1,11 +1,16 @@
 package com.example.readingbooks.data.repositories
 
+import android.content.Context
 import androidx.lifecycle.LiveData
+import com.example.readingbooks.data.AppDatabase
 import com.example.readingbooks.mybooks.BookModal
 import com.example.readingbooks.data.dao.BookDao
 import com.example.readingbooks.services.FirestoreService
 
-class BookRepository(private val bookDao: BookDao, private val firestoreService: FirestoreService) {
+
+class BookRepository(private val bookDao: BookDao, private val firestoreService: FirestoreService, private var context: Context) {
+
+    private val localDb = AppDatabase.getDatabase(context)
 
     // Get all books from the local database
     // Assuming BookDao has a method to fetch all books as LiveData
@@ -21,13 +26,20 @@ class BookRepository(private val bookDao: BookDao, private val firestoreService:
     // Add a new book to both local and remote databases
     fun addBook(book: BookModal) {
         try {
-            val bookId = firestoreService.addBook(book)  // Assuming this returns the ID and can throw an exception
+            val bookId =
+                firestoreService.addBook(book)  // Assuming this returns the ID and can throw an exception
             book.id = bookId  // Set the book ID after remote insertion
             bookDao.insertAllBooks(book)  // Ensure DAO supports this operation for a single book
         } catch (e: Exception) {
             // Handle exceptions
             throw RuntimeException("Failed to add book: ${e.message}", e)
         }
+    }
+
+    fun getBookById (id: Int): BookModal {
+        var book = localDb.BookDao().getBookById(id)
+
+        return book
     }
 
     // Update a book
