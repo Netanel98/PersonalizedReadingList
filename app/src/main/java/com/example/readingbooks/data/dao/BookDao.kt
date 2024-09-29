@@ -19,7 +19,7 @@ interface BookDao {
     @Query("SELECT * FROM books WHERE id = :bookId")
     fun getBookById(bookId: Int): BookModal
 
-    // Adjusted to use REPLACE strategy for consistency with MovieDao
+    // Adjusted to use REPLACE strategy for consistency with BookDao
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllBooks(book: BookModal)
 
