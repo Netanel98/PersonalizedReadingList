@@ -96,7 +96,7 @@ class BookDetailsActivity : AppCompatActivity() {
                 publisher = publisherTV.text.toString(),
                 publishedDate = publisherDateTV.text.toString(),
                 description = descTV.text.toString(),
-                pageCount = pageTV.text.toString().toInt(),
+                pageCount = pageTV.text.toString(),
                 thumbnail = "", // Fetch if needed
                 previewLink = "", // Fetch if needed
                 infoLink = ""  // Fetch if needed
@@ -112,13 +112,5 @@ class BookDetailsActivity : AppCompatActivity() {
     private fun saveBook(book: BookModal) {
         bookRepository.addBook(book)
         Toast.makeText(this, "Book saved to your list!", Toast.LENGTH_SHORT).show()
-
-        // Start MainActivity with a flag to open MyBookListFragment
-        val intent = Intent(this, MainActivity::class.java).apply {
-            putExtra("openFragment", "BookList")
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-        }
-        startActivity(intent)
-        finish()
     }
 }

@@ -32,12 +32,6 @@ class MainActivity : AppCompatActivity() {
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        if (intent.hasExtra("openFragment") && intent.getStringExtra("openFragment") == "BookList") {
-            showMyBookListFragment()
-        } else {
-            navigateToLibraryFragment()  // Add this method to navigate to the Library Fragment
-        }
     }
 
     private fun setupNavigationMenu() {
@@ -76,14 +70,5 @@ class MainActivity : AppCompatActivity() {
         val navHost =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         return navHost.navController
-    }
-
-    private fun navigateToLibraryFragment() {
-        // Navigate to Library Fragment as the default screen
-        getNavController().navigate(R.id.libraryFragment)
-    }
-
-    private fun showMyBookListFragment() {
-        findNavController(R.id.nav_host_fragment).navigate(R.id.MyBookListFragment)
     }
 }
